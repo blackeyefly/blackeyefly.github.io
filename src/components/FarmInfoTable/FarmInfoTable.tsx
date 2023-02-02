@@ -1,18 +1,17 @@
-import React, { FC } from 'react';
-
+import { Delete } from '@mui/icons-material';
+import { IconButton, Typography } from '@mui/material';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { IconButton, Typography } from '@mui/material';
-import Farm from '../../models/Farm';
-import Utils from '../../models/utils';
 import _ from 'lodash';
+import { FC } from 'react';
+
+import Farm from '../../models/Farm';
 import { Tower } from '../../models/Tower';
-import { Delete } from '@mui/icons-material';
 
 interface FarmInfoTableProps {
   towers: Tower[],
@@ -57,16 +56,48 @@ const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
         <TableRow
           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
-        <TableCell align="left"><Typography>Total</Typography></TableCell>
-        <TableCell align="left"></TableCell>
-        <TableCell align="left"></TableCell>
-        <TableCell align="right"><Typography>${_.sum(_.map(towers, (tower) => tower.cost)).toLocaleString()}</Typography></TableCell>
-        <TableCell align="right"><Typography>${_.sum(_.map(towers, (tower) => tower.income)).toLocaleString()}</Typography></TableCell>
-        <TableCell align="right"><Typography>{(_.sum(_.map(towers, (tower) => tower.cost)) / _.sum(_.map(towers, (tower) => tower.income))).toLocaleString()}</Typography></TableCell>
-        <TableCell align="right"><Typography>${_.sum(_.map(towers, (tower) => tower.sellValue)).toLocaleString()}</Typography></TableCell>
-        <TableCell align="right"><Typography>${_.sum(_.map(towers, (tower) => tower.favoredSellValue)).toLocaleString()}</Typography></TableCell>
-        <TableCell align="right"><Typography>-</Typography></TableCell>
-        <TableCell align="right"><Typography>-</Typography></TableCell>
+        <TableCell align="left">
+          <Typography>
+            Total
+          </Typography>
+        </TableCell>
+        <TableCell align="left" />
+        <TableCell align="left" />
+        <TableCell align="right">
+          <Typography>
+            ${_.sum(_.map(towers, (tower) => tower.cost)).toLocaleString()}
+          </Typography>
+        </TableCell>
+        <TableCell align="right">
+          <Typography>
+            ${_.sum(_.map(towers, (tower) => tower.income)).toLocaleString()}
+          </Typography>
+        </TableCell>
+        <TableCell align="right">
+          <Typography>
+            {towers.length ? (_.sum(_.map(towers, (tower) => tower.cost)) / _.sum(_.map(towers, (tower) => tower.income))).toLocaleString() : "-"}
+          </Typography>
+        </TableCell>
+        <TableCell align="right">
+          <Typography>
+            ${_.sum(_.map(towers, (tower) => tower.sellValue)).toLocaleString()}
+          </Typography>
+        </TableCell>
+        <TableCell align="right">
+          <Typography>
+            ${_.sum(_.map(towers, (tower) => tower.favoredSellValue)).toLocaleString()}
+          </Typography>
+        </TableCell>
+        <TableCell align="right">
+          <Typography>
+            {towers.length ? ((_.sum(_.map(towers, (tower) => tower.cost)) - _.sum(_.map(towers, (tower) => tower.sellValue))) / _.sum(_.map(towers, (tower) => tower.income))).toFixed(2) : "-"}
+          </Typography>
+        </TableCell>
+        <TableCell align="right">
+          <Typography>
+          {towers.length ? ((_.sum(_.map(towers, (tower) => tower.cost)) - _.sum(_.map(towers, (tower) => tower.favoredSellValue))) / _.sum(_.map(towers, (tower) => tower.income))).toFixed(2) : "-"}
+          </Typography>
+        </TableCell>
         </TableRow>
       </TableBody>
     </Table>

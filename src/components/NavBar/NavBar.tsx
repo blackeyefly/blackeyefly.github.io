@@ -1,8 +1,7 @@
 import React, { FC, useState } from 'react';
-import styles from './NavBar.module.css';
 
-import { AppBar, Box, CssBaseline, Drawer, IconButton, Link, List, ListItem, ListItemButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Box, Drawer, IconButton, List, ListItem, ListItemButton, Toolbar, Typography } from '@mui/material';
 
 
 interface NavBarProps {}
@@ -50,7 +49,7 @@ const NavBar: FC<NavBarProps> = () => {
             <List>
               <ListItem disablePadding>
                 <ListItemButton href="/">
-                  Farms
+                  Round-Based Income
                 </ListItemButton>
               </ListItem>
               {/* <ListItem disablePadding>

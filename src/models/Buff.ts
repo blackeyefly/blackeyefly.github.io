@@ -15,17 +15,17 @@ export type Buff = {
 }
 
 export function createBuff(
-    discountVillage: number = 0,
-    firstFarm: boolean = false,
-    overclock: boolean = false,
-    ultraboosts: number = 0,
-    city: boolean = false,
-    fertilizer: boolean = false,
-    central: boolean = false,
-    centralMarkets: number = 0,
-    firstMilitary: boolean = false,
-    tradeEmpireMerchantmen: number = 0,
-    tradeEmpireFavored: number = 0,
+    discountVillage = 0,
+    firstFarm = false,
+    overclock = false,
+    ultraboosts = 0,
+    city = false,
+    fertilizer = false,
+    central = false,
+    centralMarkets = 0,
+    firstMilitary = false,
+    tradeEmpireMerchantmen = 0,
+    tradeEmpireFavored = 0,
 ): Buff {
     return {
         discountVillage,
@@ -45,20 +45,30 @@ export function createBuff(
 export function fixBuffs(type: TowerType, buff: Buff): Buff {
     if (type === TowerType.Farm) {
         return {
-            ...buff,
-            tradeEmpireFavored: 0,
-            tradeEmpireMerchantmen: 0,
-            centralMarkets: 0,
-            firstMilitary: false,
+            ...createBuff(),
+            discountVillage: buff.discountVillage,
+            city: buff.city,
+            overclock: buff.overclock,
+            ultraboosts: buff.ultraboosts,
+            central: buff.central,
+            fertilizer: buff.fertilizer,
+            firstFarm: buff.firstFarm,
         }    
     } else if (type === TowerType.Buccaneer) {
         return {
-            ...buff,
-            overclock: false,
-            ultraboosts: 0,
-            central: false,
-            fertilizer: false,
-            firstFarm: false,
+            ...createBuff(),
+            discountVillage: buff.discountVillage,
+            city: buff.city,
+            tradeEmpireFavored: buff.tradeEmpireFavored,
+            tradeEmpireMerchantmen: buff.tradeEmpireMerchantmen,
+            centralMarkets: buff.centralMarkets,
+            firstMilitary: buff.firstMilitary,
+        }
+    } else if (type === TowerType.Village) {
+        return {
+            ...createBuff(),
+            discountVillage: buff.discountVillage,
+            city: buff.city,
         }
     } else {
         return buff;

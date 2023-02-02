@@ -1,14 +1,12 @@
-import { Button, Card, CardContent, Checkbox, Container, FormControl, FormControlLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { Button, Card, CardContent, Checkbox, Container, FormControl, FormControlLabel, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import React, { FC, useState } from 'react';
 import Buccaneer from '../../models/Buccaneer';
-import { Buff, createBuff } from '../../models/Buff';
+import { createBuff } from '../../models/Buff';
 import Difficulty from '../../models/Difficulty';
 import Farm from '../../models/Farm';
 import MK from '../../models/MK';
 import { Tower } from '../../models/Tower';
 import Utils, { TowerType } from '../../models/utils';
-import styles from './FarmInsert.module.css';
 
 interface FarmInsertProps {
   addTower?: (tower: Tower) => void,
@@ -128,7 +126,7 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower }) => {
                   type="submit"
                 >
                   <Typography>
-                    Add Farm
+                    Add Tower
                   </Typography>
                 </Button>
               </Stack>

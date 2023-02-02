@@ -1,5 +1,4 @@
 import { AppBar, Container, createTheme, CssBaseline, ThemeProvider, Toolbar, Typography } from '@mui/material';
-import React from 'react';
 
 const theme = createTheme();
 

@@ -1,24 +1,12 @@
-import _, { min } from "lodash";
-import { Buff, createBuff, fixBuffs } from "./Buff";
+import { Buff, createBuff } from "./Buff";
 import Difficulty from "./Difficulty";
 import MK from "./MK";
 import { Tower } from "./Tower";
 import Utils, { TowerType } from "./utils";
 
 class Farm extends Tower {
-    type: TowerType;
-    upgrades: [number, number, number];
-    buffs: Buff;
-    cost: number;
-    income: number;
-    efficiency: number;
-    sellValue: number;
-    favoredSellValue: number;
-    sellEfficiency: number;
-    favoredSellEfficiency: number;
-
     private numberOfBananas(): number {
-        var bananas: number;
+        let bananas: number;
 
         if (this.upgrades[0] >= 4) {
             bananas = 5;
@@ -36,7 +24,7 @@ class Farm extends Tower {
     }
 
     private bananaValue(mk: MK = MK.Off): number {
-        var value: number;
+        let value: number;
 
         if (this.upgrades[0] === 5) {
             value = 1200;
@@ -59,7 +47,7 @@ class Farm extends Tower {
         return Math.floor(value * (this.upgrades[1] >= 2 ? (mk ? 1.3 : 1.25) : 1) * (this.buffs.city ? 1.15 : 1));
     }
 
-    protected incomePerRound(mk: MK = MK.On) {
+    protected incomePerRound(mk: MK = MK.On): number {
         return this.numberOfBananas() * this.bananaValue(mk) + (this.upgrades[2] === 5 ? 4000 : 0) * (this.buffs.city ? 1.15 : 1);
     }
 
@@ -70,25 +58,7 @@ class Farm extends Tower {
         buffs: Buff = createBuff()
     ) {
         super(upgrades, mk, difficulty, buffs, TowerType.Farm);
-        if (buffs.discountVillage < 0 || buffs.discountVillage > 3) {
-            throw new Error("Invalid Number of Discounts");
-        }
-        if (buffs.ultraboosts < 0 || buffs.discountVillage > 10) {
-            throw new Error("Invalid Number of Ultraboosts");
-        }
-        this.type = TowerType.Farm;
-        this.upgrades = upgrades;
-        this.buffs = fixBuffs(this.type, buffs);
-        if (this.upgrades[1] > 2 || this.upgrades[2] > 2) {
-            this.buffs.fertilizer = false;
-        }
-        if (this.upgrades[0] < 4) {
-            this.buffs.central = false;
-        }
-        this.cost = Utils.cost(TowerType.Farm, upgrades, mk, difficulty, buffs) +
-            (this.buffs.overclock ? Utils.cost(TowerType.Engineer, [0, 4, 0], mk, difficulty, buffs) : 0);
-        this.income = this.incomePerRound(mk);
-        this.efficiency = this.cost / this.income;
+        this.cost += this.buffs.overclock ? Utils.cost(TowerType.Engineer, [0, 4, 0], mk, difficulty, buffs) : 0;
         if (this.buffs.overclock) {
             this.sellValue = Math.round(Utils.cost(
                     TowerType.Farm,
@@ -151,11 +121,6 @@ class Farm extends Tower {
                     buffs
                 ) * (1 - 0.85 - (this.upgrades[2] >= 2 ? 0.1 : 0))
             ) / this.income;
-        } else {
-            this.sellValue = Math.round(this.cost * (0.7 + (this.upgrades[2] >= 2 ? 0.1 : 0) + (mk ? 0.07 : 0)))
-            this.favoredSellValue = Math.round(this.cost * Math.min(0.8 + (this.upgrades[2] >= 2 ? 0.1 : 0) + (mk ? 0.07 : 0), 0.95));
-            this.sellEfficiency = (this.cost - this.sellValue) / this.income;
-            this.favoredSellEfficiency = (this.cost - this.favoredSellValue) / this.income;    
         }
     }
 }

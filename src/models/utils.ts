@@ -7,6 +7,7 @@ export enum TowerType {
     Farm = "Farm",
     Engineer = "Engineer",
     Buccaneer = "Buccaneer",
+    Village = "Village",
     None = "",
 }
 
@@ -20,6 +21,7 @@ const baseCosts: EnumDictionary<TowerType, number> = {
     [TowerType.Farm]: 1250,
     [TowerType.Engineer]: 400,
     [TowerType.Buccaneer]: 500,
+    [TowerType.Village]: 1200,
     [TowerType.None]: 0
 }
 
@@ -38,6 +40,11 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [350, 550, 2950, 7200, 25000],
         [550, 500, 900, 4900, 26000],
         [180, 400, 2300, 5500, 23000],
+    ],
+    [TowerType.Village]: [
+        [400, 1500, 800, 2500, 25000],
+        [250, 2000, 7500, 20000, 40000],
+        [500, 500, 10000, 3000, 0]
     ],
     [TowerType.None]: []
 }
@@ -75,19 +82,19 @@ export default class Utils {
         difficulty: Difficulty = Difficulty.Medium,
         buffs: Buff = createBuff()
     ) {
-        var villageDiscount: number = [0, 0.15, 0.2, 0.25, 0.1][buffs.discountVillage] + (buffs.discountVillage && MK.On ? 0.02 : 0)
+        const villageDiscount: number = [0, 0.15, 0.2, 0.25, 0.1][buffs.discountVillage] + (buffs.discountVillage && MK.On ? 0.02 : 0)
 
-        var cost: number = Utils.floor5(
+        let cost: number = Utils.floor5(
             baseCosts[towerType] *
             difficulty *
-            (mk && [TowerType.Farm].includes(towerType) ? 0.98 : 1) *
+            (mk && [TowerType.Farm, TowerType.Village].includes(towerType) ? 0.98 : 1) *
             (mk && [TowerType.Buccaneer].includes(towerType) && buffs.firstMilitary ? 2/3 : 1) *
             (mk && [TowerType.Buccaneer].includes(towerType) ? 0.95 : 1) *
             (1 - villageDiscount)
         ) - (mk && towerType === TowerType.Farm && buffs.firstFarm ? 100 : 0);
 
-        for (var i = 0; i < 3; i++) {
-            for (var j = 0; j < upgrades[i]; j++) {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < upgrades[i]; j++) {
                 cost += Utils.round5(baseUpgradeCosts[towerType][i][j] * difficulty * (j < 3 ? 1 - villageDiscount : 1));
             }
         }

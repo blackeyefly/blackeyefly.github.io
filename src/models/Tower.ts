@@ -1,8 +1,9 @@
-import _ from "lodash";
-import { Buff, createBuff } from "./Buff";
-import Difficulty from "./Difficulty";
-import MK from "./MK";
-import Utils, { TowerType } from "./utils";
+import _ from 'lodash';
+
+import { Buff, createBuff, fixBuffs } from './Buff';
+import Difficulty from './Difficulty';
+import MK from './MK';
+import Utils, { TowerType } from './utils';
 
 export abstract class Tower {
     type!: TowerType;
@@ -16,7 +17,7 @@ export abstract class Tower {
     sellEfficiency!: number;
     favoredSellEfficiency!: number;
 
-    protected abstract incomePerRound(): number;
+    protected abstract incomePerRound(mk: MK): number;
 
     showUpgrades() {
         return this.upgrades.join('-');
@@ -40,9 +41,30 @@ export abstract class Tower {
     ) {
         Utils.assertValidUpgrades(upgrades);
         this.upgrades = upgrades;
-        this.buffs = buffs;
+        this.buffs = fixBuffs(type, buffs);
         this.type = type;
         this.cost = Utils.cost(type, this.upgrades, mk, difficulty, buffs);
+        this.income = this.incomePerRound(mk);
+        this.efficiency = this.cost / this.income;
+
+        var favoredSellPercentage = Math.min(
+            0.8 +
+            (mk === MK.On ? 0.05 : 0) +
+            (mk === MK.On && [TowerType.Farm, TowerType.Village].includes(this.type) ? 0.02 : 0) +
+            (this.type === TowerType.Farm && this.upgrades[2] >= 2 ? 0.1 : 0),
+            0.95
+        );
+
+        var sellPercentage = (this.type === TowerType.Buccaneer && this.upgrades[2] >= 4) ? favoredSellPercentage :
+            0.7 +
+            (mk === MK.On ? 0.05 : 0) +
+            (mk === MK.On && [TowerType.Farm, TowerType.Village].includes(this.type) ? 0.02 : 0) +
+            (this.type === TowerType.Farm && this.upgrades[2] >= 2 ? 0.1 : 0)
+
+        this.favoredSellValue = Math.ceil(this.cost * favoredSellPercentage);
+        this.sellValue = Math.ceil(this.cost * sellPercentage);
+        this.sellEfficiency = (this.cost - this.sellValue) / this.income;
+        this.favoredSellEfficiency = (this.cost - this.favoredSellValue) / this.income;
     }
 }
 

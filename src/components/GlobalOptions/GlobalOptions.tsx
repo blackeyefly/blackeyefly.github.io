@@ -1,8 +1,7 @@
-import { Button, Card, CardContent, Checkbox, Container, FormControlLabel, InputLabel, Menu, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Button, Card, CardContent, Checkbox, Container, FormControlLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
 import React, { FC, useState } from 'react';
 import Difficulty from '../../models/Difficulty';
 import MK from '../../models/MK';
-import styles from './GlobalOptions.module.css';
 
 interface GlobalOptionsProps {
   setOptions?: (mk: MK, difficulty: Difficulty) => void,
