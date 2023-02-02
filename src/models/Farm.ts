@@ -12,6 +12,8 @@ class Farm extends Tower {
     cost: number;
     income: number;
     efficiency: number;
+    sellValue: number;
+    favoredSellValue: number;
     sellEfficiency: number;
     favoredSellEfficiency: number;
 
@@ -88,6 +90,35 @@ class Farm extends Tower {
         this.income = this.incomePerRound(mk);
         this.efficiency = this.cost / this.income;
         if (this.buffs.overclock) {
+            this.sellValue = Math.round(Utils.cost(
+                    TowerType.Farm,
+                    upgrades,
+                    mk,
+                    difficulty,
+                    buffs
+                ) * (0.75 + (this.upgrades[2] >= 2 ? 0.1 : 0) - (mk ? 0.02 : 0))) +
+                Math.round(Utils.cost(
+                    TowerType.Engineer,
+                    [0, 4, 0],
+                    mk,
+                    difficulty,
+                    buffs
+                ) * 0.75)
+            this.favoredSellValue = Math.round(Utils.cost(
+                    TowerType.Farm,
+                    upgrades,
+                    mk,
+                    difficulty,
+                    buffs
+                ) * Math.min(0.85 + (this.upgrades[2] >= 2 ? 0.1 : 0) + (mk ? 0.02 : 0), 0.95)) +
+                Math.round(Utils.cost(
+                    TowerType.Engineer,
+                    [0, 4, 0],
+                    mk,
+                    difficulty,
+                    buffs
+                ) * 0.85)
+
             this.sellEfficiency = (
                 Utils.cost(
                     TowerType.Farm,
@@ -102,7 +133,7 @@ class Farm extends Tower {
                     mk,
                     difficulty,
                     buffs
-                ) * (1 - 0.75 - (this.upgrades[2] >= 2 ? 0.1 : 0))
+                ) * (1 - 0.75)
             ) / this.income;
             this.favoredSellEfficiency = (
                 Utils.cost(
@@ -121,8 +152,10 @@ class Farm extends Tower {
                 ) * (1 - 0.85 - (this.upgrades[2] >= 2 ? 0.1 : 0))
             ) / this.income;
         } else {
-            this.sellEfficiency = (this.cost * (1 - 0.7 - (this.upgrades[2] >= 2 ? 0.1 : 0) - (mk ? 0.07 : 0))) / this.income;
-            this.favoredSellEfficiency = (this.cost * (1 - Math.min(0.8 + (this.upgrades[2] >= 2 ? 0.1 : 0) + (mk ? 0.07 : 0), 0.95))) / this.income;    
+            this.sellValue = Math.round(this.cost * (0.7 + (this.upgrades[2] >= 2 ? 0.1 : 0) + (mk ? 0.07 : 0)))
+            this.favoredSellValue = Math.round(this.cost * Math.min(0.8 + (this.upgrades[2] >= 2 ? 0.1 : 0) + (mk ? 0.07 : 0), 0.95));
+            this.sellEfficiency = (this.cost - this.sellValue) / this.income;
+            this.favoredSellEfficiency = (this.cost - this.favoredSellValue) / this.income;    
         }
     }
 }

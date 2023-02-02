@@ -11,6 +11,8 @@ export abstract class Tower {
     cost!: number;
     income!: number;
     efficiency!: number;
+    sellValue!: number;
+    favoredSellValue!: number;
     sellEfficiency!: number;
     favoredSellEfficiency!: number;
 

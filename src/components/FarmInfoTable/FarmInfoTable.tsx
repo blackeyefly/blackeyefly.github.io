@@ -37,14 +37,16 @@ const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
           <TableRow
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
-            <TableCell align="left">{tower.type}</TableCell>
-            <TableCell align="left">{tower.showUpgrades()}</TableCell>
-            <TableCell align="left">{tower.showBuffs()}</TableCell>
-            <TableCell align="right">${tower.cost.toLocaleString()}</TableCell>
-            <TableCell align="right">${tower.income.toLocaleString()}</TableCell>
-            <TableCell align="right">{tower.efficiency.toFixed(2)}</TableCell>
-            <TableCell align="right">{tower.sellEfficiency.toFixed(2)}</TableCell>
-            <TableCell align="right">{tower.favoredSellEfficiency.toFixed(2)}</TableCell>
+            <TableCell align="left"><Typography>{tower.type}</Typography></TableCell>
+            <TableCell align="left"><Typography>{tower.showUpgrades()}</Typography></TableCell>
+            <TableCell align="left"><Typography>{tower.showBuffs()}</Typography></TableCell>
+            <TableCell align="right"><Typography>${tower.cost.toLocaleString()}</Typography></TableCell>
+            <TableCell align="right"><Typography>${tower.income.toLocaleString()}</Typography></TableCell>
+            <TableCell align="right"><Typography>{tower.efficiency.toFixed(2)}</Typography></TableCell>
+            <TableCell align="right"><Typography>${tower.sellValue.toLocaleString()}</Typography></TableCell>
+            <TableCell align="right"><Typography>${tower.favoredSellValue.toLocaleString()}</Typography></TableCell>
+            <TableCell align="right"><Typography>{tower.sellEfficiency.toFixed(2)}</Typography></TableCell>
+            <TableCell align="right"><Typography>{tower.favoredSellEfficiency.toFixed(2)}</Typography></TableCell>
             <TableCell>
               <IconButton color="primary" aria-label="delete entry" onClick={() => {if (removeTower) removeTower(towerIndex) }}>
                 <Delete />
@@ -58,9 +60,11 @@ const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
         <TableCell align="left"><Typography>Total</Typography></TableCell>
         <TableCell align="left"></TableCell>
         <TableCell align="left"></TableCell>
-        <TableCell align="right">${_.sum(_.map(towers, (tower) => tower.cost)).toLocaleString()}</TableCell>
-        <TableCell align="right">${_.sum(_.map(towers, (tower) => tower.income)).toLocaleString()}</TableCell>
+        <TableCell align="right"><Typography>${_.sum(_.map(towers, (tower) => tower.cost)).toLocaleString()}</Typography></TableCell>
+        <TableCell align="right"><Typography>${_.sum(_.map(towers, (tower) => tower.income)).toLocaleString()}</Typography></TableCell>
         <TableCell align="right"><Typography>{(_.sum(_.map(towers, (tower) => tower.cost)) / _.sum(_.map(towers, (tower) => tower.income))).toLocaleString()}</Typography></TableCell>
+        <TableCell align="right"><Typography>${_.sum(_.map(towers, (tower) => tower.sellValue)).toLocaleString()}</Typography></TableCell>
+        <TableCell align="right"><Typography>${_.sum(_.map(towers, (tower) => tower.favoredSellValue)).toLocaleString()}</Typography></TableCell>
         <TableCell align="right"><Typography>-</Typography></TableCell>
         <TableCell align="right"><Typography>-</Typography></TableCell>
         </TableRow>
