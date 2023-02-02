@@ -50,7 +50,7 @@ class Buccaneer extends Tower {
         }
         this.buffs = fixBuffs(this.type, buffs);
         this.cost = Utils.cost(this.type, this.upgrades, mk, difficulty, buffs);
-        this.income = this.incomePerRound();
+        this.income = this.incomePerRound(mk);
         this.efficiency = this.cost / this.income;
         this.favoredSellEfficiency = (this.cost * (1 - Math.min(0.8 + (mk ? 0.05 : 0), 0.95))) / this.income;
         this.sellEfficiency = this.upgrades[2] >= 4 ? this.favoredSellEfficiency : (this.cost * (1 - 0.7 - (mk ? 0.05 : 0))) / this.income;
