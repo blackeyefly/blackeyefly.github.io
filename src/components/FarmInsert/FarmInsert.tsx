@@ -136,15 +136,11 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower }) => {
                 <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, overclock: e.target.checked})} disabled={type !== TowerType.Farm}/>} label="Overclock" />
                 <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, city: e.target.checked})} />} label="Monkey City" />
                 <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, fertilizer: e.target.checked})} disabled={path2 > 2 || path3 > 2 || type !== TowerType.Farm} />} label="Fertilizer" />
-                <FormControlLabel control={<Checkbox onChange={(e) => setBuffs(type === TowerType.Farm ? 
-                  {
+                <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({
                     ...buffs,
                     firstFarm: e.target.checked,
-                  } : {
-                    ...buffs,
-                    firstMilitary: e.target.checked
-                  }
-                  )} />} label="First Farm or First Military Tower" />
+                    firstMilitary: e.target.checked,
+                  })} />} label="First Farm or First Military Tower" />
               </Stack>
             </FormControl>
           </form>

@@ -49,6 +49,7 @@ export function fixBuffs(type: TowerType, buff: Buff): Buff {
             tradeEmpireFavored: 0,
             tradeEmpireMerchantmen: 0,
             centralMarkets: 0,
+            firstMilitary: false,
         }    
     } else if (type === TowerType.Buccaneer) {
         return {
