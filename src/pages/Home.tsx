@@ -36,6 +36,7 @@ function Home() {
     const handleClose = () => setOpen(false);
 
     const updateTowers = (towers: Tower[]) => {
+      var buccaneersBuffed = 0;
       return towers.map(
         tower => {
           if (tower.type === TowerType.Farm && tower.upgrades[0] === 4) {
@@ -64,7 +65,7 @@ function Home() {
             )
 
             const tradeEmpires = towers.filter(x => x.type === TowerType.Buccaneer && x.upgrades[2] === 5).length;
-            if (tradeEmpires && tower.upgrades[2] < 5) {
+            if (tradeEmpires && tower.upgrades[2] < 5 && buccaneersBuffed <= 20 * tradeEmpires) {
               const merchantmen = towers.filter(x => x.type === TowerType.Buccaneer && x.upgrades[2] === 3).length;
               const favored = towers.filter(x => x.type === TowerType.Buccaneer && x.upgrades[2] === 4).length;
               tower = new Buccaneer(
@@ -73,10 +74,11 @@ function Home() {
                 difficulty,
                 {
                   ...tower.buffs,
-                  tradeEmpireMerchantmen: Math.min(merchantmen, 20 * tradeEmpires - favored),
-                  tradeEmpireFavored: Math.min(favored, 20 * tradeEmpires - merchantmen),
+                  tradeEmpireMerchantmen: Math.min(merchantmen + favored, 20),
+                  tradeEmpireFavored: Math.min(favored, 20),
                 }
               )
+              buccaneersBuffed++;
             } else {
               tower = new Buccaneer(
                 tower.upgrades,

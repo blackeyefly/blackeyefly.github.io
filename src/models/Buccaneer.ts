@@ -21,7 +21,7 @@ class Buccaneer extends Tower {
         income += mk === MK.On ? 20 : 0;
         income *= 1 + 0.1 * Math.min(this.buffs.centralMarkets, 10);
         income += 10 * this.buffs.tradeEmpireMerchantmen;
-        income += 20 * this.buffs.tradeEmpireFavored;
+        income += 10 * this.buffs.tradeEmpireFavored;
         income *= this.buffs.city ? 1.15 : 1;
         return Math.floor(income);
     }
