@@ -78,7 +78,7 @@ const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
                 </TableCell>
                 <TableCell align="right">
                   <Typography>
-                    {_.sum(_.map(towers, (tower) => tower.income)) ? (_.sum(_.map(towers, (tower) => tower.cost)) / _.sum(_.map(towers, (tower) => tower.income))).toLocaleString() : "-"}
+                    {_.sum(_.map(towers, (tower) => tower.income)) ? (_.sum(_.map(towers, (tower) => tower.cost)) / _.sum(_.map(towers, (tower) => tower.income))).toFixed(2) : "-"}
                   </Typography>
                 </TableCell>
                 <TableCell align="right">
