@@ -1,4 +1,4 @@
-import { Buff, createBuff, fixBuffs } from "./Buff";
+import { Buff, createBuff } from "./Buff";
 import Difficulty from "./Difficulty";
 import MK from "./MK";
 import { Tower, TowerType } from "./Tower";
@@ -12,7 +12,7 @@ class Village extends Tower {
         if (this.upgrades[2] < 5) {
             return 0;
         } else {
-            return this.sacrificeValue / 10;
+            return Math.max(200 * Math.floor(this.sacrificeValue / 2000), 200);
         }
     }
 
@@ -30,9 +30,15 @@ class Village extends Tower {
         this.income = this.incomePerRound();
         this.cost = Utils.cost(TowerType.Village, upgrades, mk, difficulty, buffs);
         if (this.upgrades[2] === 5) {
-            this.cost += 5000 * this.farmsSacrificed;
+            this.cost += 5000 * this.farmsSacrificed + this.sacrificeValue;
         }
-        this.buffs = fixBuffs(this.type, buffs);
+        this.efficiency = this.cost / this.income;
+        var favoredSellPercentage = 0.8 + (mk === MK.On ? 0.07 : 0);
+        var sellPercentage = 0.7 + (mk === MK.On ? 0.07 : 0);
+        this.favoredSellValue = Math.ceil(this.cost * favoredSellPercentage);
+        this.sellValue = Math.ceil(this.cost * sellPercentage);
+        this.sellEfficiency = (this.cost - this.sellValue) / this.income;
+        this.favoredSellEfficiency = (this.cost - this.favoredSellValue) / this.income;
     }
 }
 

@@ -7,17 +7,23 @@ import Farm from '../../models/Farm';
 import MK from '../../models/MK';
 import { Tower } from '../../models/Tower';
 import Utils, { TowerType } from '../../models/utils';
+import Village from '../../models/Village';
 
 interface FarmInsertProps {
-  addTower?: (tower: Tower) => void,
+  addTower?: (tower: Tower, sacrifice?: boolean) => void,
+  mk?: MK,
+  difficulty?: Difficulty,
+  sacrificedValue?: number,
+  farmsSacrificed?: number,
 }
 
-const FarmInsert: FC<FarmInsertProps> = ({ addTower }) => {
+const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Difficulty.Medium, sacrificedValue = 0, farmsSacrificed = 0 }) => {
   const [type, setType] = useState(TowerType.Farm);
   const [path1, setPath1] = useState(0);
   const [path2, setPath2] = useState(0);
   const [path3, setPath3] = useState(0);
   const [buffs, setBuffs] = useState(createBuff());
+  const [remove, setRemove] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,17 +31,26 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower }) => {
       if (type === TowerType.Farm) {
         addTower(new Farm(
           [path1, path2, path3],
-          MK.On,
-          Difficulty.Medium,
+          mk,
+          difficulty,
           buffs
         ));
       } else if (type === TowerType.Buccaneer) {
         addTower(new Buccaneer(
           [path1, path2, path3],
-          MK.On,
-          Difficulty.Medium,
+          mk,
+          difficulty,
           buffs
         ));
+      } else if (type === TowerType.Village) {
+        addTower(new Village(
+          [path1, path2, path3],
+          mk,
+          difficulty,
+          buffs,
+          sacrificedValue,
+          farmsSacrificed,
+        ), remove && path3 === 5)
       }
     }
   }
@@ -43,7 +58,7 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower }) => {
   return (
     <Card>
       <CardContent>
-        <Container>
+        <Container maxWidth="xl">
           <form onSubmit={handleSubmit}>
             <FormControl>
               <Stack spacing={4} direction="row">
@@ -55,10 +70,11 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower }) => {
                   defaultValue="Farm"
                   onChange={(e) => (setType(Utils.enumFromStringValue(TowerType, e.target.value) || TowerType.None))}
                   select
-                  sx={{ width: "20%" }}
+                  sx={{ minWidth: "20%" }}
                 >
                   <MenuItem value="Farm">Farm</MenuItem>
                   <MenuItem value="Buccaneer">Buccaneer</MenuItem>
+                  <MenuItem value="Village">Village</MenuItem>
                 </TextField>
                 <TextField
                   required
@@ -139,6 +155,11 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower }) => {
                     firstFarm: e.target.checked,
                     firstMilitary: e.target.checked,
                   })} />} label="First Farm or First Military Tower" />
+                  {
+                    type === TowerType.Village && path3 === 5 ?
+                    <FormControlLabel control={<Checkbox onChange={(e) => setRemove(e.target.checked)} />} label="Remove Sacrifices from Table" /> :
+                    null
+                  }
               </Stack>
             </FormControl>
           </form>

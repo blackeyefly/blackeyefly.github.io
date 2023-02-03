@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@emotion/react';
 import HelpIcon from '@mui/icons-material/Help';
 import { AppBar, Card, Container, createTheme, CssBaseline, IconButton, Modal, Stack, Toolbar, Typography } from '@mui/material';
+import _ from 'lodash';
 import { useState } from 'react';
 import FarmInfoTable from '../components/FarmInfoTable/FarmInfoTable';
 import FarmInsert from '../components/FarmInsert/FarmInsert';
@@ -31,7 +32,7 @@ function Home() {
 
     const [open, setOpen] = useState(false);
 
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {setOpen(true); console.log(towers)};
     const handleClose = () => setOpen(false);
 
     const updateTowers = (towers: Tower[]) => {
@@ -95,8 +96,8 @@ function Home() {
       )
     }
   
-    const addTower = (tower: Tower) => {
-      let newTowers = [...towers, tower];
+    const addTower = (tower: Tower, sacrifice: boolean = false) => {
+      let newTowers = [...(sacrifice ? towers.filter(tower => tower.type !== TowerType.Farm || tower.upgrades.some((x: number) => x === 5)) : towers), tower];
       newTowers = updateTowers(newTowers);
       setTowers(newTowers);
     }
@@ -131,7 +132,7 @@ function Home() {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Container sx={{ marginBottom: "100px" }}>
+        <Container sx={{ marginBottom: "100px" }} maxWidth="xl">
           <Stack
             spacing={2}
             justifyContent="center"
@@ -156,7 +157,21 @@ function Home() {
               </Modal>
             </Typography>
             <GlobalOptions setOptions={setOptions} />
-            <FarmInsert addTower={addTower}/>
+            <FarmInsert
+              addTower={addTower}
+              mk={mk}
+              difficulty={difficulty}
+              sacrificedValue={
+                _.sum(towers.filter(tower => {
+                  return tower.type === TowerType.Farm && tower.upgrades.every((x: number) => x < 5);
+                }).map((tower) => tower.farmCost))
+              }
+              farmsSacrificed={
+                towers.filter(tower => {
+                  return tower.type === TowerType.Farm && tower.upgrades.every((x: number) => x < 5);
+                }).length
+              }
+            />
             <FarmInfoTable towers={towers} removeTower={removeTower}/>
           </Stack>
         </Container>

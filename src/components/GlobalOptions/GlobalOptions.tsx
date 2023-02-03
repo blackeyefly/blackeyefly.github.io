@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Checkbox, Container, FormControlLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Button, Card, CardContent, Checkbox, Container, FormControlLabel, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import React, { FC, useState } from 'react';
 import Difficulty from '../../models/Difficulty';
 import MK from '../../models/MK';
@@ -28,21 +28,24 @@ const GlobalOptions: FC<GlobalOptionsProps> = ({ setOptions }) => {
   return (
     <Card>
       <CardContent>
-        <Container>
+        <Container maxWidth="xl">
           <form onSubmit={handleSubmit}>
-            <Stack spacing={4} sx={{marginTop: "10px"}} direction="row">
-              <FormControlLabel control={<Checkbox defaultChecked onChange={(e) => setMk(e.target.checked ? MK.On : MK.Off)} />} label="Monkey Knowledge" />
-              <Select
-                labelId="difficulty-label"
-                id="difficulty-select"
+            <Stack spacing={4} direction="row">
+              <FormControlLabel control={
+                <Checkbox defaultChecked onChange={(e) => setMk(e.target.checked ? MK.On : MK.Off)} />
+              } label="Monkey Knowledge" />
+              <TextField
+                label="Difficulty"
                 value={difficulty}
+                sx={{ width: "20%" }}
                 onChange={(e) => setDifficulty(e.target.value)}
+                select
               >
                 <MenuItem value="Easy">Easy</MenuItem>
                 <MenuItem value="Medium">Medium</MenuItem>
                 <MenuItem value="Hard">Hard</MenuItem>
                 <MenuItem value="Impoppable">Impoppable</MenuItem>
-              </Select>
+              </TextField>
               <Button
                 variant="contained"
                 color="primary"
@@ -52,7 +55,6 @@ const GlobalOptions: FC<GlobalOptionsProps> = ({ setOptions }) => {
                   Set Options
                 </Typography>
               </Button>
-                
             </Stack>
           </form>
         </Container>

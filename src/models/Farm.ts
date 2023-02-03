@@ -5,6 +5,8 @@ import { Tower } from "./Tower";
 import Utils, { TowerType } from "./utils";
 
 class Farm extends Tower {
+    farmCost: number;
+
     private numberOfBananas(): number {
         let bananas: number;
 
@@ -58,36 +60,26 @@ class Farm extends Tower {
         buffs: Buff = createBuff()
     ) {
         super(upgrades, mk, difficulty, buffs, TowerType.Farm);
+        this.farmCost = this.cost;
         this.cost += this.buffs.overclock ? Utils.cost(TowerType.Engineer, [0, 4, 0], mk, difficulty, buffs) : 0;
+        this.efficiency = this.cost / this.income;
         if (this.buffs.overclock) {
-            this.sellValue = Math.round(Utils.cost(
-                    TowerType.Farm,
-                    upgrades,
-                    mk,
-                    difficulty,
-                    buffs
-                ) * (0.75 + (this.upgrades[2] >= 2 ? 0.1 : 0) - (mk ? 0.02 : 0))) +
+            this.sellValue = this.sellValue +
                 Math.round(Utils.cost(
                     TowerType.Engineer,
                     [0, 4, 0],
                     mk,
                     difficulty,
                     buffs
-                ) * 0.75)
-            this.favoredSellValue = Math.round(Utils.cost(
-                    TowerType.Farm,
-                    upgrades,
-                    mk,
-                    difficulty,
-                    buffs
-                ) * Math.min(0.85 + (this.upgrades[2] >= 2 ? 0.1 : 0) + (mk ? 0.02 : 0), 0.95)) +
+                ) * (0.7 + (mk ? 0.05 : 0)))
+            this.favoredSellValue = this.favoredSellValue +
                 Math.round(Utils.cost(
                     TowerType.Engineer,
                     [0, 4, 0],
                     mk,
                     difficulty,
                     buffs
-                ) * 0.85)
+                ) * (0.8 + (mk ? 0.05 : 0)))
 
             this.sellEfficiency = (
                 Utils.cost(
