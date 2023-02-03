@@ -32,11 +32,11 @@ function Home() {
 
     const [open, setOpen] = useState(false);
 
-    const handleOpen = () => {setOpen(true); console.log(towers)};
+    const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const updateTowers = (towers: Tower[]) => {
-      var buccaneersBuffed = 0;
+      let buccaneersBuffed = 0;
       return towers.map(
         tower => {
           if (tower.type === TowerType.Farm && tower.upgrades[0] === 4) {
