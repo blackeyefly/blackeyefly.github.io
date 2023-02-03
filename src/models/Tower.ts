@@ -47,7 +47,7 @@ export abstract class Tower {
         this.income = this.incomePerRound(mk);
         this.efficiency = this.cost / this.income;
 
-        var favoredSellPercentage = Math.min(
+        const favoredSellPercentage = Math.min(
             0.8 +
             (mk === MK.On ? 0.05 : 0) +
             (mk === MK.On && [TowerType.Farm, TowerType.Village].includes(this.type) ? 0.02 : 0) +
@@ -55,7 +55,7 @@ export abstract class Tower {
             0.95
         );
 
-        var sellPercentage = (this.type === TowerType.Buccaneer && this.upgrades[2] >= 4) ? favoredSellPercentage :
+        const sellPercentage = (this.type === TowerType.Buccaneer && this.upgrades[2] >= 4) ? favoredSellPercentage :
             0.7 +
             (mk === MK.On ? 0.05 : 0) +
             (mk === MK.On && [TowerType.Farm, TowerType.Village].includes(this.type) ? 0.02 : 0) +

@@ -16,7 +16,7 @@ import { Tower, TowerType } from '../models/Tower';
 const theme = createTheme();
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -96,7 +96,7 @@ function Home() {
       )
     }
   
-    const addTower = (tower: Tower, sacrifice: boolean = false) => {
+    const addTower = (tower: Tower, sacrifice = false) => {
       let newTowers = [...(sacrifice ? towers.filter(tower => tower.type !== TowerType.Farm || tower.upgrades.some((x: number) => x === 5)) : towers), tower];
       newTowers = updateTowers(newTowers);
       setTowers(newTowers);

@@ -5,8 +5,8 @@ import { Tower, TowerType } from "./Tower";
 import Utils from "./utils";
 
 class Village extends Tower {
-    sacrificeValue: number = 0;
-    farmsSacrificed: number = 0;
+    sacrificeValue = 0;
+    farmsSacrificed = 0;
 
     protected incomePerRound(): number {
         if (this.upgrades[2] < 5) {
@@ -21,8 +21,8 @@ class Village extends Tower {
         mk: MK = MK.On,
         difficulty: Difficulty = Difficulty.Medium,
         buffs: Buff = createBuff(),
-        sacrificeValue: number = 0,
-        farmsSacrificed: number = 0,
+        sacrificeValue = 0,
+        farmsSacrificed = 0,
     ) {
         super(upgrades, mk, difficulty, buffs, TowerType.Village);
         this.sacrificeValue = sacrificeValue;
@@ -33,8 +33,8 @@ class Village extends Tower {
             this.cost += 5000 * this.farmsSacrificed + this.sacrificeValue;
         }
         this.efficiency = this.cost / this.income;
-        var favoredSellPercentage = 0.8 + (mk === MK.On ? 0.07 : 0);
-        var sellPercentage = 0.7 + (mk === MK.On ? 0.07 : 0);
+        const favoredSellPercentage = 0.8 + (mk === MK.On ? 0.07 : 0);
+        const sellPercentage = 0.7 + (mk === MK.On ? 0.07 : 0);
         this.favoredSellValue = Math.ceil(this.cost * favoredSellPercentage);
         this.sellValue = Math.ceil(this.cost * sellPercentage);
         this.sellEfficiency = (this.cost - this.sellValue) / this.income;
