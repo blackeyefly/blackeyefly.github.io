@@ -37,7 +37,7 @@
       "react-app/jest"
     ],
     "rules": {
-      "no-empty-interface": "off"
+      "@typescript-eslint/no-empty-interface": "off"
     }
   },
   "browserslist": {
