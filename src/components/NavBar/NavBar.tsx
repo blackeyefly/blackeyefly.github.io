@@ -4,9 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box, Drawer, IconButton, List, ListItem, ListItemButton, Toolbar, Typography } from '@mui/material';
 
 
-interface NavBarProps {}
-
-const NavBar: FC<NavBarProps> = () => {
+const NavBar: FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => 

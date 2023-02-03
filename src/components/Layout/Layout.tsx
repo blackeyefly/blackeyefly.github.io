@@ -3,9 +3,8 @@ import { Outlet } from 'react-router-dom';
 
 import NavBar from '../NavBar/NavBar';
 
-interface LayoutProps {}
 
-const Layout: FC<LayoutProps> = () => (
+const Layout: FC = () => (
   <>
     <NavBar />
     <Outlet />
