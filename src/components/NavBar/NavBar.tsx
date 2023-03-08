@@ -50,6 +50,11 @@ const NavBar: FC = () => {
                   Round-Based Income
                 </ListItemButton>
               </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton href="/costs">
+                  Tower Costs
+                </ListItemButton>
+              </ListItem>
               {/* <ListItem disablePadding>
                 <ListItemButton href="/nopage">
                   NoPage

@@ -6,9 +6,7 @@ import { useState } from 'react';
 import FarmInfoTable from '../components/FarmInfoTable/FarmInfoTable';
 import FarmInsert from '../components/FarmInsert/FarmInsert';
 import GlobalOptions from '../components/GlobalOptions/GlobalOptions';
-import Buccaneer from '../models/Buccaneer';
 import Difficulty from '../models/Difficulty';
-import Farm from '../models/Farm';
 import MK from '../models/MK';
 import { Tower, TowerType } from '../models/Tower';
 
@@ -40,7 +38,8 @@ function Home() {
       return towers.map(
         tower => {
           if (tower.type === TowerType.Farm && tower.upgrades[0] === 4) {
-            tower = new Farm(
+            tower = new Tower(
+              tower.type,
               tower.upgrades,
               mk,
               difficulty,
@@ -54,7 +53,8 @@ function Home() {
           }
 
           if (tower.type === TowerType.Buccaneer && tower.upgrades[2] >= 3) {
-            tower = new Buccaneer(
+            tower = new Tower(
+              tower.type,
               tower.upgrades,
               mk,
               difficulty,
@@ -68,7 +68,8 @@ function Home() {
             if (tradeEmpires && tower.upgrades[2] < 5 && buccaneersBuffed <= 20 * tradeEmpires) {
               const merchantmen = towers.filter(x => x.type === TowerType.Buccaneer && x.upgrades[2] === 3).length;
               const favored = towers.filter(x => x.type === TowerType.Buccaneer && x.upgrades[2] === 4).length;
-              tower = new Buccaneer(
+              tower = new Tower(
+                tower.type,
                 tower.upgrades,
                 mk,
                 difficulty,
@@ -80,7 +81,8 @@ function Home() {
               )
               buccaneersBuffed++;
             } else {
-              tower = new Buccaneer(
+              tower = new Tower(
+                tower.type,
                 tower.upgrades,
                 mk,
                 difficulty,
@@ -114,13 +116,7 @@ function Home() {
       setMk(mk);
       setDifficulty(difficulty);
       setTowers(towers.map(
-        tower => {
-          if (tower.type === TowerType.Farm) {
-            return new Farm(tower.upgrades, mk, difficulty, tower.buffs);
-          } else if (tower.type === TowerType.Buccaneer){
-            return new Buccaneer(tower.upgrades, mk, difficulty, tower.buffs);
-          }
-        }
+        tower => new Tower(tower.type, tower.upgrades, mk, difficulty, tower.buffs)
       ))
     }
   

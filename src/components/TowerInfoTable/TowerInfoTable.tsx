@@ -10,14 +10,14 @@ import TableRow from '@mui/material/TableRow';
 import _ from 'lodash';
 import { FC } from 'react';
 
-import { Tower, TowerType } from '../../models/Tower';
+import { Tower } from '../../models/Tower';
 
-interface FarmInfoTableProps {
+interface TowerInfoTableProps {
   towers: Tower[],
   removeTower?: (index: number) => void,
 }
 
-const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
+const TowerInfoTable: FC<TowerInfoTableProps> = ({ towers, removeTower }) => (
   <Card>
     <CardContent>
       <Container maxWidth="xl">
@@ -25,8 +25,8 @@ const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
           <Table sx={{ minWidth: 650 }} size="small">
             <TableHead>
               <TableRow>
-                {Object.keys(new Tower(TowerType.Farm)).filter(x => !["farmCost", "sacrificeValue", "farmsSacrificed"].includes(x)).map(x =>
-                <TableCell align={["type", "upgrades", "buffs"].includes(x) ? "left" : "right"}>
+                {["type", "upgrades", "buffs", "cost", "sellValue", "favoredSellValue"].map(x => 
+                <TableCell align={["type", "buffs", "upgrades"].includes(x) ? "left" : "right"}>
                   <Typography sx={{fontWeight: 'bold'}} noWrap>
                     {_.startCase(x)}
                   </Typography>
@@ -42,12 +42,8 @@ const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
                   <TableCell align="left"><Typography>{tower.showUpgrades()}</Typography></TableCell>
                   <TableCell align="left"><Typography>{tower.showBuffs()}</Typography></TableCell>
                   <TableCell align="right"><Typography>${tower.cost.toLocaleString()}</Typography></TableCell>
-                  <TableCell align="right"><Typography>${tower.income.toLocaleString()}</Typography></TableCell>
-                  <TableCell align="right"><Typography>{isFinite(tower.efficiency) ? tower.efficiency.toFixed(2) : "-"}</Typography></TableCell>
                   <TableCell align="right"><Typography>${tower.sellValue.toLocaleString()}</Typography></TableCell>
                   <TableCell align="right"><Typography>${tower.favoredSellValue.toLocaleString()}</Typography></TableCell>
-                  <TableCell align="right"><Typography>{isFinite(tower.efficiency) ? tower.sellEfficiency.toFixed(2) : "-"}</Typography></TableCell>
-                  <TableCell align="right"><Typography>{isFinite(tower.efficiency) ? tower.favoredSellEfficiency.toFixed(2) : "-"}</Typography></TableCell>
                   <TableCell>
                     <IconButton color="primary" aria-label="delete entry" onClick={() => {if (removeTower) removeTower(towerIndex) }}>
                       <Delete />
@@ -72,34 +68,12 @@ const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
                 </TableCell>
                 <TableCell align="right">
                   <Typography>
-                    ${_.sum(_.map(towers, (tower) => tower.income)).toLocaleString()}
-                  </Typography>
-                </TableCell>
-                <TableCell align="right">
-                  <Typography>
-                    {_.sum(_.map(towers, (tower) => tower.income)) ? (_.sum(_.map(towers, (tower) => tower.cost)) / _.sum(_.map(towers, (tower) => tower.income))).toFixed(2) : "-"}
-                  </Typography>
-                </TableCell>
-                <TableCell align="right">
-                  <Typography>
                     ${_.sum(_.map(towers, (tower) => tower.sellValue)).toLocaleString()}
                   </Typography>
                 </TableCell>
                 <TableCell align="right">
                   <Typography>
                     ${_.sum(_.map(towers, (tower) => tower.favoredSellValue)).toLocaleString()}
-                  </Typography>
-                </TableCell>
-                <TableCell align="right">
-                  <Typography>
-                    {
-                      _.sum(_.map(towers, (tower) => tower.income)) ? ((_.sum(_.map(towers, (tower) => tower.cost)) - _.sum(_.map(towers, (tower) => tower.sellValue))) / _.sum(_.map(towers, (tower) => tower.income))).toFixed(2) : "-"
-                    }
-                  </Typography>
-                </TableCell>
-                <TableCell align="right">
-                  <Typography>
-                    {_.sum(_.map(towers, (tower) => tower.income)) ? ((_.sum(_.map(towers, (tower) => tower.cost)) - _.sum(_.map(towers, (tower) => tower.favoredSellValue))) / _.sum(_.map(towers, (tower) => tower.income))).toFixed(2) : "-"}
                   </Typography>
                 </TableCell>
                 <TableCell />
@@ -112,4 +86,4 @@ const FarmInfoTable: FC<FarmInfoTableProps> = ({ towers, removeTower }) => (
   </Card>
 );
 
-export default FarmInfoTable;
+export default TowerInfoTable;

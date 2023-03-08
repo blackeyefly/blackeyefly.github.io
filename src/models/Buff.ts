@@ -70,7 +70,16 @@ export function fixBuffs(type: TowerType, buff: Buff): Buff {
             discountVillage: buff.discountVillage,
             city: buff.city,
         }
+    } else if ([TowerType.Sniper, TowerType.Sub, TowerType.Ace, TowerType.Heli, TowerType.Mortar, TowerType.Dartling].includes(type)) {
+        return {
+            ...createBuff(),
+            discountVillage: buff.discountVillage,
+            firstMilitary: buff.firstMilitary,
+        };
     } else {
-        return buff;
+        return {
+            ...createBuff(),
+            discountVillage: buff.discountVillage,
+        };
     }
 }

@@ -6,7 +6,7 @@ import MK from '../../models/MK';
 import { Tower } from '../../models/Tower';
 import Utils, { TowerType } from '../../models/utils';
 
-interface FarmInsertProps {
+interface TowerInsertProps {
   addTower?: (tower: Tower, sacrifice?: boolean) => void,
   mk?: MK,
   difficulty?: Difficulty,
@@ -14,8 +14,8 @@ interface FarmInsertProps {
   farmsSacrificed?: number,
 }
 
-const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Difficulty.Medium, sacrificedValue = 0, farmsSacrificed = 0 }) => {
-  const [type, setType] = useState(TowerType.Farm);
+const TowerInsert: FC<TowerInsertProps> = ({ addTower, mk = MK.On, difficulty = Difficulty.Medium, sacrificedValue = 0, farmsSacrificed = 0 }) => {
+  const [type, setType] = useState(TowerType.Dart);
   const [path1, setPath1] = useState(0);
   const [path2, setPath2] = useState(0);
   const [path3, setPath3] = useState(0);
@@ -27,22 +27,23 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Di
     if (addTower) {
       if (type === TowerType.Village) {
         addTower(new Tower(
-          type,
-          [path1, path2, path3],
-          mk,
-          difficulty,
-          buffs,
-          sacrificedValue,
-          farmsSacrificed,
-        ), remove && path3 === 5)
-      } else {
+            type,
+            [path1, path2, path3],
+            mk,
+            difficulty,
+            buffs,
+            sacrificedValue,
+            farmsSacrificed,
+          ), remove && path3 === 5
+        )
+    } else {
         addTower(new Tower(
           type,
           [path1, path2, path3],
           mk,
           difficulty,
-          buffs,
-        ))
+          buffs
+        ));
       }
     }
   }
@@ -64,9 +65,9 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Di
                   select
                   sx={{ minWidth: "20%" }}
                 >
-                  <MenuItem value="Farm">Farm</MenuItem>
-                  <MenuItem value="Buccaneer">Buccaneer</MenuItem>
-                  <MenuItem value="Village">Village</MenuItem>
+                {
+                  Object.values(TowerType).filter(x => x !== "").map(type => <MenuItem value={type}>{type}</MenuItem>)
+                }
                 </TextField>
                 <TextField
                   required
@@ -77,7 +78,7 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Di
                   value={path1}
                   InputProps={{
                     inputProps: { 
-                      max: (path2 > 0 && path3 > 0 ? 0 : (path2 > 2 || path3 > 2 ? 2 : 5)), min: 0 
+                      max: (path2 > 0 && path3 > 0 ? 0 : (path2 > 2 || path3 > 2 ? 2 : 5)), min: 0
                     }
                   }}
                   onChange={(e) => setPath1(parseInt(e.target.value))}
@@ -92,7 +93,7 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Di
                   value={path2}
                   InputProps={{
                     inputProps: { 
-                      max: (path1 > 0 && path3 > 0 ? 0 : 2), min: 0 
+                      max: (path1 > 0 && path3 > 0 ? 0 : (path1 > 2 || path3 > 2 ? 2 : 5)), min: 0
                     }
                   }}
                   onChange={(e) => setPath2(parseInt(e.target.value))}
@@ -107,7 +108,7 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Di
                   value={path3}
                   InputProps={{
                     inputProps: { 
-                      max: (path1 > 0 && path2 > 0 ? 0 : (path1 > 2 || path2 > 2 ? 2 : 5)), min: 0 
+                      max: (path1 > 0 && path2 > 0 ? 0 : (path1 > 2 || path2 > 2 ? 2 : 5)), min: 0
                     }
                   }}
                   onChange={(e) => setPath3(parseInt(e.target.value))}
@@ -139,9 +140,6 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Di
                 </Button>
               </Stack>
               <Stack spacing={4} sx={{marginTop: "10px"}} direction="row">
-                <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, overclock: e.target.checked})} disabled={type !== TowerType.Farm}/>} label="Overclock" />
-                <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, city: e.target.checked})} />} label="Monkey City" />
-                <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, fertilizer: e.target.checked})} disabled={path2 > 2 || path3 > 2 || type !== TowerType.Farm} />} label="Fertilizer" />
                 <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({
                     ...buffs,
                     firstFarm: e.target.checked,
@@ -161,4 +159,4 @@ const FarmInsert: FC<FarmInsertProps> = ({ addTower, mk = MK.On, difficulty = Di
   )
 };
 
-export default FarmInsert;
+export default TowerInsert;

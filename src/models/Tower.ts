@@ -5,7 +5,7 @@ import Difficulty from './Difficulty';
 import MK from './MK';
 import Utils, { TowerType } from './utils';
 
-export abstract class Tower {
+export class Tower {
     type!: TowerType;
     upgrades!: [number, number, number];
     buffs!: Buff;
@@ -17,7 +17,9 @@ export abstract class Tower {
     sellEfficiency!: number;
     favoredSellEfficiency!: number;
 
-    protected abstract incomePerRound(mk: MK): number;
+    // Monkeyopolis specific
+    sacrificeValue = 0;
+    farmsSacrificed = 0;
 
     showUpgrades() {
         return this.upgrades.join('-');
@@ -33,18 +35,22 @@ export abstract class Tower {
     }
 
     constructor(
+        type: TowerType,
         upgrades: [number, number, number] = [0, 0, 0],
         mk: MK = MK.On,
         difficulty: Difficulty = Difficulty.Medium,
         buffs: Buff = createBuff(),
-        type: TowerType,
+        sacrificeValue = 0,
+        farmsSacrificed = 0,
     ) {
         Utils.assertValidUpgrades(upgrades);
         this.upgrades = upgrades;
         this.buffs = fixBuffs(type, buffs);
         this.type = type;
-        this.cost = Utils.cost(type, this.upgrades, mk, difficulty, buffs);
-        this.income = this.incomePerRound(mk);
+        this.sacrificeValue = sacrificeValue;
+        this.farmsSacrificed = farmsSacrificed;
+        this.cost = Utils.cost(this, mk, difficulty);
+        this.income = Utils.incomePerRound(this, mk);
         this.efficiency = this.cost / this.income;
 
         const favoredSellPercentage = Math.min(
