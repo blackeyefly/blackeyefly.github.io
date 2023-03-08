@@ -12,6 +12,8 @@ export type Buff = {
     centralMarkets: number;
     tradeEmpireMerchantmen: number;
     tradeEmpireFavored: number;
+    energizer: boolean;
+    farmsInRange: number;
 }
 
 export function createBuff(
@@ -26,6 +28,8 @@ export function createBuff(
     firstMilitary = false,
     tradeEmpireMerchantmen = 0,
     tradeEmpireFavored = 0,
+    energizer = false,
+    farmsInRange = 0,
 ): Buff {
     return {
         discountVillage,
@@ -39,6 +43,8 @@ export function createBuff(
         firstMilitary,
         tradeEmpireMerchantmen,
         tradeEmpireFavored,
+        energizer,
+        farmsInRange,
     }
 }
 
@@ -53,6 +59,7 @@ export function fixBuffs(type: TowerType, buff: Buff): Buff {
             central: buff.central,
             fertilizer: buff.fertilizer,
             firstFarm: buff.firstFarm,
+            energizer: buff.energizer,
         }    
     } else if (type === TowerType.Buccaneer) {
         return {
@@ -70,12 +77,27 @@ export function fixBuffs(type: TowerType, buff: Buff): Buff {
             discountVillage: buff.discountVillage,
             city: buff.city,
         }
-    } else if ([TowerType.Sniper, TowerType.Sub, TowerType.Ace, TowerType.Heli, TowerType.Mortar, TowerType.Dartling].includes(type)) {
+    } else if ([TowerType.Sub, TowerType.Ace, TowerType.Mortar, TowerType.Dartling].includes(type)) {
         return {
             ...createBuff(),
             discountVillage: buff.discountVillage,
             firstMilitary: buff.firstMilitary,
         };
+    } else if ([TowerType.Sniper, TowerType.Heli].includes(type)) {
+        return {
+            ...createBuff(),
+            discountVillage: buff.discountVillage,
+            city: buff.city,
+            firstMilitary: buff.firstMilitary,
+            energizer: buff.energizer,
+        }
+    } else if ([TowerType.Druid].includes(type)) {
+        return {
+            ...createBuff(),
+            energizer: buff.energizer,
+            city: buff.city,
+            farmsInRange: buff.farmsInRange,
+        }
     } else {
         return {
             ...createBuff(),

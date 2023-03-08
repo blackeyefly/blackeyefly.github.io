@@ -7,15 +7,29 @@ import { Tower } from '../../models/Tower';
 import Utils, { TowerType } from '../../models/utils';
 
 interface TowerInsertProps {
-  addTower?: (tower: Tower, sacrifice?: boolean) => void,
+  addTower?: (tower: Tower, sacrifice?: boolean, oc?: Tower[]) => void,
   mk?: MK,
   difficulty?: Difficulty,
   sacrificedValue?: number,
   farmsSacrificed?: number,
+  validTowers?: TowerType[],
+  farmingModifiers?: boolean,
+  abilityFarmingModifiers?: boolean,
 }
 
-const TowerInsert: FC<TowerInsertProps> = ({ addTower, mk = MK.On, difficulty = Difficulty.Medium, sacrificedValue = 0, farmsSacrificed = 0 }) => {
-  const [type, setType] = useState(TowerType.Dart);
+const TowerInsert: FC<TowerInsertProps> = ({
+  addTower,
+  mk = MK.On,
+  difficulty = Difficulty.Medium,
+  sacrificedValue = 0,
+  farmsSacrificed = 0,
+  validTowers = Object.values(TowerType).filter((item) => {
+      return isNaN(Number(item)) && item !== TowerType.None;
+  }),
+  farmingModifiers = false,
+  abilityFarmingModifiers = false,
+}) => {
+  const [type, setType] = useState(validTowers[0]);
   const [path1, setPath1] = useState(0);
   const [path2, setPath2] = useState(0);
   const [path3, setPath3] = useState(0);
@@ -37,13 +51,20 @@ const TowerInsert: FC<TowerInsertProps> = ({ addTower, mk = MK.On, difficulty = 
           ), remove && path3 === 5
         )
     } else {
+        const oc = new Tower(
+          TowerType.Engineer,
+          [0, 4, 0],
+          mk,
+          difficulty,
+          buffs
+        )
         addTower(new Tower(
           type,
           [path1, path2, path3],
           mk,
           difficulty,
           buffs
-        ));
+        ), false, buffs.overclock ? [oc] : []);
       }
     }
   }
@@ -66,7 +87,7 @@ const TowerInsert: FC<TowerInsertProps> = ({ addTower, mk = MK.On, difficulty = 
                   sx={{ minWidth: "20%" }}
                 >
                 {
-                  Object.values(TowerType).filter(x => x !== "").map(type => <MenuItem value={type}>{type}</MenuItem>)
+                  validTowers.map(type => <MenuItem value={type}>{type}</MenuItem>)
                 }
                 </TextField>
                 <TextField
@@ -141,10 +162,38 @@ const TowerInsert: FC<TowerInsertProps> = ({ addTower, mk = MK.On, difficulty = 
               </Stack>
               <Stack spacing={4} sx={{marginTop: "10px"}} direction="row">
                 <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({
-                    ...buffs,
-                    firstFarm: e.target.checked,
-                    firstMilitary: e.target.checked,
-                  })} />} label="First Farm or First Military Tower" />
+                  ...buffs,
+                  firstFarm: e.target.checked,
+                  firstMilitary: e.target.checked,
+                })} />} label="First Farm or First Military Tower" />
+                {farmingModifiers &&
+                  <>
+                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, overclock: e.target.checked})}/>} label="Overclock" />
+                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, city: e.target.checked})} />} label="Monkey City" />
+                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, fertilizer: e.target.checked})} disabled={path2 > 2 || path3 > 2 || type !== TowerType.Farm} />} label="Fertilizer" />
+                  </>
+                }
+                {abilityFarmingModifiers &&
+                  <>
+                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, city: e.target.checked})} />} label="Monkey City" />
+                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, energizer: e.target.checked})} />} label="Energizer" />
+                    {type === TowerType.Druid && <TextField
+                      required
+                      id="farms"
+                      label="Farms in Range"
+                      type="number"
+                      defaultValue={0}
+                      value={buffs.farmsInRange}
+                      InputProps={{
+                        inputProps: { 
+                          min: 0 
+                        }
+                      }}
+                      onChange={(e) => setBuffs({...buffs, farmsInRange: parseInt(e.target.value)})}
+                      sx={{ width: "15%" }}
+                    />}
+                  </>
+                }
                   {
                     type === TowerType.Village && path3 === 5 ?
                     <FormControlLabel control={<Checkbox onChange={(e) => setRemove(e.target.checked)} />} label="Remove Sacrifices from Table" /> :

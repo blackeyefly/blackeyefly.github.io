@@ -1,18 +1,13 @@
-import { ThemeProvider } from '@emotion/react';
 import HelpIcon from '@mui/icons-material/Help';
-import { AppBar, Card, Container, createTheme, CssBaseline, IconButton, Modal, Stack, Toolbar, Typography } from '@mui/material';
+import { AppBar, Card, Container, IconButton, Modal, Stack, Toolbar, Typography } from '@mui/material';
 import _ from 'lodash';
 import { useState } from 'react';
-import FarmInfoTable from '../components/FarmInfoTable/FarmInfoTable';
-import FarmInsert from '../components/FarmInsert/FarmInsert';
 import GlobalOptions from '../components/GlobalOptions/GlobalOptions';
-import Layout from '../components/Layout/Layout';
+import TowerInfoTable from '../components/TowerInfoTable/TowerInfoTable';
+import TowerInsert from '../components/TowerInsert/TowerInsert';
 import Difficulty from '../models/Difficulty';
 import MK from '../models/MK';
 import { Tower, TowerType } from '../models/Tower';
-
-
-const theme = createTheme();
 
 const style = {
   position: 'absolute',
@@ -101,8 +96,12 @@ function Home() {
       )
     }
   
-    const addTower = (tower: Tower, sacrifice = false) => {
-      let newTowers = [...(sacrifice ? towers.filter(tower => tower.type !== TowerType.Farm || tower.upgrades.some((x: number) => x === 5)) : towers), tower];
+    const addTower = (tower: Tower, sacrifice = false, oc: Tower[] = []) => {
+      let newTowers = [
+        ...(sacrifice ? towers.filter(tower => tower.type !== TowerType.Farm || tower.upgrades.some((x: number) => x === 5)) : towers),
+        tower,
+        ...oc
+      ];
       newTowers = updateTowers(newTowers);
       setTowers(newTowers);
     }
@@ -122,9 +121,7 @@ function Home() {
     }
   
     return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Layout />
+        <>
         <AppBar position="relative">
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap>
@@ -157,7 +154,7 @@ function Home() {
               </Modal>
             </Typography>
             <GlobalOptions setOptions={setOptions} />
-            <FarmInsert
+            <TowerInsert
               addTower={addTower}
               mk={mk}
               difficulty={difficulty}
@@ -171,11 +168,13 @@ function Home() {
                   return tower.type === TowerType.Farm && tower.upgrades.every((x: number) => x < 5);
                 }).length
               }
+              validTowers={[TowerType.Farm, TowerType.Buccaneer, TowerType.Village, TowerType.Engineer]}
+              farmingModifiers
             />
-            <FarmInfoTable towers={towers} removeTower={removeTower}/>
+            <TowerInfoTable towers={towers} columns={["type", "upgrades", "buffs", "cost", "income", "efficiency", "sellValue", "favoredSellValue", "sellEfficiency", "favoredSellEfficiency"]} removeTower={removeTower}/>
           </Stack>
         </Container>
-      </ThemeProvider>
+      </>
     );  
 }
 

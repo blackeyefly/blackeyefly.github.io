@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-function Costs() {
+function AbilityIncome() {
     const [mk, setMk] = useState(MK.On);
     const [difficulty, setDifficulty] = useState(Difficulty.Medium);
     const [towers, setTowers] = useState<any[]>([]);
@@ -62,7 +62,7 @@ function Costs() {
             justifyContent="center"
           >
             <Typography variant="h2" align="center">
-              Cost Calculator
+              Ability-Based Income
               <IconButton color="primary" aria-label="help" component="label" onClick={handleOpen}>
                 <HelpIcon />
               </IconButton>
@@ -72,7 +72,7 @@ function Costs() {
               >
                 <Card sx={style}>
                   <Typography variant="body1" align="center">
-                    This page is designed to help calculate costs of towers.
+                    This page is designed to help calculate income of ability-based towers.
                   </Typography>
                 </Card>
               </Modal>
@@ -92,12 +92,14 @@ function Costs() {
                   return tower.type === TowerType.Farm && tower.upgrades.every((x: number) => x < 5);
                 }).length
               }
+              validTowers={[TowerType.Sniper, TowerType.Heli, TowerType.Druid, TowerType.Farm]}
+              abilityFarmingModifiers
             />
-            <TowerInfoTable towers={towers} columns={["type", "upgrades", "buffs", "cost", "sellValue", "favoredSellValue"]} removeTower={removeTower}/>
+            <TowerInfoTable towers={towers} columns={["type", "upgrades", "buffs", "cost", "abilityIncome", "abilityCooldown", "sellValue", "favoredSellValue", "abilityEfficiency", "abilitySellEfficiency", "abilityFavoredSellEfficiency"]} removeTower={removeTower}/>
           </Stack>
         </Container>
       </>
     );  
 }
 
-export default Costs;
+export default AbilityIncome;

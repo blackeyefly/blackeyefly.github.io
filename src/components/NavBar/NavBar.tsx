@@ -51,6 +51,11 @@ const NavBar: FC = () => {
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
+                <ListItemButton href="/#/abilityincome">
+                  Ability-Based Income
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
                 <ListItemButton href="/#/costs">
                   Tower Costs
                 </ListItemButton>

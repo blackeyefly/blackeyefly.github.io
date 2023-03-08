@@ -1,11 +1,8 @@
-import { AppBar, Container, createTheme, CssBaseline, ThemeProvider, Toolbar, Typography } from '@mui/material';
-
-const theme = createTheme();
+import { AppBar, Container, Toolbar, Typography } from '@mui/material';
 
 function NoPage() {
     return (
-        <ThemeProvider theme={theme}>
-            <CssBaseline />
+        <>
             <AppBar position="relative">
                 <Toolbar>
                     <Typography variant="h6" color="inherit" noWrap>
@@ -18,7 +15,7 @@ function NoPage() {
                     No page here!
                 </Typography>
             </Container>
-      </ThemeProvider>
+        </>
     );
 }
 

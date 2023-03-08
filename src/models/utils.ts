@@ -304,6 +304,46 @@ export default class Utils {
         }
     }
 
+    static incomePerAbilty(tower: Tower, mk: MK) {
+        let income = 0;
+        if (tower.type === TowerType.Sniper) {
+            if (tower.upgrades[1] === 4) {
+                income = 1200;
+            } else if (tower.upgrades[1] === 5) {
+                income = 3000
+            }
+        } else if (tower.type === TowerType.Heli) {
+            if (tower.upgrades[1] === 4) {
+                income = mk ? 2062 : 1650;
+            } else if (tower.upgrades[1] === 5) {
+                income = mk ? 5625 : 4500;
+            }
+        } else if (tower.type === TowerType.Druid) {
+            if (tower.upgrades[1] >= 4) {
+                income = 240 + 120 * tower.buffs.farmsInRange;
+            }
+        } else if (tower.type === TowerType.Farm) {
+            if (tower.upgrades[1] >= 5) {
+                income = 9000 + (mk ? 1000 : 0);
+            }
+        }
+        return income * (tower.buffs.city && tower.type !== TowerType.Farm ? 1.15 : 1);
+    }
+
+    static abilityCooldown(tower: Tower, mk: MK) {
+        let cd = 0;
+        if (tower.type === TowerType.Sniper) {
+            cd = 90;
+        } else if (tower.type === TowerType.Heli) {
+            cd = 90;
+        } else if (tower.type === TowerType.Druid) {
+            cd = 60;
+        } else if (tower.type === TowerType.Farm) {
+            cd = 90;
+        }
+        return cd * (1 - (tower.buffs.energizer ? 0.2 : 0) - (mk ? 0.03 : 0));
+    }
+
     static assertValidUpgrades(upgrades: [number, number, number]): void {
         if (upgrades.some(n => (
             !Number.isInteger(n)

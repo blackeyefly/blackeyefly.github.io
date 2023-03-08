@@ -16,6 +16,12 @@ export class Tower {
     favoredSellValue!: number;
     sellEfficiency!: number;
     favoredSellEfficiency!: number;
+    abilityIncome!: number;
+    abilityCooldown!: number;
+    incomePerMinute!: number;
+    abilityEfficiency!: number;
+    abilitySellEfficiency!: number;
+    abilityFavoredSellEfficiency!: number;
 
     // Monkeyopolis specific
     sacrificeValue = 0;
@@ -52,6 +58,10 @@ export class Tower {
         this.cost = Utils.cost(this, mk, difficulty);
         this.income = Utils.incomePerRound(this, mk);
         this.efficiency = this.cost / this.income;
+        this.abilityIncome = Utils.incomePerAbilty(this, mk);
+        this.abilityCooldown = Utils.abilityCooldown(this, mk);
+        this.incomePerMinute = this.abilityIncome / (this.abilityCooldown / 60);
+        this.abilityEfficiency = this.cost / this.abilityIncome;
 
         const favoredSellPercentage = Math.min(
             0.8 +
@@ -71,6 +81,8 @@ export class Tower {
         this.sellValue = Math.ceil(this.cost * sellPercentage);
         this.sellEfficiency = (this.cost - this.sellValue) / this.income;
         this.favoredSellEfficiency = (this.cost - this.favoredSellValue) / this.income;
+        this.abilitySellEfficiency = (this.cost - this.sellValue) / this.abilityIncome;
+        this.abilityFavoredSellEfficiency = (this.cost - this.favoredSellValue) / this.abilityIncome;
     }
 }
 
