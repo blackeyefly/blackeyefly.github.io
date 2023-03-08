@@ -6,6 +6,7 @@ import { useState } from 'react';
 import FarmInfoTable from '../components/FarmInfoTable/FarmInfoTable';
 import FarmInsert from '../components/FarmInsert/FarmInsert';
 import GlobalOptions from '../components/GlobalOptions/GlobalOptions';
+import Layout from '../components/Layout/Layout';
 import Difficulty from '../models/Difficulty';
 import MK from '../models/MK';
 import { Tower, TowerType } from '../models/Tower';
@@ -123,6 +124,7 @@ function Home() {
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Layout />
         <AppBar position="relative">
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap>
