@@ -61,7 +61,7 @@ function Home() {
             )
 
             const tradeEmpires = towers.filter(x => x.type === TowerType.Buccaneer && x.upgrades[2] === 5).length;
-            if (tradeEmpires && tower.upgrades[2] < 5 && buccaneersBuffed <= 20 * tradeEmpires) {
+            if (tradeEmpires && tower.upgrades[2] < 5 && buccaneersBuffed < 20 * tradeEmpires) {
               const merchantmen = towers.filter(x => x.type === TowerType.Buccaneer && x.upgrades[2] === 3).length;
               const favored = towers.filter(x => x.type === TowerType.Buccaneer && x.upgrades[2] === 4).length;
               tower = new Tower(

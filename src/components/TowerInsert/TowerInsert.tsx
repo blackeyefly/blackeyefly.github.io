@@ -33,6 +33,7 @@ const TowerInsert: FC<TowerInsertProps> = ({
   const [path1, setPath1] = useState(0);
   const [path2, setPath2] = useState(0);
   const [path3, setPath3] = useState(0);
+  const [paragon, setParagon] = useState(false);
   const [buffs, setBuffs] = useState(createBuff());
   const [remove, setRemove] = useState(false);
 
@@ -193,6 +194,9 @@ const TowerInsert: FC<TowerInsertProps> = ({
                       sx={{ width: "15%" }}
                     />}
                   </>
+                }
+                {[TowerType.Engineer, TowerType.Buccaneer].includes(type) &&
+                  <FormControlLabel control={<Checkbox onChange={(e) => setParagon(e.target.checked)} />} label="Paragon" />
                 }
                   {
                     type === TowerType.Village && path3 === 5 ?
