@@ -71,8 +71,8 @@ function Home() {
                 difficulty,
                 {
                   ...tower.buffs,
-                  tradeEmpireMerchantmen: Math.min(merchantmen + favored, 20),
-                  tradeEmpireFavored: Math.min(favored, 20),
+                  tradeEmpireMerchantmen: Math.min(merchantmen + favored, 20 * tradeEmpires),
+                  tradeEmpireFavored: Math.min(favored, 20 * tradeEmpires),
                 }
               )
               buccaneersBuffed++;
