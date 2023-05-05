@@ -25,6 +25,7 @@ export enum TowerType {
     Spike = "Spike",
     Village = "Village",
     Engineer = "Engineer",
+    BeastHandler = "Beast Handler",
     None = "",
 }
 
@@ -58,6 +59,7 @@ const baseCosts: EnumDictionary<TowerType, number> = {
     [TowerType.Farm]: 1250,
     [TowerType.Village]: 1200,
     [TowerType.Engineer]: 400,
+    [TowerType.BeastHandler]: 250,
 }
 
 const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
@@ -171,6 +173,11 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [500, 400, 575, 2500, 32000],
         [250, 350, 850, 13500, 72000],
         [450, 220, 500, 3500, 54000],
+    ],
+    [TowerType.BeastHandler]: [
+        [160, 875, 2950, 16000, 55000],
+        [195, 945, 2600, 9500, 70000],
+        [180, 915, 3000, 8000, 30000],
     ],
 }
 
