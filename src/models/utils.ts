@@ -264,7 +264,7 @@ export default class Utils {
             value *= 1.25;
         }
 
-        return Math.floor(value * (tower.upgrades[1] >= 2 ? (mk ? 1.3 : 1.25) : 1) * (tower.buffs.city ? 1.15 : 1));
+        return Math.floor(value * (tower.upgrades[1] >= 2 ? (mk ? 1.3 : 1.25) : 1) * (tower.buffs.city ? 1.2 : 1));
     }
 
     static incomePerRound(
@@ -272,7 +272,7 @@ export default class Utils {
         mk: MK
     ): number {
         if (tower.type === TowerType.Farm) {
-            return Utils.numberOfBananas(tower) * Utils.bananaValue(tower, mk) + (tower.upgrades[2] === 5 ? 4000 : 0) * (tower.buffs.city ? 1.15 : 1);
+            return Utils.numberOfBananas(tower) * Utils.bananaValue(tower, mk) + (tower.upgrades[2] === 5 ? 4000 : 0) * (tower.buffs.city ? 1.2 : 1);
         } else if (tower.type === TowerType.Buccaneer) {
             if (tower.upgrades[2] < 3) {
                 return 0;
@@ -291,7 +291,7 @@ export default class Utils {
             income *= 1 + 0.1 * Math.min(tower.buffs.centralMarkets, 10);
             income += 10 * tower.buffs.tradeEmpireMerchantmen;
             income += 10 * tower.buffs.tradeEmpireFavored;
-            income *= tower.buffs.city ? 1.15 : 1;
+            income *= tower.buffs.city ? 1.2 : 1;
             return Math.floor(income);
         } else if (tower.type === TowerType.Village) {
             if (tower.upgrades[2] < 5) {
@@ -327,7 +327,7 @@ export default class Utils {
                 income = 9000 + (mk ? 1000 : 0);
             }
         }
-        return income * (tower.buffs.city && tower.type !== TowerType.Farm ? 1.15 : 1);
+        return income * (tower.buffs.city && tower.type !== TowerType.Farm ? 1.2 : 1);
     }
 
     static abilityCooldown(tower: Tower, mk: MK) {
