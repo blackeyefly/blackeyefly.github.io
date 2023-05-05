@@ -65,10 +65,10 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     [TowerType.Dart]: [
         [140, 220, 300, 1800, 15000],
         [100, 190, 400, 8000, 45000],
-        [90, 200, 625, 2000, 23500],
+        [90, 200, 625, 2000, 21500],
     ],
     [TowerType.Boomerang]: [
-        [200, 280, 1300, 3000, 32400],
+        [200, 280, 1200, 3000, 29400],
         [175, 250, 1450, 4200, 35000],
         [100, 300, 1300, 2400, 50000],
     ],
@@ -103,9 +103,9 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [450, 1000, 1100, 3000, 25000],
     ],
     [TowerType.Buccaneer]: [
-        [350, 550, 2950, 7200, 25000],
+        [275, 425, 2950, 7200, 25000],
         [550, 500, 900, 4900, 26000],
-        [180, 400, 2300, 5500, 23000],
+        [200, 350, 2300, 5500, 23000],
     ],
     [TowerType.Ace]: [
         [650, 650, 1000, 3000, 41500],
@@ -149,7 +149,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     ],
     [TowerType.Druid]: [
         [250, 1000, 1650, 4500, 65000],
-        [250, 350, 950, 5000, 35000],
+        [250, 350, 1050, 4900, 35000],
         [100, 300, 600, 2500, 45000],
     ],
     [TowerType.Spike]: [
@@ -320,7 +320,7 @@ export default class Utils {
             }
         } else if (tower.type === TowerType.Druid) {
             if (tower.upgrades[1] >= 4) {
-                income = 240 + 120 * tower.buffs.farmsInRange;
+                income = 320 + 120 * tower.buffs.farmsInRange;
             }
         } else if (tower.type === TowerType.Farm) {
             if (tower.upgrades[1] >= 5) {
