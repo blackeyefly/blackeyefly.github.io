@@ -271,7 +271,7 @@ export default class Utils {
             value *= 1.25;
         }
 
-        return Math.floor(value * (tower.upgrades[1] >= 2 ? (mk ? 1.3 : 1.25) : 1) * (tower.buffs.city ? 1.2 : 1));
+        return Math.floor(value * ((tower.upgrades[1] >= 2 ? (mk ? 1.3 : 1.25) : 1) + (tower.buffs.city ? 0.2 : 0)));
     }
 
     static incomePerRound(
