@@ -3,7 +3,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './components/Layout/Layout';
 import AbilityIncome from './pages/AbilityIncome';
-import ActionFigure from './pages/ActionFIgure';
+import ActionFigure from './pages/ActionFigure';
 import Costs from './pages/Costs';
 import Home from './pages/Home';
 import NoPage from './pages/NoPage';
