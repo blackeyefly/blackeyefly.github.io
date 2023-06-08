@@ -387,4 +387,26 @@ export default class Utils {
         ? value as unknown as T
         : undefined;
     }
+
+    static actionFigureMaxValueRound(roundPurchased: number, difficulty: Difficulty, mk: MK) {
+        let round = roundPurchased;
+
+        while (this.actionFigureSellValue(roundPurchased, round, difficulty, mk) < 10000000) {
+            round++;
+        }
+        
+        return round;
+    }
+
+    static actionFigureSellValue(roundPurchased: number, roundSold: number, difficulty: Difficulty, mk: MK, buy = false) {
+        const baseCost = Utils.round5(750 * difficulty);
+        let cost = baseCost;
+
+        for(let i = roundPurchased; i < roundSold; i++) {
+            const multiplier = i <= 30 ? 1.1 : (i <= 80 ? 1.05 : 1.02);
+            cost *= multiplier;
+        }
+
+        return Math.min(10000000, Math.ceil(buy ? this.round5(cost) : cost * 0.95 + (mk ? 0.05 * 750 : 0)))
+    }
 }
