@@ -116,13 +116,13 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     ],
     [TowerType.Heli]: [
         [800, 500, 1750, 19600, 45000],
-        [300, 600, 3500, 10500, 30000],
+        [300, 600, 3500, 9500, 30000],
         [250, 350, 3000, 8500, 35000],
     ],
     [TowerType.Mortar]: [
         [500, 500, 900, 8000, 36000],
         [300, 500, 900, 5500, 30000],
-        [200, 500, 700, 11000, 40000],
+        [200, 500, 800, 10900, 40000],
     ],
     [TowerType.Dartling]: [
         [300, 900, 3750, 11000, 80000],
@@ -304,7 +304,7 @@ export default class Utils {
             if (tower.upgrades[2] < 5) {
                 return 0;
             } else {
-                return Math.max(200 * Math.floor(tower.sacrificeValue / 2000), 200);
+                return Math.max(200 * Math.floor(tower.sacrificeValue / 2000), 200) + 2500;
             }
         } else {
             return 0;
@@ -321,7 +321,7 @@ export default class Utils {
             }
         } else if (tower.type === TowerType.Heli) {
             if (tower.upgrades[1] === 4) {
-                income = mk ? 2062 : 1650;
+                income = mk ? 1937 : 1550;
             } else if (tower.upgrades[1] === 5) {
                 income = mk ? 5625 : 4500;
             }
