@@ -7,6 +7,7 @@ import ActionFigure from './pages/ActionFigure';
 import Costs from './pages/Costs';
 import Home from './pages/Home';
 import NoPage from './pages/NoPage';
+import PastLeaderboards from './pages/PastLeaderboards';
 
 export default function App() {
     return (
@@ -17,6 +18,7 @@ export default function App() {
             <Route path="/costs" element={<Costs />} />
             <Route path="/abilityincome" element={<AbilityIncome />} />
             <Route path="/actionfigure" element={<ActionFigure />} />
+            <Route path="/bossleaderboards" element={<PastLeaderboards />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
