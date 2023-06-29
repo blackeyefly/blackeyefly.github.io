@@ -27,7 +27,7 @@ async function main() {
     return
   }
   
-  bossesJson.body.map(async x => {
+  [bossesJson.body[0]].map(async x => {
     const id = x.id
     const name = x.name
     let lbNormal = []
@@ -35,23 +35,21 @@ async function main() {
     let placementNormal = 1
     let placementElite = 1
 
-    for (let i = 1; i <= 4; i++) {
-      const pageNormal = await fetch(`https://data.ninjakiwi.com/btd6/bosses/${id}/leaderboard/standard/1?page=${i}`)
-      const pageJsonNormal = await pageNormal.json()
+    for (let i = 1; i <= 40; i++) {
+      do {
+        var pageNormal = await fetch(`https://data.ninjakiwi.com/btd6/bosses/${id}/leaderboard/standard/1?page=${i}`)
+        var pageJsonNormal = await pageNormal.json()
+        await new Promise(r => setTimeout(r, 1000));
+      } while (!pageJsonNormal.success)
 
-      if (!pageJsonNormal.success) {
-        console.log(pageJsonNormal.reason)
-        return
+      do {
+        var pageElite = await fetch(`https://data.ninjakiwi.com/btd6/bosses/${id}/leaderboard/elite/1?page=${i}`)
+        var pageJsonElite = await pageElite.json()
+        await new Promise(r => setTimeout(r, 1000));
       }
+      while (!pageJsonElite.success)
 
-      const pageElite = await fetch(`https://data.ninjakiwi.com/btd6/bosses/${id}/leaderboard/elite/1?page=${i}`)
-      const pageJsonElite = await pageElite.json()
-
-      if (!pageJsonElite.success) {
-        console.log(pageJsonElite.reason)
-        return
-      }
-
+      console.log(`${i} page success`)
       pageJsonNormal.body.map(({
         displayName,
         score,
@@ -87,7 +85,6 @@ async function main() {
         })
         placementElite++
       })
-      await new Promise(r => setTimeout(r, 1000));
     }
 
     fs.writeFile(`${__dirname}/${name}_normal.csv`, convertToCSV(JSON.stringify(lbNormal, null, 1)), err => {if (err) {console.log(err)}})

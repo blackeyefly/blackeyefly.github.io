@@ -137,7 +137,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     [TowerType.Super]: [
         [2500, 3000, 20000, 100000, 500000],
         [1000, 1400, 7000, 19000, 90000],
-        [3000, 1200, 5600, 60000, 200000],
+        [3000, 1200, 5600, 55555, 200000],
     ],
     [TowerType.Ninja]: [
         [300, 350, 850, 2750, 35000],
