@@ -27,7 +27,7 @@ async function main() {
     return
   }
   
-  [bossesJson.body[0]].map(async x => {
+  bossesJson.body.map(async x => {
     const id = x.id
     const name = x.name
     let lbNormal = []
@@ -57,13 +57,15 @@ async function main() {
       }) => {
         if (scoreParts[0] && ["Tiers", "Cash Spent"].includes(scoreParts[0].name)) {
           var displayedScore = score
+          var secondaryScore = `${Math.floor(scoreParts[1].score / 60000)}:${scoreParts[1].score % 60000 / 1000 < 10 ? '0' : ''}${scoreParts[1].score % 60000 / 1000}`
         } else {
           var displayedScore = `${Math.floor(score / 60000)}:${score % 60000 / 1000 < 10 ? '0' : ''}${score % 60000 / 1000}`
         }
         lbNormal.push({
           placementNormal,
           displayName,
-          score: displayedScore
+          score: displayedScore,
+          secondaryScore
         })
         placementNormal++
       })
@@ -75,13 +77,15 @@ async function main() {
       }) => {
         if (scoreParts[0] && ["Tiers", "Cash Spent"].includes(scoreParts[0].name)) {
           var displayedScore = score
+          var secondaryScore = `${Math.floor(scoreParts[1].score / 60000)}:${scoreParts[1].score % 60000 / 1000 < 10 ? '0' : ''}${scoreParts[1].score % 60000 / 1000}`
         } else {
           var displayedScore = `${Math.floor(score / 60000)}:${score % 60000 / 1000 < 10 ? '0' : ''}${score % 60000 / 1000}`
         }
         lbElite.push({
           placementElite,
           displayName,
-          score: displayedScore
+          score: displayedScore,
+          secondaryScore
         })
         placementElite++
       })
