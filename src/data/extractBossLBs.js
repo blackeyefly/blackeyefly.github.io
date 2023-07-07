@@ -27,7 +27,7 @@ async function main() {
     return
   }
   
-  bossesJson.body.map(async x => {
+  for (const x of bossesJson.body) {
     const id = x.id
     const name = x.name
     let lbNormal = []
@@ -93,7 +93,7 @@ async function main() {
 
     fs.writeFile(`${__dirname}/${name}_normal.csv`, convertToCSV(JSON.stringify(lbNormal, null, 1)), err => {if (err) {console.log(err)}})
     fs.writeFile(`${__dirname}/${name}_elite.csv`, convertToCSV(JSON.stringify(lbElite, null, 1)), err => {if (err) {console.log(err)}})
-  })
+  }
 }
 
 main()

@@ -1,176 +1,1001 @@
 Placement,Name,Score
-1,WhiteNight,186650
-2,YtseJam,186667
-3,Infuriation,186667
-4,Guanium,186983
-5,AroundAverage,187483
-6,Loeg,189200
-7,FeedMePi314,189250
-8,YT-FynnEbsen,189683
-9,114514,191683
-10,Patthebigmonke,193600
-11,sejamstepbro,193817
-12,Gielepino,194666
-13,hori san,196433
-14,Lava,196567
-15,Westvirginia,196800
-16,Jungerlink,196950
-17,Punji :),197033
-18,L01Y,197167
-19,ZeroLancer,197800
-20,Dakota Jackson,198084
-21,SupremeAvocado,198367
-22,viennariver,198400
-23,Shhdaddysworkn,198983
-24,Domingus Boomr,199000
-25,Visomero Brabo,199100
-26,JackIsthebest,199433
-27,WOR ZOII3 LAK,199583
-28,GruchaElPrimo,199784
-29,Darth Plagueis,200217
-30,Remove LC Boss,200534
-31,Caleb Fraser,200667
-32,- Cyclop3s 49 -,200767
-33,wanda true,200783
-34,PIESEL,200800
-35,Jao,200817
-36,Dihzzy,200867
-37,ILoveThisGame,201033
-38,Alkos,201316
-39,Alexpv8080,201550
-40,Monster,201617
-41,VeDAN,201717
-42,BengPro,202117
-43,Marshader,202183
-44,redaktteedd,202250
-45,mizon yala,202333
-46,Monkinator,202984
-47,BloonGoon,203050
-48,Dasius,203050
-49,dsero,203167
-50,ikun,203333
-51,TheProz2006,203750
-52,Kevin,203800
-53,NicoYeet,203800
-54,Nocturnal,203967
-55,Peter,203983
-56,Hopper,204250
-57,BroCat58,204367
-58,IndoorWallaby8,205617
-59,K4S6M,205767
-60,taiks,206234
-61,Vert,206650
-62,chickenshark,206734
-63,Player9414715,207217
-64,A'nan,207300
-65,Cloudy,208100
-66,Vatorino,208266
-67,Bonzo,208350
-68,Pineapple,208466
-69,2649935474,208550
-70,ANG-Z,209017
-71,Tav alt,209067
-72,Ayeccs,209300
-73,No_Message,209383
-74,StarKirby749,209767
-75,iBenba,209783
-76,geronimo tauren,209900
-77,Roboh510,209983
-78,TheIvyX,210833
-79,Totti,211050
-80,Secno,211150
-81,Salmonella,211300
-82,Rivera,211400
-83,bonk,211433
-84,DireRaven,211566
-85,Takagi,211850
-86,Fireryred,212016
-87,Player,212250
-88,UwUlfy,212450
-89,Valen,212566
-90,FraiseTagada,213350
-91,WOR Z050 LAK,213583
-92,WIZARDPARAGON,213616
-93,default,213950
-94,Oatmaster53,214150
-95,M3mes,214267
-96,Darkened_Duck,214384
-97,Kerone,215333
-98,chenboy 467,215450
-99,choccy onion,215467
-100,DANIEL,215717
-101,Heriko04,216750
-102,01191020csl,217866
-103,kingmann1111,217967
-104,Bjarne,218517
-105,RiFt,218617
-106,truebqccq,219383
-107,David Rojas,219650
-108,jdeer9,219817
-109,<elves>,220033
-110,fo0zya,220250
-111,xiaohuanwizard,220267
-112,7,222067
-113,Marimba,222167
-114,Psi,222233
-115,GreatMonkey4742,222600
-116,Dylan Gray,223816
-117,gnay321oah,224717
-118,AwesomeDude097,224733
-119,JustSummmer,224767
-120,Liam,225000
-121,BlueBi0,225116
-122,ronSold,225116
-123,Lino,225250
-124,Shinybobble,225416
-125,ANDERSON RUJI,225450
-126,Kirtap,225583
-127,NIK,226150
-128,Ev1de,226216
-129,ttotto0417,226250
-130,ZK_Kondzio,226734
-131,Double J,227283
-132,chuckddd,228816
-133,Emel,228917
-134,ivo_trumpetdude,228967
-135,Arthur,229100
-136,SomeWabalan,229333
-137,houssam_masri,229700
-138,roasted_bird,229967
-139,ScoobsinBloons,229984
-140,Flo28,230216
-141,Gray Fullbuster,230333
-142,Raymond,230483
-143,VanBummel,230583
-144,Kindpuffer,231617
-145,PsykomanT,231684
-146,Player7916100,232050
-147,LtChaos18,233200
-148,T.Tv_Firefly,233450
-149,C0nRad,233716
-150,DotTrevv,234150
-151,OnlyfansLover,234417
-152,Toon_WIZKHALIFA,234600
-153,xener,234883
-154,lollypatrolly,235267
-155,Player,235417
-156,pommes17013,236100
-157,Superbrad,236500
-158,Loczekson,236784
-159,uvclive,236850
-160,Weadeater,237250
-161,Dave,237567
-162,Sk8FastEatA55,237666
-163,HeroicTiger1583,238083
-164,NerfNinjaEngy,238483
-165,KotalKatil,238783
-166,TinTin,238900
-167,Brixel,239333
-168,Grobel,240816
-169,jert0423,241083
-170,Kiwi,241417
-171,nibazaici,242167
-172,Mjolnir,242217
-173,G-GOAT,242567
-174,Aequinoktium,242717
-175,Poreduess,242983
+1,WhiteNight,3:06.65
+2,YtseJam,3:06.667
+3,Infuriation,3:06.667
+4,Guanium,3:06.983
+5,AroundAverage,3:07.483
+6,Loeg,3:09.2
+7,FeedMePi314,3:09.25
+8,YT-FynnEbsen,3:09.683
+9,114514,3:11.683
+10,Patthebigmonke,3:13.6
+11,Andre8657,3:13.817
+12,Gielepino,3:14.666
+13,noobsimulator,3:16.433
+14,Lava,3:16.567
+15,Westvirginia,3:16.8
+16,Jungerlink,3:16.95
+17,Punji :),3:17.033
+18,L01Y,3:17.167
+19,ZeroLancer,3:17.8
+20,Dakota Jackson,3:18.084
+21,SupremeAvocado,3:18.367
+22,viennariver,3:18.4
+23,Shhdaddysworkn,3:18.983
+24,Domingus Boomr,3:19
+25,Visomero Brabo,3:19.1
+26,JackIsthebest,3:19.433
+27,WOR ZOII3 LAK,3:19.583
+28,GruchaElPrimo,3:19.784
+29,Darth Plagueis,3:20.217
+30,Remove LC Boss,3:20.534
+31,Caleb Fraser,3:20.667
+32,- Cyclop3s 49 -,3:20.767
+33,lz x whitegirl,3:20.783
+34,PIESEL,3:20.8
+35,Jao,3:20.817
+36,Dihzzy,3:20.867
+37,ILoveThisGame,3:21.033
+38,Alkos,3:21.316
+39,Alexpv8080,3:21.55
+40,Monster,3:21.617
+41,VeDAN,3:21.717
+42,BengPro,3:22.117
+43,Marshader,3:22.183
+44,redaktteedd,3:22.25
+45,mizon yala,3:22.333
+46,Monkinator,3:22.984
+47,BloonGoon,3:23.05
+48,Dasius,3:23.05
+49,dsero,3:23.167
+50,ikun,3:23.333
+51,TheProz2006,3:23.75
+52,Kevin,3:23.8
+53,NicoYeet,3:23.8
+54,Nocturnal,3:23.967
+55,Peter,3:23.983
+56,Hopper,3:24.25
+57,BroCat58,3:24.367
+58,IndoorWallaby8,3:25.617
+59,K4S6M,3:25.767
+60,taiks,3:26.234
+61,Vert,3:26.65
+62,chickenshark,3:26.734
+63,Player9414715,3:27.217
+64,A'nan,3:27.3
+65,Cloudy,3:28.1
+66,Vatorino,3:28.266
+67,Bonzo,3:28.35
+68,Pineapple,3:28.466
+69,2649935474,3:28.55
+70,ANG-Z,3:29.017
+71,Tav alt,3:29.067
+72,Ayeccs,3:29.3
+73,No_Message,3:29.383
+74,StarKirby749,3:29.767
+75,iBenba,3:29.783
+76,geronimo tauren,3:29.9
+77,Roboh510,3:29.983
+78,TheIvyX,3:30.833
+79,Totti,3:31.05
+80,Secno,3:31.15
+81,Salmonella,3:31.3
+82,Rivera,3:31.4
+83,bonk,3:31.433
+84,DireRaven,3:31.566
+85,Takagi,3:31.85
+86,Fireryred,3:32.016
+87,Player,3:32.25
+88,UwUlfy,3:32.45
+89,Valen,3:32.566
+90,FraiseTagada,3:33.35
+91,WOR Z050 LAK,3:33.583
+92,WIZARDPARAGON,3:33.616
+93,default,3:33.95
+94,Oatmaster53,3:34.15
+95,M3mes,3:34.267
+96,Darkened_Duck,3:34.384
+97,Kerone,3:35.333
+98,chenboy 467,3:35.45
+99,choccy onion,3:35.467
+100,DANIEL,3:35.717
+101,Heriko04,3:36.75
+102,01191020csl,3:37.866
+103,kingmann1111,3:37.967
+104,Bjarne,3:38.517
+105,RiFt,3:38.617
+106,truebqccq,3:39.383
+107,David Rojas,3:39.65
+108,jdeer9,3:39.817
+109,<elves>,3:40.033
+110,fo0zya,3:40.25
+111,xiaohuanwizard,3:40.267
+112,7,3:42.067
+113,Marimba,3:42.167
+114,Psi,3:42.233
+115,GreatMonkey4742,3:42.6
+116,Dylan Gray,3:43.816
+117,gnay321oah,3:44.717
+118,AwesomeDude097,3:44.733
+119,JustSummmer,3:44.767
+120,Liam,3:45
+121,BlueBi0,3:45.116
+122,ronSold,3:45.116
+123,Lino,3:45.25
+124,Shinybobble,3:45.416
+125,ANDERSON RUJI,3:45.45
+126,Kirtap,3:45.583
+127,NIK,3:46.15
+128,Ev1de,3:46.216
+129,ttotto0417,3:46.25
+130,ZK_Kondzio,3:46.734
+131,Double J,3:47.283
+132,chuckddd,3:48.816
+133,Emel,3:48.917
+134,ivo_trumpetdude,3:48.967
+135,Yut,3:49.1
+136,SomeWabalan,3:49.333
+137,houssam_masri,3:49.7
+138,roasted_bird,3:49.967
+139,ScoobsinBloons,3:49.984
+140,Flo28,3:50.216
+141,Gray Fullbuster,3:50.333
+142,Raymond,3:50.483
+143,VanBummel,3:50.583
+144,Kindpuffer,3:51.617
+145,PsykomanT,3:51.684
+146,Player7916100,3:52.05
+147,LtChaos18,3:53.2
+148,T.Tv_Firefly,3:53.45
+149,C0nRad,3:53.716
+150,DotTrevv,3:54.15
+151,OnlyfansLover,3:54.417
+152,Toon_WIZKHALIFA,3:54.6
+153,xener,3:54.883
+154,lollypatrolly,3:55.267
+155,Player,3:55.417
+156,pommes17013,3:56.1
+157,Superbrad,3:56.5
+158,Loczekson,3:56.784
+159,uvclive,3:56.85
+160,Weadeater,3:57.25
+161,Dave,3:57.567
+162,Sk8FastEatA55,3:57.666
+163,HeroicTiger1583,3:58.083
+164,NerfNinjaEngy,3:58.483
+165,KotalKatil,3:58.783
+166,TinTin,3:58.9
+167,Brixel,3:59.333
+168,Grobel,4:00.816
+169,jert0423,4:01.083
+170,Kiwi,4:01.417
+171,nibazaici,4:02.167
+172,Mjolnir,4:02.217
+173,G-GOAT,4:02.567
+174,Aequinoktium,4:02.717
+175,Poreduess,4:02.983
+176,Thunder,4:02.984
+177,mahn.fabi,4:03.417
+178,PartyBloon,4:03.683
+179,z4zaros,4:03.833
+180,WOR ZOII4 LAK,4:04.05
+181,N0name_14,4:04.15
+182,Wilzy,4:04.233
+183,Murko,4:04.5
+184,Player,4:04.883
+185,KUAN,4:04.883
+186,Magnush10e,4:06.4
+187,Ansppy,4:06.417
+188,Ender_01Begins,4:06.75
+189,HEHOP,4:07.4
+190,Ariq123,4:07.45
+191,Alvaro13bq,4:07.5
+192,etihw,4:07.633
+193,ReWolverine,4:08.1
+194,piyuwusho,4:08.117
+195,An_HDXD,4:08.167
+196,ALL_INSTAS!!!,4:08.317
+197,Player8313015,4:08.966
+198,Danivodi,4:09.033
+199,Rico_xz,4:09.1
+200,Shaggy,4:09.133
+201,VioletHero1760,4:09.15
+202,Thompis,4:09.267
+203,Amber,4:09.6
+204,Nev_0107,4:09.717
+205,FANTASTIC,4:09.767
+206,kanou-suguru,4:09.817
+207,JustToPro,4:09.95
+208,Jeffy iz Best,4:10.566
+209,Manuel779,4:11.4
+210,Zogazig,4:12.066
+211,Rabotaga,4:12.1
+212,fishsandwiches,4:12.3
+213,85563369,4:12.6
+214,Kyle,4:13.467
+215,DartWizard1003,4:13.85
+216,Covid 19,4:14.1
+217,-...-,4:14.133
+218,SebasTheGamer12,4:14.183
+219,FakePotato,4:14.634
+220,Azul,4:14.967
+221,Danny,4:15.316
+222,940909681,4:15.483
+223,GlueMaster1710,4:15.733
+224,AOmonsta,4:15.9
+225,flemmli97,4:16.234
+226,gergely955,4:16.366
+227,SteelMushroom,4:16.483
+228,Svenoss,4:16.534
+229,Jaded Chaotic,4:16.783
+230,BTD Express,4:16.817
+231,Ph03n1x_,4:17.433
+232,Red Sword,4:17.633
+233,07henkka,4:18.6
+234,Ducky,4:19.983
+235,CrashCas06,4:20.117
+236,schmusekroko,4:20.634
+237,ytpepsi51,4:21.3
+238,shenbuzhi,4:21.383
+239,thetruenadir,4:21.634
+240,El.petro.dolar,4:21.683
+241,Mik0la,4:22.233
+242,Essi,4:22.384
+243,Petrichor,4:22.5
+244,Light,4:22.55
+245,DetonaRJ,4:22.65
+246,Orion,4:22.75
+247,Asalikith,4:23.433
+248,Whitesoldier,4:23.683
+249,I hate boss,4:23.817
+250,Logical_Panda_,4:24.117
+251,Player6489166,4:24.35
+252,nobody02983,4:24.6
+253,y0pr0p,4:24.667
+254,KONputo,4:24.967
+255,cutesungt,4:25.834
+256,Player9729105,4:26.267
+257,Player7638772,4:26.333
+258,DeadBush,4:26.517
+259,FreezingDog152,4:26.6
+260,SoldierlyBag78,4:27.133
+261,Gold-Games_SK,4:27.367
+262,o RaFiKi x,4:27.817
+263,GQC,4:27.866
+264,Fredrik,4:28.15
+265,der_ute,4:28.217
+266,Kilos,4:28.983
+267,aksgdjlakg,4:29.767
+268,Cato,4:30.016
+269,ObamaBinLaden,4:30.2
+270,Z.O.M.G,4:30.517
+271,SHS_tamber78,4:30.566
+272,Polaris,4:30.834
+273,Mentor,4:31.016
+274,Player7369159,4:31.267
+275,KimchiNoodlesss,4:31.3
+276,Lazlo,4:31.316
+277,StelleyShine,4:31.416
+278,xStorm,4:31.55
+279,Aleccrazy,4:32.617
+280,CoolCosmo,4:32.734
+281,Eumenides,4:33.017
+282,Player,4:33.117
+283,Supermonkey,4:33.517
+284,Fireball7290,4:34.184
+285,wwwseee723,4:34.583
+286,Miauw,4:34.634
+287,GTOFelix,4:34.983
+288,StormKiller,4:35.467
+289,Player,4:36.317
+290,druck3r,4:36.317
+291,wjy,4:36.334
+292,Alex,4:36.816
+293,Agent W,4:37.816
+294,CBK!,4:38.183
+295,Player,4:38.266
+296,ForgiveMeNot,4:38.483
+297,limitlesss,4:38.484
+298,ThatRandomDude,4:38.533
+299,Panserbjorne,4:38.617
+300,Grolemonkey,4:38.683
+301,Player,4:39
+302,Alvin,4:39.017
+303,xx,4:39.05
+304,Zzz...,4:39.083
+305,Consuno,4:39.283
+306,Warner broxa,4:39.4
+307,Cuhbrewin,4:39.4
+308,Player4124898,4:40.084
+309,Zekran00,4:40.117
+310,SenuN,4:40.334
+311,MeKesh,4:40.417
+312,Bandof,4:40.55
+313,Jerry,4:41.233
+314,lanabananarama,4:41.566
+315,xkylol,4:41.584
+316,PoopDealer,4:41.617
+317,Ezone9293,4:41.933
+318,BHD,4:42.233
+319,Roare,4:42.55
+320,MightZJPoepet,4:42.85
+321,Anderwar,4:43.083
+322,Yeetrium,4:43.466
+323,hirogracz,4:43.533
+324,bgalvey,4:43.75
+325,xiaoxiaochao,4:43.767
+326,Thrower,4:43.8
+327,h__y__x,4:43.817
+328,aoifw,4:43.983
+329,Menp123,4:43.983
+330,Player,4:44.417
+331,Tequila_233333,4:44.617
+332,sabishina,4:44.684
+333,Mrbeans,4:44.867
+334,Alex,4:44.9
+335,User-a5549921b4,4:44.916
+336,CAUCWYK,4:45.2
+337,Cichy Mlecz,4:45.75
+338,FullCrimp,4:45.867
+339,yjdstcyjdstc,4:45.933
+340,liuu001,4:45.934
+341,Findanewgod,4:46.083
+342,Cheesy Dee,4:46.133
+343,Filip7,4:46.25
+344,Tazikol,4:46.417
+345,Merryweather,4:46.566
+346,Random Keed,4:46.616
+347,Player,4:46.817
+348,KingTheFear,4:47
+349,system-G-link,4:47.084
+350,Gold-Games,4:47.284
+351,Pilsmannen10,4:47.333
+352,Piernik,4:47.534
+353,X-ray hero,4:47.567
+354,Xi-temper,4:47.7
+355,Scranish,4:47.767
+356,charlie,4:47.983
+357,EVirus72,4:48.284
+358,Cardsxw,4:48.383
+359,bjay23,4:48.533
+360,Nature's Grace,4:48.666
+361,c0ntext,4:48.75
+362,Long4J,4:48.917
+363,wintergetreide,4:49.167
+364,ShawnTheWizard,4:49.433
+365,Jorcy,4:49.533
+366,rodulant,4:49.567
+367,Dank-Energy,4:49.867
+368,MATTOCK,4:49.983
+369,Player,4:50.3
+370,siwori,4:50.85
+371,Mrqfish,4:50.9
+372,ToddChris,4:50.967
+373,AlphaFish,4:51.2
+374,2586154638,4:51.684
+375,PunyW,4:52.117
+376,De_ Vinci,4:52.433
+377,Dabbin Dinosaur,4:52.434
+378,HyperPupu,4:52.717
+379,Windrae,4:52.884
+380,laplacian,4:52.933
+381,Mr. Teeny,4:53
+382,Skin,4:53.1
+383,Van Kronburg,4:53.25
+384,Nilstheimpaler,4:53.5
+385,Oorz,4:53.534
+386,BTDYama,4:53.75
+387,Z,4:53.934
+388,Player,4:54.45
+389,Yxsda,4:54.634
+390,Walter White,4:54.8
+391,ZungGaaYi,4:55.067
+392,mraggi,4:55.216
+393,Xiaviar.Wulf,4:55.967
+394,Dyd,4:56.35
+395,EECKLLP,4:56.4
+396,Allyssa,4:56.583
+397,LeglessSonic,4:56.667
+398,lsooyooo,4:56.717
+399,Fl4re,4:56.883
+400,Munny,4:56.9
+401,Player,4:57.016
+402,1294150952,4:57.6
+403,Fluffy Spani:3,4:57.816
+404,Xuily,4:57.866
+405,digs1985,4:58.084
+406,carpenterbailey,4:58.267
+407,youxi,4:58.333
+408,Carbon6panda,4:58.617
+409,Mat3eo55,4:58.884
+410,Player,4:59
+411,Zygar,4:59.133
+412,156137,4:59.316
+413,JuckFordan,4:59.566
+414,DBirdie,4:59.616
+415,Lets_Fish,4:59.733
+416,36D,5:00.017
+417,CHenMoOn,5:00.216
+418,Raya,5:00.45
+419,Playerzmz100,5:00.467
+420,A1phaeus,5:00.533
+421,DocDapper,5:00.767
+422,Louis.Yu,5:00.85
+423,Raven,5:01.283
+424,BluuFoxPL,5:01.3
+425,Bern73oss,5:01.466
+426,Pineappe,5:01.65
+427,To Da Max!,5:01.8
+428,Royce,5:01.9
+429,DefaultGamer,5:01.9
+430,SuperFreezer85,5:02.134
+431,Staphaureus,5:02.3
+432,Christophero87,5:02.317
+433,reetman,5:02.333
+434,Kailova,5:02.633
+435,Bloonboy69,5:02.634
+436,MrDennisHD,5:02.667
+437,Steve,5:02.817
+438,TuBeZ,5:03.15
+439,Sebast705A,5:03.4
+440,Prostmann,5:03.5
+441,m v r d r r r,5:04.1
+442,hacked_pro,5:04.467
+443,w1snia,5:04.5
+444,Daybou,5:04.516
+445,settam07,5:04.65
+446,Joelle,5:04.666
+447,gp0lp,5:04.95
+448,22Unicore,5:05.067
+449,Rampatse,5:05.183
+450,Sukhoi43,5:05.333
+451,Warper,5:05.45
+452,Xablau,5:05.567
+453,zunae,5:05.667
+454,Samuel,5:05.816
+455,Tong Lexuan,5:05.834
+456,notMaxim07,5:05.984
+457,FAZEK,5:06.083
+458,18_petals,5:06.217
+459,Logan,5:06.3
+460,GoldenTrash,5:07.1
+461,Player,5:07.133
+462,Player,5:07.384
+463,Cringeworthy,5:07.384
+464,regrow_farmer,5:07.4
+465,Winnie5401,5:07.45
+466,dd8687336,5:07.566
+467,tyuyang,5:07.666
+468,maisy,5:07.7
+469,SC_ken,5:07.717
+470,Aller echter,5:07.984
+471,bruhsound002,5:08.383
+472,Player,5:08.467
+473,Mashiro,5:08.55
+474,Morettinho22,5:09.267
+475,Captain-Gunfire,5:09.3
+476,momidid,5:09.65
+477,Tomek87,5:09.85
+478,Gricko,5:09.884
+479,UNdrawde,5:09.95
+480,JarqualTheGreat,5:10.05
+481,llwraw,5:10.45
+482,REBE,5:10.483
+483,i<3adora,5:10.766
+484,Cold moon,5:10.8
+485,Afoknas,5:10.867
+486,Brancobsb,5:10.9
+487,Goldenboy2287,5:11.15
+488,Ryan Bretel,5:11.35
+489,Ebon,5:11.367
+490,Ironsheep1122,5:11.583
+491,7 Nation Farmy,5:11.883
+492,hAki,5:11.983
+493,sherwincsk,5:12.083
+494,nuohu,5:12.2
+495,donkeymule2,5:12.45
+496,Velcro,5:12.467
+497,Allegorial,5:12.833
+498,Bsbisa,5:12.917
+499,Gonzalo,5:13.3
+500,Mutoniatus,5:13.35
+501,Hnz,5:13.416
+502,AwsomeWizard8,5:13.55
+503,Brianthebomber,5:13.55
+504,Banzai,5:13.866
+505,Taylor,5:13.967
+506,.          LE0,5:13.983
+507,toshii,5:14.1
+508,prof3ssorzchaos,5:14.433
+509,Player4501702,5:14.45
+510,HOYHOY,5:14.65
+511,rtthrd,5:14.733
+512,acyg,5:14.733
+513,Player1611590,5:15.466
+514,Player,5:15.5
+515,CaptainJakeSH,5:15.667
+516,Zharx,5:15.75
+517,CR7,5:15.766
+518,bond2501,5:15.85
+519,FighterMaze,5:15.883
+520,sam,5:16.283
+521,Strider,5:16.334
+522,MonkeyWizard10,5:16.366
+523,Meesh,5:16.7
+524,Danny Zuko.,5:16.8
+525,AJ,5:16.834
+526,lucT0T,5:17.017
+527,WindHover,5:17.034
+528,Ffddee433w,5:17.1
+529,dont @ me,5:17.35
+530,ImCay,5:17.35
+531,John,5:17.5
+532,Player,5:17.534
+533,Aharonson056,5:17.7
+534,zun,5:17.717
+535,Arqtix,5:17.733
+536,Monke,5:17.934
+537,GuavacadoMan,5:17.95
+538,The Dude,5:18.016
+539,GryXsz,5:18.034
+540,Gufree,5:18.133
+541,FabzGreenww,5:18.134
+542,I3artix,5:18.216
+543,43Ahmed4344,5:18.283
+544,Marcoarchmage2,5:18.334
+545,DarkHeldoro,5:18.567
+546,frankbenedet,5:18.65
+547,zuimeng,5:18.784
+548,davidsaccount,5:18.816
+549,Supernova,5:18.883
+550,HENDRIK,5:19.034
+551,Vanhallion,5:19.067
+552,Masus,5:19.134
+553,TopPhoenix2101,5:19.4
+554,Big Shaq,5:19.617
+555,minnickjacob833,5:19.65
+556,uniquewine,5:20.05
+557,Ueberking Nico,5:20.333
+558,mdeschu,5:20.417
+559,SoloJebachOnly,5:20.433
+560,CC,5:20.5
+561,Player1320014,5:20.55
+562,bliss,5:20.566
+563,Illouminant,5:20.683
+564,Javiet05,5:21.4
+565,tay k,5:21.434
+566,skodamogadon,5:21.533
+567,CatRiko,5:21.533
+568,TheNerdling1,5:21.683
+569,xray362,5:21.833
+570,3062283445,5:21.916
+571,V4s1,5:21.933
+572,inurachi,5:22.284
+573,CyanRabbit625,5:22.333
+574,The_Alien_Lord,5:22.717
+575,BloonWizard446,5:22.816
+576,Vik,5:22.816
+577,Betinho.RGLN,5:22.934
+578,Moffin_Man_0,5:22.95
+579,Zicaryus,5:23.016
+580,Kival Evan,5:23.05
+581,SuperMaster387,5:23.433
+582,CSBLWJ,5:23.65
+583,ELITE,5:23.684
+584,Patkall,5:23.733
+585,Valenrd,5:23.783
+586,El_Rocko,5:24
+587,Blaze7989,5:24.2
+588,Ferchox,5:24.284
+589,Player,5:24.366
+590,Wishlist1,5:24.5
+591,HarryLeif,5:24.567
+592,-Kev2048-,5:24.6
+593,Bruh,5:24.917
+594,fuubar,5:25.167
+595,rysace,5:25.3
+596,vinski,5:25.45
+597,GaunerDudMent,5:25.783
+598,Starless,5:25.9
+599,Faceless king,5:26.067
+600,ebetoi,5:26.184
+601,Daiprsnipr,5:26.4
+602,Po,5:26.417
+603,GrazyGl@ss7s,5:26.683
+604,Kyle1,5:26.866
+605,TheComputer,5:26.917
+606,NPC,5:27.033
+607,Diamond,5:27.267
+608,Knorke,5:27.367
+609,RAE,5:27.383
+610,Zaphenzo,5:27.534
+611,LonelyDog,5:27.95
+612,Goku,5:28.083
+613,Nk277531,5:28.15
+614,10rednaX,5:28.417
+615,Wiankiller,5:28.45
+616,Yume,5:28.767
+617,cyan_cui,5:28.883
+618,MeowSummon,5:28.916
+619,Kelnor01,5:29.15
+620,xyrc,5:29.2
+621,MooeyDaCow,5:29.484
+622,Oddbjorg,5:29.784
+623,Era 52,5:30.167
+624,Caua_04321,5:30.434
+625,Failure,5:30.583
+626,JuMAluTa,5:30.616
+627,Kung Pao!,5:30.817
+628,Wasabi,5:30.9
+629,mango fish,5:30.933
+630,Zeta7309,5:31.016
+631,Donny231,5:31.133
+632,YT:BTD Poppin,5:31.216
+633,Turnkey,5:31.3
+634,MedicBag,5:31.4
+635,ZachBar321,5:31.417
+636,Stian,5:31.484
+637,Snek,5:31.583
+638,2978710005,5:31.75
+639,Augustus_77,5:31.883
+640,Akali,5:31.95
+641,DemonTortue31,5:31.984
+642,lpsz,5:32.316
+643,Trickybanana,5:32.35
+644,Chali_Bean624,5:32.883
+645,Jovantan21,5:33.083
+646,CuddlySpice9,5:33.217
+647,Melody,5:33.283
+648,Andrew Dhaenens,5:33.366
+649,Xrosschoke,5:33.583
+650,Y,5:33.8
+651,Callum4576,5:33.983
+652,Hyzenbergh,5:34.05
+653,Jav1,5:34.283
+654,UGAfan2001,5:34.417
+655,DartFreezer546,5:34.45
+656,Tribls,5:34.684
+657,CavityCreep,5:34.983
+658,Madcoast,5:35.15
+659,Personman,5:35.45
+660,Zachimations,5:35.816
+661,M106,5:35.85
+662,Cyanea,5:36.183
+663,fxss,5:36.533
+664,melone319,5:36.7
+665,Sietse Ok,5:36.7
+666,also hi,5:36.716
+667,BreadMonkey,5:36.734
+668,20245414,5:36.8
+669,Loconch,5:37.283
+670,ccseasider,5:37.3
+671,Karantes,5:37.916
+672,TimmyDa3rd,5:37.917
+673,y0friend,5:38.2
+674,gijmpf,5:38.317
+675,PeachPanda2321,5:38.334
+676,FitBoyRoy,5:38.466
+677,Mige,5:38.683
+678,FirHazard426,5:38.95
+679,Player,5:39.234
+680,Bananchik69,5:39.267
+681,Ares,5:39.434
+682,MaeM*,5:39.634
+683,Player1705289,5:39.967
+684,ShinyPopper481,5:40.15
+685,PAK,5:40.333
+686,matzepry2002,5:40.433
+687,platey66,5:40.45
+688,lancardxx,5:40.467
+689,Berkano,5:40.534
+690,LeShawn,5:41
+691,Deep_Tadeas,5:41.116
+692,Geriz,5:41.666
+693,Graylow87,5:41.867
+694,V,5:41.883
+695,Hala_CR,5:41.933
+696,Zixti,5:41.95
+697,Lanthire,5:42.067
+698,Kloster,5:42.483
+699,Bible app,5:42.483
+700,miknoiz,5:42.517
+701,ru19,5:42.666
+702,iLiketoCoreRed,5:42.7
+703,qwq,5:42.933
+704,MonkeyPhoenix5,5:43
+705,EMA,5:43.2
+706,Inspectable,5:43.567
+707,elvarco2,5:43.75
+708,T.H-X,5:43.75
+709,MASTER STAR,5:43.766
+710,HashlinG,5:43.817
+711,Oscar,5:43.9
+712,Alex,5:44.05
+713,Poppa,5:44.266
+714,Retrogamer,5:44.333
+715,FutureScopes,5:44.383
+716,NobleSquire2139,5:44.566
+717,Effect,5:44.567
+718,WarrenG1001,5:44.733
+719,kuonoxda,5:44.866
+720,SyrupPancake,5:45.2
+721,flakeyshark,5:45.817
+722,ik heb honger,5:46.033
+723,Echo Dad,5:46.05
+724,Chelios,5:46.2
+725,Arc7a,5:46.3
+726,Macl,5:47.15
+727,FunyunsAReFun,5:47.266
+728,IconicLord2393,5:47.266
+729,r9,5:47.267
+730,maoshen,5:47.284
+731,anextacy,5:47.5
+732,Growth,5:47.6
+733,kdogg8173,5:47.6
+734,bloonpopper42,5:48.334
+735,song,5:48.367
+736,3SH,5:48.434
+737,WOR ZOII5 LAK,5:49.25
+738,sergiio,5:49.517
+739,End407,5:50.183
+740,Daii,5:50.183
+741,young branch,5:50.233
+742,majorstudconan,5:50.467
+743,RoaringGolf88,5:50.517
+744,Orlek,5:50.583
+745,JustInClayce,5:50.65
+746,SirRobo097,5:50.716
+747,Greengiant,5:50.933
+748,Zuriol,5:50.95
+749,TheSmo,5:51.166
+750,cadenn06,5:51.367
+751,Walterlux,5:51.5
+752,Dracula,5:51.917
+753,swarmie,5:51.95
+754,watermelon,5:52.033
+755,SHAZAM!,5:52.483
+756,Player,5:52.55
+757,Datablock,5:52.717
+758,tales,5:52.817
+759,aWildAviar,5:53.133
+760,Player1674644,5:53.134
+761,TTWL09,5:53.166
+762,PantherBogen,5:53.183
+763,lil doggo,5:53.184
+764,ThoughtFlow,5:53.234
+765,zparky,5:53.35
+766,AwesomeElite07,5:53.384
+767,NGBG,5:53.516
+768,Sep K Crot,5:53.517
+769,Gadget Gamma,5:53.533
+770,Bloons Killer,5:53.867
+771,Player,5:53.95
+772,Redfoxyboi,5:54.15
+773,Rafael,5:54.317
+774,Blue bloon,5:54.484
+775,Darian,5:54.55
+776,sIimob,5:54.567
+777,Miles,5:54.733
+778,Player,5:54.783
+779,Derretimentos,5:55
+780,BendMoney,5:55.133
+781,2316375486,5:55.25
+782,Radamejster,5:55.283
+783,yibai6669,5:55.617
+784,archmage is op,5:55.617
+785,Inset,5:55.633
+786,Mick Jaggi,5:55.683
+787,TCTBear,5:55.767
+788,F,5:55.783
+789,AtomicHolz,5:56
+790,van der waals,5:56.134
+791,PlasmaHD,5:56.15
+792,Lu6ky,5:56.3
+793,DartPopper2325,5:56.417
+794,MetalDuckNL,5:56.533
+795,2364207948,5:56.65
+796,hlwan1999,5:56.783
+797,Pawn,5:56.783
+798,MightGuy,5:57.117
+799,Michax,5:57.15
+800,Fepppe,5:57.45
+801,Erhe,5:57.75
+802,Itsi-YT,5:57.75
+803,cherry1586666,5:57.883
+804,POO,5:57.934
+805,george3019,5:58.1
+806,jaketutto,5:58.25
+807,Idiosiz,5:58.267
+808,Pemszek,5:58.316
+809,Javali Poderoso,5:58.367
+810,Skulltuna3,5:58.367
+811,lichy80,5:58.384
+812,Portelln,5:58.45
+813,MoszNaNoc,5:58.616
+814,Pro Gamer,5:58.634
+815,TOPKEK,5:58.833
+816,Player4910810,5:58.834
+817,Genio250,5:59.217
+818,8976543242536,5:59.35
+819,big cat,5:59.5
+820,Elevitian,5:59.5
+821,Player1187317,5:59.65
+822,Jodotflash,5:59.684
+823,Sirbluedog,5:59.766
+824,wwbbcc,6:00.1
+825,Dabloon,6:00.3
+826,Massive,6:00.483
+827,MarbleDoggo,6:00.633
+828,luan.shimosaka,6:00.65
+829,Mykola,6:00.683
+830,BenjaminGaming,6:00.767
+831,MineSan,6:01.017
+832,swapsss,6:01.167
+833,Polish,6:01.433
+834,Lost-Memories,6:01.516
+835,boots160,6:01.617
+836,500kg(OP)noob,6:01.716
+837,wind3366,6:01.983
+838,NaduvaniPacov,6:02.4
+839,Pengu8n. YT,6:02.45
+840,gujun,6:02.466
+841,Bambunaka,6:02.716
+842,Not_Found_42,6:02.933
+843,X,6:03.017
+844,Ilikewinning,6:03.017
+845,Yoav_YT,6:03.1
+846,DartPhoenix664,6:03.383
+847,artus9876,6:03.4
+848,693472654,6:03.417
+849,V1n1B,6:04.583
+850,EnchantedBlade,6:05.117
+851,Derp,6:05.167
+852,Boeo,6:05.433
+853,Erky,6:05.733
+854,MrMario003,6:05.75
+855,Shadowninja,6:05.783
+856,RSmake,6:05.933
+857,Jok159,6:06.05
+858,Bonk,6:06.6
+859,Ryan,6:06.95
+860,Budward,6:07.134
+861,80sthrash,6:07.317
+862,Colonel Dusty,6:07.467
+863,Player,6:07.567
+864,cadfje,6:08.05
+865,Kristin,6:08.25
+866,robson,6:09.183
+867,447823331,6:09.334
+868,SpartanCat,6:09.367
+869,Heng,6:09.4
+870,Chnk11,6:09.416
+871,isDavid,6:09.8
+872,vengeance,6:09.9
+873,Terpy,6:10.017
+874,Flaedrian,6:10.084
+875,The Pony,6:10.2
+876,Thechuch,6:10.334
+877,HoodieV,6:10.417
+878,nielspetersj,6:10.467
+879,elisiss,6:10.483
+880,Basti,6:10.5
+881,the panda,6:10.566
+882,ErokjMonkee,6:10.617
+883,PopThatBloon,6:10.717
+884,sun hat adora,6:10.866
+885,Monkey D Guffy,6:11.084
+886,need John Thom,6:11.216
+887,Chilly,6:11.834
+888,Bynarik,6:12.066
+889,Oodie,6:12.083
+890,SonofaBishop,6:12.367
+891,Ocrotica,6:12.534
+892,Yuri Tarded,6:12.616
+893,Creamy-TGb,6:12.667
+894,vitrovius,6:12.85
+895,Player2384915,6:12.983
+896,Chatoyant,6:13.417
+897,Yuri Boyka 420,6:13.616
+898,Player6889414,6:13.633
+899,Hwickham17,6:13.95
+900,ItaSwin,6:14.016
+901,AndenTheGamer,6:14.15
+902,NEON_SAMURIA5,6:14.15
+903,PogUser69420,6:14.35
+904,jannifer,6:14.517
+905,edengeden,6:14.65
+906,Nugget0797,6:14.7
+907,Mario121,6:14.85
+908,Player,6:14.9
+909,Luuk,6:14.983
+910,Kojima master,6:15.116
+911,Freiberg47,6:15.15
+912,Thefransiscool,6:15.166
+913,Sealander,6:15.183
+914,Troisteen,6:15.233
+915,SUCKMABALLS_69,6:15.283
+916,Pringels-__-,6:15.4
+917,eklofalex,6:15.717
+918,Agent Ravioli,6:15.934
+919,Fantasy,6:15.95
+920,Gilgamesh,6:15.983
+921,TR_CR33N,6:16.017
+922,Player1013193,6:16.066
+923,alamit164,6:16.133
+924,midarrec,6:16.416
+925,Mr.MieseZeiten,6:16.5
+926,Shiruken500,6:16.783
+927,Dohhaaja,6:16.933
+928,kleinHarald,6:17.1
+929,GreatMonkey1700,6:17.233
+930,AllowPc,6:17.617
+931,5irL4ffal0t,6:17.75
+932,P,6:17.933
+933,Mew,6:17.967
+934,DALION,6:18
+935,Miko72,6:18.183
+936,trungvayhoy,6:18.35
+937,hhhhhhhh,6:18.366
+938,Jarmi,6:18.434
+939,SikaObi,6:18.516
+940,Player,6:18.634
+941,Time Attacker,6:18.65
+942,Jefff,6:18.767
+943,aswdaswdw,6:18.767
+944,Abad,6:18.767
+945,BrittleDrop573,6:19.65
+946,wetspaghet,6:19.717
+947,Phoniczze,6:19.9
+948,Hunglyer,6:19.967
+949,BananaRanger,6:20.483
+950,Chucklenuts,6:20.833
+951,Neromize,6:20.884
+952,VioletHero2916,6:20.9
+953,DerpVogel,6:20.983
+954,Otis480,6:21.033
+955,Lord_Pisior120,6:21.034
+956,Higstar,6:21.15
+957,Heinz3.0,6:21.2
+958,Zero 0,6:21.217
+959,DaChilly1,6:21.516
+960,no one,6:21.617
+961,jarrettmohn,6:21.65
+962,Kat,6:22.05
+963,MamaParagonT,6:22.267
+964,ForeverLove,6:22.317
+965,Pheonix,6:23.233
+966,Snikdaj,6:23.25
+967,Vortexussy,6:23.433
+968,BB,6:23.466
+969,gamer,6:23.467
+970,WonkyWonka,6:23.733
+971,Quanfeng,6:23.967
+972,owo,6:24.167
+973,PabloKozlovski,6:24.2
+974,Aurora,6:24.383
+975,Player,6:24.383
+976,Bobby,6:24.583
+977,Dtshotgames,6:24.7
+978,944505858,6:24.75
+979,ChrisLiv,6:24.85
+980,Mii,6:25
+981,OPcreator1422,6:25.35
+982,srth157,6:25.366
+983,GlueHero8474,6:26
+984,Vegemite,6:26.217
+985,goomdawg,6:26.267
+986,Larree17,6:26.333
+987,DreusLittlebee,6:26.334
+988,Fangyuan,6:26.4
+989,Played,6:26.45
+990,Sandor,6:26.6
+991,Opal,6:26.833
+992,Wrtek,6:26.883
+993,JCProgrammer,6:26.916
+994,revolug,6:26.917
+995,Gooberbora,6:27.1
+996,HDEC,6:27.233
+997,Big Bonez,6:27.317
+998,KnMMM_,6:27.483
+999,Yonmd,6:27.484
+1000,Luke,6:27.75
