@@ -27,7 +27,7 @@ async function main() {
     return
   }
   
-  for (const x of bossesJson.body) {
+  for (const x of [bossesJson.body[0]]) {
     const id = x.id
     const name = x.name
     let lbNormal = []
