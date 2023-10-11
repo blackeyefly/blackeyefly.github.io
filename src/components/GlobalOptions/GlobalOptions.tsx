@@ -5,9 +5,10 @@ import MK from '../../models/MK';
 
 interface GlobalOptionsProps {
   setOptions?: (mk: MK, difficulty: Difficulty) => void,
+  includeMK?: boolean,
 }
 
-const GlobalOptions: FC<GlobalOptionsProps> = ({ setOptions }) => {
+const GlobalOptions: FC<GlobalOptionsProps> = ({ setOptions, includeMK = true }) => {
   const [mk, setMk] = useState(MK.On);
   const [difficulty, setDifficulty] = useState("Medium");
 
@@ -31,9 +32,10 @@ const GlobalOptions: FC<GlobalOptionsProps> = ({ setOptions }) => {
         <Container maxWidth="xl">
           <form onSubmit={handleSubmit}>
             <Stack spacing={4} direction="row">
-              <FormControlLabel control={
-                <Checkbox defaultChecked onChange={(e) => setMk(e.target.checked ? MK.On : MK.Off)} />
-              } label="Monkey Knowledge" />
+              {includeMK &&
+                <FormControlLabel control={
+                  <Checkbox defaultChecked onChange={(e) => setMk(e.target.checked ? MK.On : MK.Off)} />
+                } label="Monkey Knowledge" />}
               <TextField
                 label="Difficulty"
                 value={difficulty}

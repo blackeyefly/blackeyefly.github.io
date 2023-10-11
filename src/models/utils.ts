@@ -62,6 +62,33 @@ const baseCosts: EnumDictionary<TowerType, number> = {
     [TowerType.BeastHandler]: 250,
 }
 
+const paragonCosts: EnumDictionary<TowerType, number> = {
+    [TowerType.None]: 0,
+    [TowerType.Dart]: 150000,
+    [TowerType.Boomerang]: 275000,
+    [TowerType.Bomb]: 0,
+    [TowerType.Tack]: 0,
+    [TowerType.Ice]: 0,
+    [TowerType.Glue]: 0,
+    [TowerType.Sniper]: 0,
+    [TowerType.Sub]: 0,
+    [TowerType.Buccaneer]: 550000,
+    [TowerType.Ace]: 900000,
+    [TowerType.Heli]: 0,
+    [TowerType.Mortar]: 0,
+    [TowerType.Dartling]: 0,
+    [TowerType.Wizard]: 750000,
+    [TowerType.Super]: 0,
+    [TowerType.Ninja]: 500000,
+    [TowerType.Alchemist]: 0,
+    [TowerType.Druid]: 0,
+    [TowerType.Spike]: 0,
+    [TowerType.Farm]: 0,
+    [TowerType.Village]: 0,
+    [TowerType.Engineer]: 650000,
+    [TowerType.BeastHandler]: 0,
+}
+
 const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     [TowerType.None]: [[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],],
     [TowerType.Dart]: [
@@ -230,6 +257,13 @@ export default class Utils {
         }
 
         return cost;
+    }
+
+    static paragonCost(
+        towerType: TowerType,
+        difficulty: Difficulty = Difficulty.Medium,
+    ) {
+        return paragonCosts[towerType] * difficulty;
     }
     
     private static numberOfBananas(tower: Tower): number {

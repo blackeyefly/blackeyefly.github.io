@@ -65,9 +65,14 @@ const NavBar: FC = () => {
                   Action Figure Income
                 </ListItemButton>
               </ListItem>
-              <ListItem disablePadding>
+              {/* <ListItem disablePadding>
                 <ListItemButton href="/#/bossleaderboards">
                   Past Boss Leaderboards
+                </ListItemButton>
+              </ListItem> */}
+              <ListItem disablePadding>
+                <ListItemButton href="/#/paragondegree">
+                  Paragon Degree
                 </ListItemButton>
               </ListItem>
               {/* <ListItem disablePadding>

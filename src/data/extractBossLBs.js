@@ -2,7 +2,7 @@ var fs = require('fs')
 
 function convertToCSV(objArray) {
   var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-  var str = 'Placement,Name,Score\r\n';
+  var str = 'Placement,Name,Score,id\r\n';
 
   for (var i = 0; i < array.length; i++) {
       var line = '';
@@ -35,7 +35,7 @@ async function main() {
     let placementNormal = 1
     let placementElite = 1
 
-    for (let i = 1; i <= 40; i++) {
+    for (let i = 1; i <= 4; i++) {
       do {
         var pageNormal = await fetch(`https://data.ninjakiwi.com/btd6/bosses/${id}/leaderboard/standard/1?page=${i}`)
         var pageJsonNormal = await pageNormal.json()
@@ -52,6 +52,7 @@ async function main() {
       console.log(`${i} page success`)
       pageJsonNormal.body.map(({
         displayName,
+        profile,
         score,
         scoreParts,
       }) => {
@@ -65,13 +66,15 @@ async function main() {
           placementNormal,
           displayName,
           score: displayedScore,
-          secondaryScore
+          secondaryScore,
+          profile: profile.split('/').at(-1),
         })
         placementNormal++
       })
 
       pageJsonElite.body.map(({
         displayName,
+        profile,
         score,
         scoreParts,
       }) => {
@@ -85,7 +88,8 @@ async function main() {
           placementElite,
           displayName,
           score: displayedScore,
-          secondaryScore
+          secondaryScore,
+          profile: profile.split('/').at(-1),
         })
         placementElite++
       })
