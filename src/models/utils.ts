@@ -248,7 +248,7 @@ export default class Utils {
 
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < tower.upgrades[i]; j++) {
-                cost += Utils.round5(baseUpgradeCosts[tower.type][i][j] * difficulty * (j < 3 ? 1 - villageDiscount : 1));
+                cost += Utils.round5(baseUpgradeCosts[tower.type][i][j] * difficulty * (tower.type === TowerType.Ace && j == 4 && mk ? 0.9 : 1) *  (j < 3 ? 1 - villageDiscount : 1));
             }
         }
 
