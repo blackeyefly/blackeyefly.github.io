@@ -222,38 +222,128 @@ export default class Utils {
         return Math.floor(n / 5) * 5;
     }
 
+    //aka bankers rounding AKA .net default rounding
+    static roundEven(n : number) {
+        const roundToPlaces = 0;//how many decimal places to round to
+        var x = n * Math.pow(10, roundToPlaces);
+        var r = Math.round(x);
+        var br = Math.abs(x) % 1 === 0.5 ? (r % 2 === 0 ? r : r-1) : r;
+        return br / Math.pow(10, roundToPlaces);
+    }
+    static roundEven5(n : number) {
+        return this.round5( this.roundEven(n) );
+    }
+
+
     // There is some rounding weirdness on non-Medium difficulties and with discounts. May be off by small amounts.
     static cost(
         tower: Tower,
         mk: MK = MK.On,
         difficulty: Difficulty = Difficulty.Medium,
     ) {
-        const villageDiscount: number = [0, 0.15, 0.2, 0.25, 0.1][tower.buffs.discountVillage] + (tower.buffs.discountVillage && MK.On ? 0.02 : 0)
+        const oneThirdFraction = 0.33;//this is what they use not 1/3 and not 0.3
+        let mkIsOn: boolean = mk === MK.On;
+        let villageDiscount: number = [0, 0.15, 0.2, 0.25, 0.1][tower.buffs.discountVillage];
 
-        let cost: number = Utils.floor5(
-            baseCosts[tower.type] *
-            difficulty *
-            (mk && [TowerType.Farm, TowerType.Village].includes(tower.type) ? 0.98 : 1) *
-            (mk && [
-                TowerType.Sniper,
-                TowerType.Sub,
-                TowerType.Buccaneer,
-                TowerType.Ace,
-                TowerType.Heli,
-                TowerType.Mortar,
-                TowerType.Dartling,
-            ].includes(tower.type) ? 0.95 * (tower.buffs.firstMilitary ? 2 / 3 : 1) : 1) *
-            (1 - villageDiscount)
-        ) - (mk && tower.type === TowerType.Farm && tower.buffs.firstFarm ? 100 : 0);
+        if (tower.buffs.discountVillage && mkIsOn)
+            villageDiscount += 0.02; //Insider Trades
+
+        let baseDiscountPercent: number = villageDiscount;
+
+        let baseCostAbsoluteChange: number = 0;
+        switch(tower.type){
+            case TowerType.Farm:
+                if (mkIsOn && tower.buffs.firstFarm)
+                    baseCostAbsoluteChange -= 100; // Farm Subsidy
+
+                if (mkIsOn)
+                    baseDiscountPercent += 0.02; // Flat Pack Buildings
+            break;
+            case TowerType.Village:
+                if (mkIsOn)
+                    baseDiscountPercent += 0.02; // Flat Pack Buildings
+                if (tower.upgrades[2] === 5)
+                    baseCostAbsoluteChange += 5000 * tower.farmsSacrificed;
+            break;
+            case TowerType.Spike:
+                if (mkIsOn && tower.buffs.firstSpike)
+                    baseCostAbsoluteChange -= 150; // First Last Line of Defense
+            break;
+            case TowerType.Boomerang:
+                if (mkIsOn)
+                    baseCostAbsoluteChange -= 50; // Cheap 'Rangs
+
+            break;
+            case TowerType.Sniper:
+            case TowerType.Sub:
+            case TowerType.Buccaneer:
+            case TowerType.Ace:
+            case TowerType.Heli:
+            case TowerType.Mortar:
+            case TowerType.Dartling:
+                //military towers
+                if (mkIsOn)
+                    baseDiscountPercent += 0.05;
+
+                if (mkIsOn && tower.buffs.firstMilitary)
+                    baseDiscountPercent += oneThirdFraction; //  Military Conscription
+            break;
+
+
+
+        }
+
+        let cost: number = Utils.roundEven5(  (baseCosts[tower.type] * difficulty  + baseCostAbsoluteChange) * (1-baseDiscountPercent) );
+        //console.log(` ${tower.type} base cost(&${baseCosts[tower.type]}) * difficulty(${difficulty}) + absoluteChange(&${baseCostAbsoluteChange}) * 1-discount(${baseDiscountPercent}) = ${cost} `);
 
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < tower.upgrades[i]; j++) {
-                cost += Utils.round5(baseUpgradeCosts[tower.type][i][j] * difficulty * (j < 3 ? 1 - villageDiscount : 1));
-            }
-        }
+                let upgradeDiscountPercent = j < 3 ? villageDiscount : 0;
+                let upgradeCostAbsoluteChange: number = 0;
+                switch(tower.type) {
+                    case TowerType.Mortar:
+                        if ( i === 1 && j === 3 && mkIsOn)
+                            upgradeCostAbsoluteChange -= 600; // Budget Battery
+                    break;
+                    case TowerType.Ninja:
+                        if (i === 0 && j === 2 && mkIsOn)
+                            upgradeCostAbsoluteChange -= 100; // Cheaper Doubles
 
-        if (tower.type === TowerType.Village && tower.upgrades[2] === 5) {
-            cost += 5000 * tower.farmsSacrificed;
+                    break;
+                    case TowerType.Druid:
+                        if (i === 1 && j === 1 && mkIsOn)
+                            upgradeCostAbsoluteChange -= 100; //Warm Oak
+                    break;
+                    case TowerType.Ace:
+                        if (j === 4 && mkIsOn)
+                            upgradeDiscountPercent += 0.1; // Aeronautic Subsidy
+                    break;
+                    case TowerType.Spike:
+                        if (i === 0 && j === 3 && mkIsOn)
+                            upgradeCostAbsoluteChange -= 1500; //Hi-Value Mines
+                     break;
+                     case TowerType.Glue:
+                        if (i === 0 && j === 3 && mkIsOn)
+                            upgradeCostAbsoluteChange -= 1000; // Cheaper Solution
+                    break;
+                    case TowerType.Bomb:
+                        if (i === 2 && j === 2 && mkIsOn)
+                            upgradeCostAbsoluteChange -= 100; // Budget Clusters
+                    break;
+                    case TowerType.Sniper:
+                        if (i === 0 && j === 3 && mkIsOn)
+                            upgradeCostAbsoluteChange -= 1000; // Cheaper Maiming
+                    break;
+                    case TowerType.Wizard:
+                        if ( (i === 0 || i == 2) && j === 0 && mkIsOn)
+                        upgradeCostAbsoluteChange -= 25; // Magic Tricks
+                    break;
+                }
+
+                const upgradeCost = Utils.roundEven5( (baseUpgradeCosts[tower.type][i][j] * difficulty + upgradeCostAbsoluteChange) * (1 - upgradeDiscountPercent) );
+                cost += upgradeCost;
+                //console.log(`    upgrade at track ${i+1} tier: ${j+1} base ug cost(&${baseUpgradeCosts[tower.type][i][j]}) * difficulty(${difficulty}) + absoluteChange(&${upgradeCostAbsoluteChange}) * 1-discount(${upgradeDiscountPercent}) = &${upgradeCost} total cost so far: &${cost}`);
+        }
         }
 
         return cost;
@@ -305,13 +395,17 @@ export default class Utils {
             value *= 1.25;
         }
 
-        return Math.floor(value * ((tower.upgrades[1] >= 2 ? (mk ? 1.3 : 1.25) : 1) + (tower.buffs.city ? 0.2 : 0)));
+        return Math.floor(value * (
+                (tower.upgrades[1] >= 2 ? (mk === MK.On ? 1.3 : 1.25) : 1) + // More Valuable Bananas
+                (tower.buffs.city ? 0.2 : 0))
+                );
     }
 
     static incomePerRound(
         tower: Tower,
         mk: MK
     ): number {
+        let mkIsOn: boolean = mk === MK.On;
         if (tower.type === TowerType.Farm) {
             return Utils.numberOfBananas(tower) * Utils.bananaValue(tower, mk) + (tower.upgrades[2] === 5 ? 4000 : 0) * (tower.buffs.city ? 1.2 : 1);
         } else if (tower.type === TowerType.Buccaneer) {
@@ -328,7 +422,7 @@ export default class Utils {
                 income = 800;
             }
     
-            income += mk === MK.On ? 20 : 0;
+            income += mkIsOn ? 20 : 0; //trade agreements
             income *= 1 + 0.1 * Math.min(tower.buffs.centralMarkets, 10);
             income += 10 * tower.buffs.tradeEmpireMerchantmen;
             income += 10 * tower.buffs.tradeEmpireFavored;
@@ -346,6 +440,7 @@ export default class Utils {
     }
 
     static incomePerAbilty(tower: Tower, mk: MK) {
+        let mkIsOn: boolean = mk === MK.On;
         let income = 0;
         if (tower.type === TowerType.Sniper) {
             if (tower.upgrades[1] === 4) {
@@ -355,9 +450,9 @@ export default class Utils {
             }
         } else if (tower.type === TowerType.Heli) {
             if (tower.upgrades[1] === 4) {
-                income = mk ? 1937 : 1550;
+                income = mkIsOn ? 1937 : 1550;
             } else if (tower.upgrades[1] === 5) {
-                income = mk ? 5625 : 4500;
+                income = mkIsOn ? 5625 : 4500;
             }
         } else if (tower.type === TowerType.Druid) {
             if (tower.upgrades[1] >= 4) {
@@ -365,7 +460,7 @@ export default class Utils {
             }
         } else if (tower.type === TowerType.Farm) {
             if (tower.upgrades[1] >= 5) {
-                income = 9000 + (mk ? 1000 : 0);
+                income = 9000 + (mkIsOn ? 1000 : 0);
             }
         }
         return income * (tower.buffs.city && tower.type !== TowerType.Farm ? 1.2 : 1);
@@ -382,7 +477,7 @@ export default class Utils {
         } else if (tower.type === TowerType.Farm) {
             cd = 90;
         }
-        return cd * (1 - (tower.buffs.energizer ? 0.2 : 0) - (mk ? 0.03 : 0));
+        return cd * (1 - (tower.buffs.energizer ? 0.2 : 0) - (mk === MK.On ? 0.03 : 0));
     }
 
     static assertValidUpgrades(upgrades: [number, number, number]): void {
@@ -441,6 +536,6 @@ export default class Utils {
             cost *= multiplier;
         }
 
-        return Math.min(10000000, Math.ceil(buy ? this.round5(cost) : cost * 0.95 + (mk ? 0.05 * 750 : 0)))
+        return Math.min(10000000, Math.ceil(buy ? this.round5(cost) : cost * 0.95 + (mk === MK.On ? 0.05 * 750 : 0)))
     }
 }
