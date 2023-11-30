@@ -527,15 +527,46 @@ export default class Utils {
         return round;
     }
 
-    static actionFigureSellValue(roundPurchased: number, roundSold: number, difficulty: Difficulty, mk: MK, buy = false) {
-        const baseCost = Utils.round5(750 * difficulty);
-        let cost = baseCost;
+    static actionFigureSellValue(roundPurchased: number, roundSold: number, difficulty: Difficulty, mk: MK, buy = false): number {
+        const actionFigureMediumPrice = 750
+        let multiplier = this.actionFigureMultiplier(roundPurchased, roundSold) //this returns an array, such that it remains a 32 bit float
 
-        for(let i = roundPurchased; i < roundSold; i++) {
-            const multiplier = i <= 30 ? 1.1 : (i <= 80 ? 1.05 : 1.02);
-            cost *= multiplier;
+        let cost: number;
+
+        if (buy) {
+            cost = this.roundEven5(Math.floor(actionFigureMediumPrice * difficulty) * multiplier[0]);
         }
+        else {
+            const sellmultipliers = new Float32Array([0.95, 0.05]);
+            let totalmultiplier = new Float32Array(2)
+            totalmultiplier[0] = (multiplier[0] * sellmultipliers[0]); //slight inaccuracies at very large rounds could be caused here
+            totalmultiplier[1] = (mk === MK.On ? sellmultipliers[1] : 0); //and here
+            cost = Math.ceil(this.floor5(actionFigureMediumPrice * difficulty) * (totalmultiplier[0]+totalmultiplier[1]));
+        }
+        return Math.min(cost, 1e7)
+    }
 
-        return Math.min(10000000, Math.ceil(buy ? this.round5(cost) : cost * 0.95 + (mk === MK.On ? 0.05 * 750 : 0)))
+    static actionFigureMultiplier(roundPurchased: number, roundSold: number): Float32Array { 
+        //the game appears to store many values as floats, in my testing all values in this function are 32 bit floats and a pow function was used for each bracket
+
+        let multiplier = new Float32Array([1]);
+    
+        const roundmultiplier = new Float32Array([1.1, 1.05, 1.02]);
+        const powers = new Float32Array(3);
+        /*
+        for(let i = roundPurchased; i < roundSold; i++) {
+            multiplier[0] *= (i <= 30 ? roundmultiplier[0] : (i <= 80 ? roundmultiplier[1] : roundmultiplier[2]));
+        }
+        */
+        
+        powers[0] = Math.max(1.0, Math.pow(roundmultiplier[0], Math.min(31, roundSold) - roundPurchased));                  //bracket 1 (r1-31)
+        powers[1] = Math.max(1.0, Math.pow(roundmultiplier[1], Math.min(50, roundSold - Math.max(31, roundPurchased))));    //bracket 2 (r31-81)
+        powers[2] = Math.max(1.0, Math.pow(roundmultiplier[2], roundSold - Math.max(81, roundPurchased)));                  //bracket 3 (r81-...)
+        
+        multiplier[0] *= powers[0];
+        multiplier[0] *= powers[1];
+        multiplier[0] *= powers[2];
+        
+        return multiplier;
     }
 }
