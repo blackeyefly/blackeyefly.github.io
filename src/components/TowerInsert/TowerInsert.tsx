@@ -5,6 +5,7 @@ import Difficulty from '../../models/Difficulty';
 import MK from '../../models/MK';
 import { Tower } from '../../models/Tower';
 import Utils, { TowerType } from '../../models/utils';
+import {HintTypes, Hints} from '../../models/ItemHints';
 
 interface TowerInsertProps {
   addTower?: (tower: Tower, sacrifice?: boolean, oc?: Tower[]) => void,
@@ -142,6 +143,7 @@ const TowerInsert: FC<TowerInsertProps> = ({
                   label="Discount Villages"
                   type="number"
                   defaultValue={0}
+                  title={Hints.getHint(HintTypes.DiscountVillages)}
                   value={buffs.discountVillage}
                   InputProps={{
                     inputProps: { 
@@ -166,17 +168,18 @@ const TowerInsert: FC<TowerInsertProps> = ({
                   ...buffs,
                   firstFarm: e.target.checked,
                   firstMilitary: e.target.checked,
-                })} />} label="First Farm or First Military Tower" />
+                  firstSpike: e.target.checked,
+                })} />} label="First of its type of: Farm, Military Tower, or Spike" title={Hints.getHint(HintTypes.FirstOfType)} />
                 {farmingModifiers &&
                   <>
-                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, overclock: e.target.checked})}/>} label="Overclock" />
-                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, city: e.target.checked})} />} label="Monkey City" />
+                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, overclock: e.target.checked})}/>} label="Overclock/Ultraboost" title={Hints.getHint(HintTypes.OverclockUltraboost)} />
+                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, city: e.target.checked})} />} label="Monkey City" title={Hints.getHint(HintTypes.MonkeyCity)} />
                     <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, fertilizer: e.target.checked})} disabled={path2 > 2 || path3 > 2 || type !== TowerType.Farm} />} label="Fertilizer" />
                   </>
                 }
                 {abilityFarmingModifiers &&
                   <>
-                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, city: e.target.checked})} />} label="Monkey City" />
+                    <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, city: e.target.checked})} />} label="Monkey City" title={Hints.getHint(HintTypes.MonkeyCity)} />
                     <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, energizer: e.target.checked})} />} label="Energizer" />
                     {type === TowerType.Druid && <TextField
                       required
