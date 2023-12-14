@@ -2,6 +2,7 @@ import { Button, Card, CardContent, Checkbox, Container, FormControlLabel, MenuI
 import React, { FC, useState } from 'react';
 import Difficulty from '../../models/Difficulty';
 import MK from '../../models/MK';
+import {HintTypes, Hints} from '../../models/ItemHints';
 
 interface GlobalOptionsProps {
   setOptions?: (mk: MK, difficulty: Difficulty) => void,
@@ -35,7 +36,7 @@ const GlobalOptions: FC<GlobalOptionsProps> = ({ setOptions, includeMK = true })
               {includeMK &&
                 <FormControlLabel control={
                   <Checkbox defaultChecked onChange={(e) => setMk(e.target.checked ? MK.On : MK.Off)} />
-                } label="Monkey Knowledge" />}
+                } label="Monkey Knowledge"  title={Hints.getHint(HintTypes.MonkeyKnowledge)} />}
               <TextField
                 label="Difficulty"
                 value={difficulty}
