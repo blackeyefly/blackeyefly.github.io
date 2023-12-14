@@ -166,7 +166,8 @@ const TowerInsert: FC<TowerInsertProps> = ({
                   ...buffs,
                   firstFarm: e.target.checked,
                   firstMilitary: e.target.checked,
-                })} />} label="First Farm or First Military Tower" />
+                  firstSpike: e.target.checked,
+                })} />} label="First of its type of: Farm, Military Tower, or Spike" />
                 {farmingModifiers &&
                   <>
                     <FormControlLabel control={<Checkbox onChange={(e) => setBuffs({...buffs, overclock: e.target.checked})}/>} label="Overclock" />

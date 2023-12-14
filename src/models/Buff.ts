@@ -6,6 +6,7 @@ export type Buff = {
     ultraboosts: number;
     firstFarm: boolean;
     firstMilitary: boolean;
+    firstSpike: boolean;
     city: boolean;
     fertilizer: boolean;
     central: boolean;
@@ -26,6 +27,7 @@ export function createBuff(
     central = false,
     centralMarkets = 0,
     firstMilitary = false,
+    firstSpike = false,
     tradeEmpireMerchantmen = 0,
     tradeEmpireFavored = 0,
     energizer = false,
@@ -41,6 +43,7 @@ export function createBuff(
         central,
         centralMarkets,
         firstMilitary,
+        firstSpike,
         tradeEmpireMerchantmen,
         tradeEmpireFavored,
         energizer,
@@ -82,6 +85,12 @@ export function fixBuffs(type: TowerType, buff: Buff): Buff {
             ...createBuff(),
             discountVillage: buff.discountVillage,
             firstMilitary: buff.firstMilitary,
+        };
+    } else if (type === TowerType.Spike) {
+        return {
+            ...createBuff(),
+            discountVillage: buff.discountVillage,
+            firstSpike: buff.firstSpike,
         };
     } else if ([TowerType.Sniper, TowerType.Heli].includes(type)) {
         return {
