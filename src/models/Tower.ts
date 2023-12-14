@@ -11,6 +11,7 @@ export class Tower {
     buffs!: Buff;
     cost!: number;
     income!: number;
+    isCounted!: boolean;
     efficiency!: number;
     sellValue!: number;
     favoredSellValue!: number;
@@ -29,6 +30,9 @@ export class Tower {
 
     showUpgrades() {
         return this.upgrades.join('-');
+    }
+    getTiers() : number {
+        return this.upgrades[0] + this.upgrades[1] + this.upgrades[2] + 1;
     }
 
     showBuffs() {
@@ -53,6 +57,7 @@ export class Tower {
         this.upgrades = upgrades;
         this.buffs = fixBuffs(type, buffs);
         this.type = type;
+        this.isCounted = true;
         this.sacrificeValue = sacrificeValue;
         this.farmsSacrificed = farmsSacrificed;
         this.cost = Utils.cost(this, mk, difficulty);
