@@ -28,15 +28,15 @@ export class Hints {
 			case HintTypes.Efficiency:
 				return "Rounds required to generate income to the total cost of the tower";
 			case HintTypes.FavoredSellEfficiency:
-				return "Like sell effeciency but taking into account having a 004 buccaneer in range";
+				return "Like sell efficiency but taking into account being in range of a 004 buccaneer";
 			case HintTypes.FavoredSellValue:
-				return "Tower sale value with an 004 buccaneer in range";
+				return "Tower sell value while in range of a 004 buccaneer";
 			case HintTypes.SellEfficiency:
-				return "Rounds required to generate income equal to the money one loses when selling the tower";
+				return "Rounds required to generate income equal to the money one loses when buying then selling the tower";
 			case HintTypes.BuffCentralMarketBuccaneer:
-				return "Per central market anywhere on the map buccaneers earn 10% more money capped at 100% more";
+				return "Per central market anywhere on the map, buccaneers earn 10% more money capped at 100% more";
 			case HintTypes.FirstOfType:
-				return "When MK checked item has a discount related to being the first of that type doe to MK";
+				return "When MK checked, item has a discount related to being the first of that type due to MK";
 			case HintTypes.OverclockUltraboost:
 				return "Applies the Overclock or Ultraboost effect, 10x UltraBoosts=Overclock so assumed same, does NOT assume stacking both";
 			case HintTypes.MonkeyCity:
