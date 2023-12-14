@@ -10,7 +10,7 @@ import MK from '../../models/MK';
 interface ParagonDegreeCalculatorProps { }
 
 const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
-    
+
   const [difficulty, setDifficulty] = useState(Difficulty.Medium)
 
   const setOptions = (mk: MK, difficulty: Difficulty) => {
@@ -56,15 +56,15 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
       Math.floor(Math.min(pops / 180, 90000)) +
       2000 * totems
 
-      if (power === 0 ){
-        return 1;
+    if (power < requiredPower(2)) {
+      return 1;
+    }
+    for (let degree = 1; degree <= 100; degree++) {
+      if (power < requiredPower(degree)) {
+        return degree;
       }
-      for (let degree = 1; degree <= 100; degree++) {
-        if (power < requiredPower(degree)) {
-          return degree - 1;
-        }
-      }
-      return 100;
+    }
+    return 100;
   }
 
   return (
@@ -107,7 +107,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
                     max: Utils.paragonCost(type, difficulty) * 3
                   }
                 }}
-                onChange={(e) => setCashSpent(Math.max(0, Math.min(Utils.paragonCost(type, difficulty) * 3, parseInt(e.target.value))))}
+                onChange={(e) => setCashSpent(
+                  Math.max(0, Math.min(Utils.paragonCost(type, difficulty) * 3, parseInt(e.target.value))) || 0
+                )}
                 sx={{ width: "15%" }}
               />
               <TextField
@@ -123,7 +125,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
                     max: Math.ceil(Utils.paragonCost(type, difficulty) * 3 / 0.95)
                   }
                 }}
-                onChange={(e) => setCashSpentSlider(Math.max(0, Math.min(Math.ceil(Utils.paragonCost(type, difficulty) * 3 / 0.95), parseInt(e.target.value))))}
+                onChange={(e) => setCashSpentSlider(
+                  Math.max(0, Math.min(Math.ceil(Utils.paragonCost(type, difficulty) * 3 / 0.95), parseInt(e.target.value))) || 0
+                )}
                 sx={{ width: "15%" }}
               />
               <TextField
@@ -139,7 +143,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
                     max: 100
                   }
                 }}
-                onChange={(e) => setUpgrades(Math.max(0, Math.min(100, parseInt(e.target.value))))}
+                onChange={(e) => setUpgrades(
+                  Math.max(0, Math.min(100, parseInt(e.target.value))) || 0
+                )}
                 sx={{ width: "15%" }}
               />
             </Stack>
@@ -157,7 +163,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
                     max: 16200000
                   }
                 }}
-                onChange={(e) => setPops(Math.max(0, Math.min(16200000, parseInt(e.target.value))))}
+                onChange={(e) => setPops(
+                  Math.max(0, Math.min(16200000, parseInt(e.target.value))) || 0
+                )}
                 sx={{ width: "15%" }}
               />
               <TextField
@@ -173,7 +181,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
                     max: 4050000
                   }
                 }}
-                onChange={(e) => setCashGenerated(Math.max(0, Math.min(4050000, parseInt(e.target.value))))}
+                onChange={(e) => setCashGenerated(
+                  Math.max(0, Math.min(4050000, parseInt(e.target.value))) || 0
+                )}
                 sx={{ width: "15%" }}
               />
               <TextField
@@ -189,7 +199,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
                     max: 9
                   }
                 }}
-                onChange={(e) => setTier5s(Math.max(0, Math.min(9, parseInt(e.target.value))))}
+                onChange={(e) => setTier5s(
+                  Math.max(0, Math.min(9, parseInt(e.target.value))) || 0
+                )}
                 sx={{ width: "15%" }}
               />
               <TextField
@@ -204,7 +216,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
                     min: 0,
                   }
                 }}
-                onChange={(e) => setTotems(Math.max(0, parseInt(e.target.value)))}
+                onChange={(e) => setTotems(
+                  Math.max(0, parseInt(e.target.value)) || 0
+                )}
                 sx={{ width: "15%" }}
               />
             </Stack>
