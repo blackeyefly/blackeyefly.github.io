@@ -84,7 +84,7 @@ const NavBar: FC = () => {
           </Box>
         </Drawer>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Farming Calculators
+          BTD6 Calculators
         </Typography>
       </Toolbar>
     </AppBar>
