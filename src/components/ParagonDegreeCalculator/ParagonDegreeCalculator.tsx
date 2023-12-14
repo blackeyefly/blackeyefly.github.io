@@ -51,9 +51,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     const paragonCost = Utils.paragonCost(type, difficulty);
     const power =
       Math.min(6000 * tier5s, 50000) +
-      Math.min(cashSpent / (paragonCost / 20000), 60000) +
+      Math.floor(Math.min(cashSpent / (paragonCost / 20000), 60000)) +
       Math.min(100 * upgrades, 10000) +
-      Math.min(pops / 180, 90000) +
+      Math.floor(Math.min(pops / 180, 90000)) +
       2000 * totems
 
       if (power === 0 ){
