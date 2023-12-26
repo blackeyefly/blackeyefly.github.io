@@ -36,7 +36,7 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
   const [totems, setTotems] = useState(0);
 
   function requiredPower(degree: number) {
-    return Math.round((50 * Math.pow(degree, 3) + 5025 * Math.pow(degree, 2) + 168324 * degree + 843000) / 600);
+    return (50 * Math.pow(degree, 3) + 5025 * Math.pow(degree, 2) + 168324 * degree + 843000) / 600
   }
 
   function degree(
@@ -51,9 +51,9 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     const paragonCost = Utils.paragonCost(type, difficulty);
     const power =
       Math.min(6000 * tier5s, 50000) +
-      Math.floor(Math.min(cashSpent / (paragonCost / 20000), 60000)) +
+      Math.min(cashSpent / (paragonCost / 20000), 60000) +
       Math.min(100 * upgrades, 10000) +
-      Math.floor(Math.min(pops / 180, 90000)) +
+      Math.min(pops / 180, 90000) +
       2000 * totems
 
     if (power < requiredPower(2)) {
@@ -61,7 +61,7 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     }
     for (let degree = 1; degree <= 100; degree++) {
       if (power < requiredPower(degree)) {
-        return degree;
+        return degree - 1;
       }
     }
     return 100;
