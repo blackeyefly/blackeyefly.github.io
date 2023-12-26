@@ -59,7 +59,7 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     if (power < requiredPower(2)) {
       return 1;
     }
-    for (let degree = 3; degree <= 100; degree++) {
+    for (let degree = 1; degree <= 100; degree++) {
       if (power < requiredPower(degree)) {
         return degree - 1;
       }
