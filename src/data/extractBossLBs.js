@@ -27,7 +27,7 @@ async function main() {
     return
   }
   for (let players = 1; players <= 4; players++) {
-    for (const x of [bossesJson.body[0]]) {
+    for (const x of [bossesJson.body[2]]) {
       const id = x.id
       const name = x.name
       let lbNormal = []
@@ -35,7 +35,7 @@ async function main() {
       let placementNormal = 0
       let placementElite = 0
 
-      for (let i = 1; i <= 40; i++) {
+      for (let i = 1; i <= 30; i++) {
         do {
           var pageNormal = await fetch(`https://data.ninjakiwi.com/btd6/bosses/${id}/leaderboard/standard/${players}?page=${i}`)
           var pageJsonNormal = await pageNormal.json()

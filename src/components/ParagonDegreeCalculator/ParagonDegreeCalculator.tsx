@@ -2,10 +2,12 @@ import React, { FC, useState } from 'react';
 import './ParagonDegreeCalculator.css';
 
 import Utils, { TowerType } from '../../models/utils';
-import { Card, CardContent, Container, MenuItem, Stack, TextField, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent, Container, MenuItem, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import Difficulty from '../../models/Difficulty';
 import GlobalOptions from '../GlobalOptions/GlobalOptions';
 import MK from '../../models/MK';
+import _ from 'lodash';
+import { ExpandMore } from '@mui/icons-material';
 
 interface ParagonDegreeCalculatorProps { }
 
@@ -36,10 +38,16 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
   const [totems, setTotems] = useState(0);
 
   function requiredPower(degree: number) {
-    return (50 * Math.pow(degree, 3) + 5025 * Math.pow(degree, 2) + 168324 * degree + 843000) / 600
+    if (degree === 1) {
+      return 0;
+    } else if (degree === 100) {
+      return 200000;
+    } else {
+      return Math.floor((50 * Math.pow(degree, 3) + 5025 * Math.pow(degree, 2) + 168324 * degree + 843000) / 600);
+    }
   }
 
-  function degree(
+  function power(
     type: TowerType,
     difficulty: Difficulty,
     cashSpent: number,
@@ -49,18 +57,23 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     totems: number
   ) {
     const paragonCost = Utils.paragonCost(type, difficulty);
-    const power =
-      Math.min(6000 * tier5s, 50000) +
-      Math.min(cashSpent / (paragonCost / 20000), 60000) +
+    return Math.min(6000 * tier5s, 50000) +
+      Math.min(Math.floor(cashSpent / (paragonCost / 20000)), 60000) +
       Math.min(100 * upgrades, 10000) +
-      Math.min(pops / 180, 90000) +
-      2000 * totems
+      Math.min(Math.floor(pops / 180), 90000) +
+      2000 * totems;
+  }
 
-    if (power < requiredPower(2)) {
+  function degree(
+    ...args: Parameters<typeof power>
+  ) : number {
+    const paragonPower = power(...args);
+
+    if (paragonPower < requiredPower(2)) {
       return 1;
     }
     for (let degree = 1; degree <= 100; degree++) {
-      if (power < requiredPower(degree)) {
+      if (paragonPower < requiredPower(degree)) {
         return degree - 1;
       }
     }
@@ -223,9 +236,56 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
               />
             </Stack>
             <Typography>
-              Paragon Degree: {degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)}
+              <strong>Paragon Degree:</strong> {degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)}
+            </Typography>
+            <Typography>
+              <strong>Power:</strong> {power(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)} / {requiredPower(Math.min(100, 1 + degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)))}
             </Typography>
           </Stack>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left">
+                    <Typography sx={{fontWeight: 'bold'}} noWrap>
+                      Degree
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="left">
+                    <Typography sx={{fontWeight: 'bold'}} noWrap>
+                      Required Power
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="left">
+                    <Typography sx={{fontWeight: 'bold'}} noWrap>
+                      Pops Required
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {_.range(1, 101).map((d) => {
+                  const paragonDegree = degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems);
+                  const paragonPower = power(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems);
+                  return <TableRow
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell>
+                      {d}
+                    </TableCell>
+                    <TableCell>
+                      {requiredPower(d)}
+                    </TableCell>
+                    <TableCell>
+                      {
+                        (requiredPower(d) - paragonPower) * 180
+                      }
+                    </TableCell>
+                  </TableRow>
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Stack>
       </CardContent>
     </Card>
