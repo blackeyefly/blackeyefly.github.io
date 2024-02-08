@@ -528,7 +528,7 @@ export default class Utils {
     }
 
     static actionFigureSellValue(roundPurchased: number, roundSold: number, difficulty: Difficulty, mk: MK, buy = false): number {
-        const actionFigureMediumPrice = 750
+        const actionFigureMediumPrice = 700
         let multiplier = this.actionFigureMultiplier(roundPurchased, roundSold) //this returns an array, such that it remains a 32 bit float
 
         let cost: number;
