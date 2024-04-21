@@ -231,7 +231,7 @@ export default class Utils {
         return br / Math.pow(10, roundToPlaces);
     }
     static roundEven5(n : number) {
-        return this.round5( this.roundEven(n) );
+        return this.roundEven(n / 5) * 5;
     }
 
 
@@ -293,11 +293,12 @@ export default class Utils {
 
         }
 
-        let cost: number = Utils.roundEven5(  (baseCosts[tower.type] * difficulty  + baseCostAbsoluteChange) * (1-baseDiscountPercent) );
+        let cost: number = Utils.roundEven5( (baseCosts[tower.type] * difficulty) + baseCostAbsoluteChange) * (1-baseDiscountPercent) );
         //console.log(` ${tower.type} base cost(&${baseCosts[tower.type]}) * difficulty(${difficulty}) + absoluteChange(&${baseCostAbsoluteChange}) * 1-discount(${baseDiscountPercent}) = ${cost} `);
 
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < tower.upgrades[i]; j++) {
+                let adjustedUpgradeCost = Math.floor( baseUpgradeCosts[tower.type][i][j] * difficulty );
                 let upgradeDiscountPercent = j < 3 ? villageDiscount : 0;
                 let upgradeCostAbsoluteChange: number = 0;
                 switch(tower.type) {
@@ -316,7 +317,7 @@ export default class Utils {
                     break;
                     case TowerType.Ace:
                         if (j === 4 && mkIsOn)
-                            upgradeDiscountPercent += 0.1; // Aeronautic Subsidy
+                            adjustedUpgradeCost = adjustedUpgradeCost - Math.floor(adjustedUpgradeCost * 0.1); // Aeronautic Subsidy
                     break;
                     case TowerType.Spike:
                         if (i === 0 && j === 3 && mkIsOn)
@@ -340,7 +341,7 @@ export default class Utils {
                     break;
                 }
 
-                const upgradeCost = Utils.roundEven5( (baseUpgradeCosts[tower.type][i][j] * difficulty + upgradeCostAbsoluteChange) * (1 - upgradeDiscountPercent) );
+                const upgradeCost = Utils.roundEven5( (adjustedUpgradeCost + upgradeCostAbsoluteChange) * (1 - upgradeDiscountPercent) );
                 cost += upgradeCost;
                 //console.log(`    upgrade at track ${i+1} tier: ${j+1} base ug cost(&${baseUpgradeCosts[tower.type][i][j]}) * difficulty(${difficulty}) + absoluteChange(&${upgradeCostAbsoluteChange}) * 1-discount(${upgradeDiscountPercent}) = &${upgradeCost} total cost so far: &${cost}`);
         }
