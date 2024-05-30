@@ -293,7 +293,7 @@ export default class Utils {
 
         }
 
-        let cost: number = Utils.roundEven5( (baseCosts[tower.type] * difficulty) + baseCostAbsoluteChange) * (1-baseDiscountPercent) );
+        let cost: number = Utils.roundEven5(((baseCosts[tower.type] * difficulty) + baseCostAbsoluteChange) * (1-baseDiscountPercent) );
         //console.log(` ${tower.type} base cost(&${baseCosts[tower.type]}) * difficulty(${difficulty}) + absoluteChange(&${baseCostAbsoluteChange}) * 1-discount(${baseDiscountPercent}) = ${cost} `);
 
         for (let i = 0; i < 3; i++) {
