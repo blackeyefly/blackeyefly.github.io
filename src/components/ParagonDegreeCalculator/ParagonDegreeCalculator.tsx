@@ -37,7 +37,34 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
   const [totems, setTotems] = useState(0);
 
   function requiredPower(degree: number) {
-    return (50 * Math.pow(degree, 3) + 5025 * Math.pow(degree, 2) + 168324 * degree + 843000) / 600
+    if (degree === 1) {
+      return 0;
+    }
+    return Math.floor((50 * Math.pow(degree, 3) + 5025 * Math.pow(degree, 2) + 168324 * degree + 843000) / 600)
+  }
+
+  function requiredPowerToNext(degree: number) {
+    if (degree >= 100) {
+      return 0;
+    }
+    return requiredPower(degree + 1) - requiredPower(degree);
+  }
+
+  function paragonPower(
+    type: TowerType,
+    difficulty: Difficulty,
+    cashSpent: number,
+    upgrades: number,
+    pops: number,
+    tier5s: number,
+    totems: number
+  ) {
+    const paragonCost = Utils.paragonCost(type, difficulty);
+    return Math.min(6000 * tier5s, 50000) +
+    Math.min(cashSpent / (paragonCost / 20000), 60000) +
+    Math.min(100 * upgrades, 10000) +
+    Math.min(pops / 180, 90000) +
+    2000 * totems
   }
 
   function degree(
@@ -49,13 +76,14 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     tier5s: number,
     totems: number
   ) {
-    const paragonCost = Utils.paragonCost(type, difficulty);
-    const power =
-      Math.min(6000 * tier5s, 50000) +
-      Math.min(cashSpent / (paragonCost / 20000), 60000) +
-      Math.min(100 * upgrades, 10000) +
-      Math.min(pops / 180, 90000) +
-      2000 * totems
+    // const paragonCost = Utils.paragonCost(type, difficulty);
+    // const power =
+    //   Math.min(6000 * tier5s, 50000) +
+    //   Math.min(cashSpent / (paragonCost / 20000), 60000) +
+    //   Math.min(100 * upgrades, 10000) +
+    //   Math.min(pops / 180, 90000) +
+    //   2000 * totems
+    const power = paragonPower(type, difficulty, cashSpent, upgrades, pops, tier5s, totems);
 
     if (power < requiredPower(2)) {
       return 1;
@@ -222,9 +250,19 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
                 )}
                 sx={{ width: "15%" }}
               />
-            </Stack>
+          </Stack>
             <Typography>
               Paragon Degree: {degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)}
+            </Typography>
+            <Typography>
+              Paragon Power: {Math.floor(paragonPower(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))}
+            </Typography>
+            <Typography>
+              Power to Next Degree: {
+                Math.floor(paragonPower(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)) - requiredPower(degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))
+              } / {
+                requiredPowerToNext(degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))
+              }
             </Typography>
           </Stack>
         </Stack>

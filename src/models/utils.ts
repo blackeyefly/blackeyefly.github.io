@@ -336,7 +336,7 @@ export default class Utils {
                             upgradeCostAbsoluteChange -= 1000; // Cheaper Maiming
                     break;
                     case TowerType.Wizard:
-                        if ( (i === 0 || i == 2) && j === 0 && mkIsOn)
+                        if ( (i === 0 || i === 2) && j === 0 && mkIsOn)
                         upgradeCostAbsoluteChange -= 25; // Magic Tricks
                     break;
                 }
