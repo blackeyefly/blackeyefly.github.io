@@ -31,35 +31,34 @@ const GlobalOptions: FC<GlobalOptionsProps> = ({ setOptions, includeMK = true })
     <Card>
       <CardContent>
         <Container maxWidth="xl">
-          <form onSubmit={handleSubmit}>
-            <Stack spacing={4} direction="row">
-              {includeMK &&
-                <FormControlLabel control={
-                  <Checkbox defaultChecked onChange={(e) => setMk(e.target.checked ? MK.On : MK.Off)} />
-                } label="Monkey Knowledge"  title={Hints.getHint(HintTypes.MonkeyKnowledge)} />}
-              <TextField
-                label="Difficulty"
-                value={difficulty}
-                sx={{ width: "20%" }}
-                onChange={(e) => setDifficulty(e.target.value)}
-                select
-              >
-                <MenuItem value="Easy">Easy</MenuItem>
-                <MenuItem value="Medium">Medium</MenuItem>
-                <MenuItem value="Hard">Hard</MenuItem>
-                <MenuItem value="Impoppable">Impoppable</MenuItem>
-              </TextField>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-              >
-                <Typography>
-                  Set Options
-                </Typography>
-              </Button>
-            </Stack>
-          </form>
+          <Stack spacing={4} direction="row">
+            {includeMK &&
+              <FormControlLabel control={
+                <Checkbox defaultChecked onChange={(e) => {
+                  setMk(e.target.checked ? MK.On : MK.Off);
+                  if (setOptions) {
+                    setOptions(e.target.checked ? MK.On : MK.Off, difficultyDict[difficulty]);
+                  }
+                }} />
+              } label="Monkey Knowledge"  title={Hints.getHint(HintTypes.MonkeyKnowledge)} />}
+            <TextField
+              label="Difficulty"
+              value={difficulty}
+              sx={{ width: "20%" }}
+              onChange={(e) => {
+                setDifficulty(e.target.value);
+                if (setOptions) {
+                  setOptions(mk, difficultyDict[e.target.value]);
+                }
+              }}
+              select
+            >
+              <MenuItem value="Easy">Easy</MenuItem>
+              <MenuItem value="Medium">Medium</MenuItem>
+              <MenuItem value="Hard">Hard</MenuItem>
+              <MenuItem value="Impoppable">Impoppable</MenuItem>
+            </TextField>
+          </Stack>
         </Container>
       </CardContent>
     </Card>
