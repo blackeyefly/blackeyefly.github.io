@@ -21,6 +21,7 @@ export enum TowerType {
     Ninja = "Ninja",
     Alchemist = "Alchemist",
     Druid = "Druid",
+    Mermonkey = "Mermonkey",
     Farm = "Farm",
     Spike = "Spike",
     Village = "Village",
@@ -39,7 +40,7 @@ const baseCosts: EnumDictionary<TowerType, number> = {
     [TowerType.None]: 0,
     [TowerType.Dart]: 200,
     [TowerType.Boomerang]: 315,
-    [TowerType.Bomb]: 525,
+    [TowerType.Bomb]: 375,
     [TowerType.Tack]: 260,
     [TowerType.Ice]: 500,
     [TowerType.Glue]: 225,
@@ -55,6 +56,7 @@ const baseCosts: EnumDictionary<TowerType, number> = {
     [TowerType.Ninja]: 400,
     [TowerType.Alchemist]: 550,
     [TowerType.Druid]: 400,
+    [TowerType.Mermonkey]: 600,
     [TowerType.Spike]: 1000,
     [TowerType.Farm]: 1250,
     [TowerType.Village]: 1200,
@@ -82,6 +84,7 @@ const paragonCosts: EnumDictionary<TowerType, number> = {
     [TowerType.Ninja]: 500000,
     [TowerType.Alchemist]: 0,
     [TowerType.Druid]: 0,
+    [TowerType.Mermonkey]: 0,
     [TowerType.Spike]: 0,
     [TowerType.Farm]: 0,
     [TowerType.Village]: 0,
@@ -90,7 +93,7 @@ const paragonCosts: EnumDictionary<TowerType, number> = {
 }
 
 const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
-    [TowerType.None]: [[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],[0, 0, 0, 0, 0],],
+    [TowerType.None]: [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0],],
     [TowerType.Dart]: [
         [140, 220, 300, 1800, 15000],
         [100, 190, 400, 7500, 45000],
@@ -102,9 +105,9 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [100, 300, 1300, 2400, 50000],
     ],
     [TowerType.Bomb]: [
-        [350, 650, 1200, 3200, 55000],
-        [250, 400, 1100, 3100, 25500],
-        [200, 300, 800, 2800, 28000],
+        [250, 650, 1200, 3200, 55000],
+        [250, 400, 1100, 3350, 28000],
+        [200, 300, 800, 2800, 25500],
     ],
     [TowerType.Tack]: [
         [150, 300, 600, 3500, 45500],
@@ -119,11 +122,11 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     [TowerType.Glue]: [
         [200, 300, 2500, 5000, 22000],
         [100, 970, 2100, 3850, 16000],
-        [280, 400, 3600, 3400, 24000],
+        [280, 400, 4000, 3400, 24000],
     ],
     [TowerType.Sniper]: [
         [350, 1300, 3000, 5650, 32000],
-        [250, 450, 2400, 7600, 14500],
+        [250, 450, 2100, 7600, 14500],
         [450, 450, 2900, 4100, 14700],
     ],
     [TowerType.Sub]: [
@@ -132,7 +135,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [450, 1000, 1100, 3000, 25000],
     ],
     [TowerType.Buccaneer]: [
-        [275, 425, 3050, 7200, 25000],
+        [275, 425, 3050, 8000, 25000],
         [550, 500, 900, 4900, 26000],
         [200, 350, 2400, 5500, 23000],
     ],
@@ -148,7 +151,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     ],
     [TowerType.Mortar]: [
         [500, 500, 900, 8000, 36000],
-        [300, 500, 900, 5900, 32000],
+        [300, 500, 900, 6500, 38000],
         [200, 500, 900, 10500, 40000],
     ],
     [TowerType.Dartling]: [
@@ -172,7 +175,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [300, 450, 2250, 5000, 40000],
     ],
     [TowerType.Alchemist]: [
-        [250, 350, 1300, 2950, 60000],
+        [250, 350, 1300, 2950, 48000],
         [250, 475, 3000, 4500, 45000],
         [650, 450, 1000, 2750, 40000],
     ],
@@ -181,9 +184,14 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [250, 350, 1050, 4900, 35000],
         [100, 300, 600, 2500, 45000],
     ],
+    [TowerType.Mermonkey]: [
+        [250, 300, 2100, 3600, 29000],
+        [300, 400, 2800, 8000, 52000],
+        [200, 380, 2800, 4600, 25000]
+    ],
     [TowerType.Spike]: [
         [800, 600, 2300, 9500, 125000],
-        [600, 800, 2500, 5000, 42000],
+        [600, 800, 2500, 6000, 42000],
         [150, 400, 1300, 3600, 30000],
     ],
     [TowerType.Farm]: [
@@ -204,7 +212,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     [TowerType.BeastHandler]: [
         [160, 810, 2010, 16000, 55000],
         [175, 830, 2065, 9500, 60000],
-        [190, 860, 2120, 7800, 30000],
+        [190, 860, 2120, 9000, 30000],
     ],
 }
 
@@ -445,7 +453,7 @@ export default class Utils {
         let income = 0;
         if (tower.type === TowerType.Sniper) {
             if (tower.upgrades[1] === 4) {
-                income = 1200;
+                income = 1100;
             } else if (tower.upgrades[1] === 5) {
                 income = 3000
             }
