@@ -348,9 +348,9 @@ export default class Utils {
                 cost += upgradeCost;
                 //console.log(`    upgrade at track ${i+1} tier: ${j+1} base ug cost(&${baseUpgradeCosts[tower.type][i][j]}) * difficulty(${difficulty}) + absoluteChange(&${upgradeCostAbsoluteChange}) * 1-discount(${upgradeDiscountPercent}) = &${upgradeCost} total cost so far: &${cost}`);
             }
-            if (tower.type === TowerType.Village && tower.upgrades[2] === 5) {
-                cost += 5000 * tower.buffs.farmsInRange;
-            }
+        }
+        if (tower.type === TowerType.Village && tower.upgrades[2] === 5) {
+            cost += 5000 * tower.buffs.farmsInRange;
         }
         return cost;
     }
