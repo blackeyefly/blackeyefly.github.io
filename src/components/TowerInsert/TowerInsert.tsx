@@ -36,7 +36,10 @@ const TowerInsert: FC<TowerInsertProps> = ({
   const [path3, setPath3] = useState(0);
   const [paragon, setParagon] = useState(false);
   const [buffs, setBuffs] = useState(createBuff());
-  const [remove, setRemove] = useState(false);
+  // const [remove, setRemove] = useState(false);
+  const [monkeyopValue, setMonkeyopValue] = useState(0);
+  const [monkeyopFarms, setMonkeyopFarms] = useState(0);
+
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -50,7 +53,7 @@ const TowerInsert: FC<TowerInsertProps> = ({
             buffs,
             sacrificedValue,
             farmsSacrificed,
-          ), remove && path3 === 5
+          )
         )
     } else {
         const oc = new Tower(
@@ -201,11 +204,42 @@ const TowerInsert: FC<TowerInsertProps> = ({
                 {[TowerType.Engineer, TowerType.Buccaneer].includes(type) &&
                   <FormControlLabel control={<Checkbox onChange={(e) => setParagon(e.target.checked)} />} label="Paragon" />
                 }
-                  {
-                    type === TowerType.Village && path3 === 5 ?
-                    <FormControlLabel control={<Checkbox onChange={(e) => setRemove(e.target.checked)} />} label="Remove Sacrifices from Table" /> :
-                    null
-                  }
+                {
+                  type === TowerType.Village && path3 === 5 ?
+                    <>
+                      <TextField
+                        required
+                        id="farms"
+                        label="Farms in Range"
+                        type="number"
+                        defaultValue={0}
+                        value={buffs.farmsInRange}
+                        InputProps={{
+                          inputProps: { 
+                            min: 0 
+                          }
+                        }}
+                        onChange={(e) => setBuffs({...buffs, farmsInRange: parseInt(e.target.value)})}
+                        sx={{ width: "15%" }}
+                      />
+                      <TextField
+                        required
+                        id="farmsValue"
+                        label="Total Value of Farms"
+                        type="number"
+                        defaultValue={0}
+                        value={buffs.farmsValue}
+                        InputProps={{
+                          inputProps: { 
+                            min: 0 
+                          }
+                        }}
+                        onChange={(e) => setBuffs({...buffs, farmsValue: parseInt(e.target.value)})}
+                        sx={{ width: "15%" }}
+                      />
+                    </> :
+                  null
+                }
               </Stack>
             </FormControl>
           </form>

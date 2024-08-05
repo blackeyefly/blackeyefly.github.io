@@ -15,6 +15,7 @@ export type Buff = {
     tradeEmpireFavored: number;
     energizer: boolean;
     farmsInRange: number;
+    farmsValue: number;
 }
 
 export function createBuff(
@@ -32,6 +33,7 @@ export function createBuff(
     tradeEmpireFavored = 0,
     energizer = false,
     farmsInRange = 0,
+    farmsValue = 0,
 ): Buff {
     return {
         discountVillage,
@@ -48,6 +50,7 @@ export function createBuff(
         tradeEmpireFavored,
         energizer,
         farmsInRange,
+        farmsValue,
     }
 }
 
@@ -79,6 +82,8 @@ export function fixBuffs(type: TowerType, buff: Buff): Buff {
             ...createBuff(),
             discountVillage: buff.discountVillage,
             city: buff.city,
+            farmsInRange: buff.farmsInRange,
+            farmsValue: buff.farmsValue,
         }
     } else if ([TowerType.Sub, TowerType.Ace, TowerType.Mortar, TowerType.Dartling].includes(type)) {
         return {

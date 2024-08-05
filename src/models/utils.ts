@@ -270,8 +270,6 @@ export default class Utils {
             case TowerType.Village:
                 if (mkIsOn)
                     baseDiscountPercent += 0.02; // Flat Pack Buildings
-                if (tower.upgrades[2] === 5)
-                    baseCostAbsoluteChange += 5000 * tower.farmsSacrificed;
             break;
             case TowerType.Spike:
                 if (mkIsOn && tower.buffs.firstSpike)
@@ -296,9 +294,6 @@ export default class Utils {
                 if (mkIsOn && tower.buffs.firstMilitary)
                     baseDiscountPercent += oneThirdFraction; //  Military Conscription
             break;
-
-
-
         }
 
         let cost: number = Utils.roundEven5(((baseCosts[tower.type] * difficulty) + baseCostAbsoluteChange) * (1-baseDiscountPercent) );
@@ -352,9 +347,11 @@ export default class Utils {
                 const upgradeCost = Utils.roundEven5( (adjustedUpgradeCost + upgradeCostAbsoluteChange) * (1 - upgradeDiscountPercent) );
                 cost += upgradeCost;
                 //console.log(`    upgrade at track ${i+1} tier: ${j+1} base ug cost(&${baseUpgradeCosts[tower.type][i][j]}) * difficulty(${difficulty}) + absoluteChange(&${upgradeCostAbsoluteChange}) * 1-discount(${upgradeDiscountPercent}) = &${upgradeCost} total cost so far: &${cost}`);
+            }
+            if (tower.type === TowerType.Village && tower.upgrades[2] === 5) {
+                cost += 5000 * tower.buffs.farmsInRange;
+            }
         }
-        }
-
         return cost;
     }
 
@@ -441,7 +438,7 @@ export default class Utils {
             if (tower.upgrades[2] < 5) {
                 return 0;
             } else {
-                return Math.max(200 * Math.floor(tower.sacrificeValue / 2000), 200) + 2500;
+                return Math.max(200 * Math.floor(tower.buffs.farmsValue / 2000), 200) + 1000;
             }
         } else {
             return 0;

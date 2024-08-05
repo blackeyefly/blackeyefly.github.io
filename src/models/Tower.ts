@@ -24,10 +24,6 @@ export class Tower {
     abilitySellEfficiency!: number;
     abilityFavoredSellEfficiency!: number;
 
-    // Monkeyopolis specific
-    sacrificeValue = 0;
-    farmsSacrificed = 0;
-
     showUpgrades() {
         return this.upgrades.join('-');
     }
@@ -58,8 +54,6 @@ export class Tower {
         this.buffs = fixBuffs(type, buffs);
         this.type = type;
         this.isCounted = true;
-        this.sacrificeValue = sacrificeValue;
-        this.farmsSacrificed = farmsSacrificed;
         this.cost = Utils.cost(this, mk, difficulty);
         this.income = Utils.incomePerRound(this, mk);
         this.efficiency = this.cost / this.income;
