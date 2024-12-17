@@ -69,7 +69,7 @@ const paragonCosts: EnumDictionary<TowerType, number> = {
     [TowerType.Dart]: 150000,
     [TowerType.Boomerang]: 250000,
     [TowerType.Bomb]: 0,
-    [TowerType.Tack]: 0,
+    [TowerType.Tack]: 200000,
     [TowerType.Ice]: 0,
     [TowerType.Glue]: 0,
     [TowerType.Sniper]: 0,
@@ -155,7 +155,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [200, 500, 900, 9500, 40000],
     ],
     [TowerType.Dartling]: [
-        [300, 900, 3650, 11100, 75000],
+        [300, 900, 3000, 11750, 75000],
         [250, 950, 4800, 5550, 60000],
         [150, 1200, 3400, 12000, 58000],
     ],
@@ -207,7 +207,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     [TowerType.Engineer]: [
         [500, 400, 575, 2500, 32000],
         [250, 350, 900, 13500, 72000],
-        [450, 220, 450, 3600, 48000],
+        [450, 220, 450, 3600, 45000],
     ],
     [TowerType.BeastHandler]: [
         [160, 810, 2010, 16000, 55000],
