@@ -15,19 +15,10 @@ const style = {
 };
 
 function BossHP() {
-    const [boss, setBoss] = useState('Bloonarius');
-    const [multiplier, setMultiplier] = useState(1);
-    const [players, setPlayers] = useState(1);
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-    const setOptions = (boss: string, multiplier: number, players: number) => {
-        setBoss(boss);
-        setMultiplier(multiplier);
-        setPlayers(players);
-    }
   
     return (
       <>

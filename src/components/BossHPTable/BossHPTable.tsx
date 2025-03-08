@@ -54,10 +54,10 @@ const BossHPTable: FC<BossHPTableProps> = () => {
                 value={percentage}
                 InputProps={{
                   inputProps: { 
-                    min: 1
+                    min: 0
                   }
                 }}
-                onChange={(e) => setPercentage(parseInt(e.target.value))}
+                onChange={(e) => setPercentage(parseInt(e.target.value) || 1)}
                 sx={{ width: "15%" }}
               />
               <TextField
