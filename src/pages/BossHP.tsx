@@ -1,7 +1,8 @@
 import HelpIcon from '@mui/icons-material/Help';
 import { AppBar, Card, Container, IconButton, Modal, Stack, Toolbar, Typography } from '@mui/material';
 import { useState } from 'react';
-import LeaderboardTable from '../components/LeaderboardTable/LeaderboardTable';
+import BossHPTable from '../components/BossHPTable/BossHPTable';
+
 
 const style = {
   position: 'absolute',
@@ -13,7 +14,7 @@ const style = {
   p: 4,
 };
 
-function PastLeaderboards() {
+function BossHP() {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
@@ -34,7 +35,7 @@ function PastLeaderboards() {
             justifyContent="center"
           >
             <Typography variant="h2" align="center">
-              Past Boss Leaderboards
+              Boss HP Calculator
               <IconButton color="primary" aria-label="help" component="label" onClick={handleOpen}>
                 <HelpIcon />
               </IconButton>
@@ -44,16 +45,16 @@ function PastLeaderboards() {
               >
                 <Card sx={style}>
                   <Typography variant="body1" align="center">
-                    This page is designed to show past boss leaderboards. It only displays solo times, currently.
+                    This page is designed to help calculate the HP of bosses in Bloons TD 6.
                   </Typography>
                 </Card>
               </Modal>
             </Typography>
-            <LeaderboardTable bossId="" />
+            <BossHPTable />
           </Stack>
         </Container>
       </>
     );  
 }
 
-export default PastLeaderboards;
+export default BossHP;

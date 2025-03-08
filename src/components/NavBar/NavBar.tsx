@@ -75,6 +75,11 @@ const NavBar: FC = () => {
                   Paragon Degree
                 </ListItemButton>
               </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton href="/#/bosshp">
+                  Boss HP
+                </ListItemButton>
+              </ListItem>
               {/* <ListItem disablePadding>
                 <ListItemButton href="/nopage">
                   NoPage
