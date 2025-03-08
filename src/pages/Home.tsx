@@ -125,7 +125,7 @@ function Home() {
         <AppBar position="relative">
           <Toolbar>
             <Typography variant="h6" color="inherit" noWrap>
-              Farming Calculators
+              BTD6 Calculators
             </Typography>
           </Toolbar>
         </AppBar>
