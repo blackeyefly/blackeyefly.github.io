@@ -40,8 +40,11 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
   function requiredPower(degree: number) {
     if (degree === 1) {
       return 0;
+    } else if (degree === 100) {
+      return 200000; // Degree 100 is an exception, requiring 100 power
+    } else {
+      return Math.floor((50 * Math.pow(degree, 3) + 5025 * Math.pow(degree, 2) + 168324 * degree + 843000) / 600)
     }
-    return Math.floor((50 * Math.pow(degree, 3) + 5025 * Math.pow(degree, 2) + 168324 * degree + 843000) / 600)
   }
 
   function requiredPowerToNext(degree: number) {
