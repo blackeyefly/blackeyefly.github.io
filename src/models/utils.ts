@@ -30,11 +30,24 @@ export enum TowerType {
     None = "",
 }
 
+export enum BossType{
+    Bloonarius = "Bloonarius",
+    Lych = "Lych",
+    Vortex = "Vortex",
+    Dreadbloon = "Dreadbloon",
+    Phayze = "Phayze",
+    Blastapopoulos = "Blastapopoulos",
+}
+
 type EnumDictionary<T extends string | symbol | number, U> = {
     [K in T]: U;
 };
 
 type Upgrades = number[][];
+
+type BossHPs = number[][];
+
+type BossSegments = number[];
 
 const baseCosts: EnumDictionary<TowerType, number> = {
     [TowerType.None]: 0,
@@ -214,6 +227,42 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [175, 830, 2065, 9500, 60000],
         [190, 860, 2120, 9000, 30000],
     ],
+}
+
+const baseBossHPs: EnumDictionary<BossType, BossHPs> = {
+    [BossType.Bloonarius]: [
+        [20000, 75000, 350000, 750000, 3000000],
+        [50000, 300000, 2000000, 8000000, 40000000]
+    ],
+    [BossType.Lych]: [
+        [14000, 52500, 220000, 525000, 2100000],
+        [30000, 180000, 1100000, 4800000, 24000000]
+    ],
+    [BossType.Vortex]: [
+        [20000, 62800, 294000, 628000, 2512000],
+        [41800, 251000, 1675000, 6700000, 33500000]
+    ],
+    [BossType.Dreadbloon]: [
+        [7500, 25000, 120000, 260000, 1000000],
+        [15000, 90000, 650000, 2625000, 12500000]
+    ],
+    [BossType.Phayze]: [
+        [10000, 37500, 175000, 375000, 1500000],
+        [20000, 120000, 800000, 3200000, 16000000]
+    ],
+    [BossType.Blastapopoulos]: [
+        [17500, 65000, 300000, 650000, 3000000],
+        [43000, 270000, 1700000, 7000000, 35000000]
+    ],
+}
+
+const bossSegments: EnumDictionary<BossType, BossSegments> = {
+    [BossType.Bloonarius]: [4, 8],
+    [BossType.Lych]: [6, 8],
+    [BossType.Vortex]: [4, 8],
+    [BossType.Dreadbloon]: [4, 4],
+    [BossType.Phayze]: [4, 6],
+    [BossType.Blastapopoulos]: [5, 8],
 }
 
 export default class Utils {
@@ -574,5 +623,31 @@ export default class Utils {
         multiplier[0] *= powers[2];
         
         return multiplier;
+    }
+
+    static bossHP(boss: BossType, elite: boolean, tier: number, percentage: number, players: number): number {
+        if (players < 1 || players > 4) {
+            throw new Error("Invalid number of players");
+        }
+        if (tier < 1 || tier > 5) {
+            throw new Error("Invalid tier");
+        }
+
+        let hp = baseBossHPs[boss][elite ? 1 : 0][tier - 1];
+        hp = hp * (percentage / 100) * (1 + 0.2 * (players - 1));
+        return hp;
+    }
+
+    static bossSegmentHP(boss: BossType, elite: boolean, tier: number, percentage: number, players: number): number {
+        if (players < 1 || players > 4) {
+            throw new Error("Invalid number of players");
+        }
+        if (tier < 1 || tier > 5) {
+            throw new Error("Invalid tier");
+        }
+
+        let hp = baseBossHPs[boss][elite ? 1 : 0][tier - 1] / bossSegments[boss][elite ? 1 : 0];
+        hp = hp * (percentage / 100) * (1 + 0.2 * (players - 1));
+        return hp;
     }
 }

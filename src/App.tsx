@@ -7,8 +7,8 @@ import ActionFigure from './pages/ActionFigure';
 import Costs from './pages/Costs';
 import Home from './pages/Home';
 import NoPage from './pages/NoPage';
-import PastLeaderboards from './pages/PastLeaderboards';
 import ParagonDegree from './pages/ParagonDegree';
+import BossHP from './pages/BossHP';
 
 export default function App() {
     return (
@@ -21,6 +21,7 @@ export default function App() {
             <Route path="/actionfigure" element={<ActionFigure />} />
             {/* <Route path="/bossleaderboards" element={<PastLeaderboards />} /> */}
             <Route path="/paragondegree" element={<ParagonDegree />} />
+            <Route path="/bosshp" element={<BossHP />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
