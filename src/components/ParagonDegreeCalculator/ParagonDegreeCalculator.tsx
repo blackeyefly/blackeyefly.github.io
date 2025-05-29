@@ -59,6 +59,7 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     type: TowerType,
     difficulty: Difficulty,
     cashSpent: number,
+    cashSpentSlider: number,
     upgrades: number,
     pops: number,
     tier5s: number,
@@ -66,7 +67,7 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
   ) {
     const paragonCost = Utils.paragonCost(type, difficulty);
     return Math.min(6000 * tier5s, 50000) +
-    Math.min(cashSpent / (paragonCost / 20000), 60000) +
+    Math.min(cashSpent / (paragonCost / 20000) + cashSpentSlider / ((paragonCost * 1.05) / 20000), 60000) +
     Math.min(100 * upgrades, 10000) +
     Math.min(pops / 180, 90000) +
     2000 * totems
@@ -76,6 +77,7 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     type: TowerType,
     difficulty: Difficulty,
     cashSpent: number,
+    cashSpentSlider: number,
     upgrades: number,
     pops: number,
     tier5s: number,
@@ -88,7 +90,7 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     //   Math.min(100 * upgrades, 10000) +
     //   Math.min(pops / 180, 90000) +
     //   2000 * totems
-    const power = paragonPower(type, difficulty, cashSpent, upgrades, pops, tier5s, totems);
+    const power = paragonPower(type, difficulty, cashSpent, cashSpentSlider, upgrades, pops, tier5s, totems);
 
     if (power < requiredPower(2)) {
       return 1;
@@ -257,16 +259,16 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
               />
           </Stack>
             <Typography>
-              Paragon Degree: {degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)}
+              Paragon Degree: {degree(type, difficulty, cashSpent, cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)}
             </Typography>
             <Typography>
-              Paragon Power: {Math.floor(paragonPower(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))}
+              Paragon Power: {Math.floor(paragonPower(type, difficulty, cashSpent, cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))}
             </Typography>
             <Typography>
               Power to Next Degree: {
-                Math.floor(paragonPower(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)) - requiredPower(degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))
+                Math.floor(paragonPower(type, difficulty, cashSpent, cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems)) - requiredPower(degree(type, difficulty, cashSpent, cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))
               } / {
-                requiredPowerToNext(degree(type, difficulty, cashSpent + 0.95 * cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))
+                requiredPowerToNext(degree(type, difficulty, cashSpent, cashSpentSlider, upgrades, pops + 4 * cashGenerated, tier5s, totems))
               }
             </Typography>
           </Stack>
