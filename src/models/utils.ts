@@ -9,6 +9,7 @@ export enum TowerType {
     Tack = "Tack",
     Ice = "Ice",
     Glue = "Glue",
+    Desperado = "Desperado",
     Sniper = "Sniper",
     Sub = "Sub",
     Buccaneer = "Buccaneer",
