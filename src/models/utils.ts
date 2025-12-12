@@ -132,7 +132,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     ],
     [TowerType.Ice]: [
         [150, 350, 1500, 2300, 28000],
-        [200, 300, 2750, 4000, 16000],
+        [200, 300, 2750, 4000, 19000],
         [150, 200, 1900, 2750, 30000],
     ],
     [TowerType.Glue]: [
@@ -143,7 +143,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     [TowerType.Desperado]: [
         [200, 200, 1200, 4800, 17500],
         [150, 350, 3000, 6500, 42000],
-        [220, 280, 2100, 9500, 31000],
+        [220, 280, 2100, 8500, 31000],
     ],
     [TowerType.Sniper]: [
         [350, 1300, 2500, 6000, 32000],
@@ -171,9 +171,9 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [250, 350, 3400, 8500, 35000],
     ],
     [TowerType.Mortar]: [
-        [500, 500, 825, 7200, 36000],
-        [300, 500, 900, 6500, 38000],
-        [200, 500, 1000, 9500, 40000],
+        [300, 500, 825, 7000, 36000],
+        [400, 500, 900, 6500, 38000],
+        [200, 400, 1100, 9500, 40000],
     ],
     [TowerType.Dartling]: [
         [300, 900, 3000, 11750, 75000],
@@ -207,7 +207,7 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     ],
     [TowerType.Mermonkey]: [
         [150, 250, 1600, 4200, 23000],
-        [200, 300, 2300, 8000, 52000],
+        [200, 300, 1900, 8000, 48000],
         [200, 380, 2000, 7600, 25000],
     ],
     [TowerType.Spike]: [
