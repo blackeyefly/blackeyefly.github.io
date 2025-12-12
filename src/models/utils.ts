@@ -71,7 +71,7 @@ const baseCosts: EnumDictionary<TowerType, number> = {
     [TowerType.Ninja]: 400,
     [TowerType.Alchemist]: 550,
     [TowerType.Druid]: 400,
-    [TowerType.Mermonkey]: 375,
+    [TowerType.Mermonkey]: 275,
     [TowerType.Spike]: 1000,
     [TowerType.Farm]: 1250,
     [TowerType.Village]: 1200,
@@ -141,9 +141,9 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
         [280, 400, 3600, 4000, 24000],
     ],
     [TowerType.Desperado]: [
-        [200, 200, 1200, 4800, 17500],
+        [200, 200, 1200, 5800, 16500],
         [150, 350, 3000, 6500, 42000],
-        [220, 280, 2100, 8500, 31000],
+        [220, 280, 2100, 6500, 31000],
     ],
     [TowerType.Sniper]: [
         [350, 1300, 2500, 6000, 32000],
@@ -207,8 +207,8 @@ const baseUpgradeCosts: EnumDictionary<TowerType, Upgrades> = {
     ],
     [TowerType.Mermonkey]: [
         [150, 250, 1600, 4200, 23000],
-        [200, 300, 1900, 8000, 48000],
-        [200, 380, 2000, 7600, 25000],
+        [200, 225, 1100, 8000, 48000],
+        [200, 280, 2000, 7600, 25000],
     ],
     [TowerType.Spike]: [
         [800, 600, 2300, 9500, 125000],
