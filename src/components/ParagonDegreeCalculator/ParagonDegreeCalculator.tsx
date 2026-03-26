@@ -21,6 +21,8 @@ const ParagonDegreeCalculator: FC<ParagonDegreeCalculatorProps> = () => {
     TowerType.Dart,
     TowerType.Boomerang,
     TowerType.Tack,
+    TowerType.Bomb,
+    TowerType.Ice,
     TowerType.Sub,
     TowerType.Buccaneer,
     TowerType.Ace,
