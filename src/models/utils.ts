@@ -84,7 +84,7 @@ const paragonCosts: EnumDictionary<TowerType, number> = {
     [TowerType.Dart]: 150000,
     [TowerType.Boomerang]: 375000,
     [TowerType.Bomb]: 600000,
-    [TowerType.Tack]: 200000,   
+    [TowerType.Tack]: 200000,
     [TowerType.Ice]: 300000,
     [TowerType.Glue]: 0,
     [TowerType.Desperado]: 0,
