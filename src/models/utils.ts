@@ -99,7 +99,7 @@ const paragonCosts: EnumDictionary<TowerType, number> = {
     [TowerType.Super]: 0,
     [TowerType.Ninja]: 500000,
     [TowerType.Alchemist]: 0,
-    [TowerType.Druid]: 0,
+    [TowerType.Druid]: 475000,
     [TowerType.Mermonkey]: 0,
     [TowerType.Spike]: 800000,
     [TowerType.Farm]: 0,
